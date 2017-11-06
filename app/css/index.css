@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.left-bar{
+    height:calc(100vh);
+    background-color: rgb(84, 92, 100);
+}
+
+/*重写nav-menu 样式 start*/
+.el-menu{
+    border-right:none !important;
+}
+/*重写nav-menu 样式 end*/
+
+
+/*重写el-header 样式 start*/
+.el-header{
+    padding: 0 !important;
+}
+/*重写el-header 样式 end*/
+
+.top-bar-expand{
+    height: 60px;
+    line-height:60px;
+    padding: 0 5px;
+    background-color: #fff;
+    border-bottom: solid 1px #e6e6e6;
+}
