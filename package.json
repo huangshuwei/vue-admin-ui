@@ -1,17 +1,16 @@
 {
-  "name": "vue-easytable",
-  "version": "1.5.2",
-  "description": "vue table component",
+  "name": "vue-admin-ui",
+  "version": "0.0.1",
+  "description": "vue admin ui",
   "main": "libs/index.js",
   "author": "https://github.com/huangshuwei",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huangshuwei/vue-easytable.git"
+    "url": "git+https://github.com/huangshuwei/vue-admin-ui.git"
   },
   "files": [
-    "libs",
-    "umd"
+
   ],
   "dependencies": {
     "nprogress": "^0.2.0",
@@ -71,7 +70,7 @@
     "dev": "webpack-dev-server --env.dev"
   },
   "bugs": {
-    "url": "https://github.com/huangshuwei/vue-easytable/issues"
+    "url": "https://github.com/huangshuwei/vue-admin-ui/issues"
   },
-  "homepage": "https://github.com/huangshuwei/vue-easytable/blob/master/README.md"
+  "homepage": "https://github.com/huangshuwei/vue-admin-ui/blob/master/README.md"
 }
