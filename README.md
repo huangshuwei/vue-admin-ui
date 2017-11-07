@@ -2,7 +2,7 @@
 vue admin ui
 
 ## to do list
-- [ ] 面包屑功能
+- [x] 面包屑功能
 - [ ] 登录、登出功能
 - [ ] 主题切换
 - [ ] 浏览记录（类似chrome tab）
