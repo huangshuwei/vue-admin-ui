@@ -8,7 +8,7 @@ exports.getSettings = function (env) {
         proxyTarget: 'http://localhost:15147/',
 
         // 当前启动的端口
-        visitPort: '8098',
+        visitPort: '8018',
 
         // 是否调试模式
         isDebug: false,

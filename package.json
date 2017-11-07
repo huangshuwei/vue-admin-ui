@@ -9,12 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/huangshuwei/vue-admin-ui.git"
   },
-  "files": [
-
-  ],
+  "files": [],
   "dependencies": {
+    "element-ui": "^2.0.3",
     "nprogress": "^0.2.0",
     "vue": "^2.2.6",
+    "vue-easytable": "^1.5.1",
     "vue-loader": "^12.2.1",
     "vue-router": "^2.4.0",
     "vue-style-loader": "^3.0.0",
@@ -40,7 +40,6 @@
     "clipboard": "^1.7.1",
     "css-loader": "^0.28.4",
     "csv-loader": "^2.1.1",
-    "element-ui": "^2.0.3",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "fs-extra": "^4.0.1",
