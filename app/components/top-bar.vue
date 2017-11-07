@@ -1,12 +1,12 @@
 <template>
     <div class="top-bar">
         <el-row>
-            <el-col :span="2">
+            <el-col :span="1">
                 <div class="top-bar-expand">
-                    <span @click.stop="switchLeftBar()" class="top-bar-expand-span"><i class="iconfont icon-caidan"></i></span>
+                    <span @click.stop="switchLeftBar()" class="top-bar-expand-span"><i :class="['top-bar-expand-i','iconfont','icon-caidan',topBarExpandIClasses]"></i></span>
                 </div>
             </el-col>
-            <el-col :span="22">
+            <el-col :span="23">
                 <el-menu
                         :default-active="activeIndex"
                         class="el-menu-demo"
@@ -29,15 +29,42 @@
     </div>
 </template>
 
+<style>
+    .top-bar-expand-i{
+        display: inline-block;
+        cursor: pointer;
+        transform: rotate(0deg);
+        transition: .38s;
+        transform-origin: 50% 50%;
+    }
+
+    .top-bar-expand-i.active{
+        transform: rotate(-90deg);
+    }
+</style>
+
 <script>
 
-    import {mapActions} from 'vuex'
+    import {mapActions,mapState} from 'vuex'
 
     export default {
         data() {
             return {
                 activeIndex: '1'
             };
+        },
+        computed: {
+
+            ...mapState({
+                rootState: state => state.root
+            }),
+
+            topBarExpandIClasses(){
+
+                return {
+                    'active':!this.rootState.isExpand
+                }
+            }
         },
         methods: {
             ...mapActions({
