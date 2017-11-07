@@ -40,6 +40,7 @@ module.exports = function (env) {
         vendors: [
             'babel-polyfill',
             'vue',
+            'vuex',
             'vue-router'
         ]
     };

@@ -13,12 +13,13 @@
   "dependencies": {
     "element-ui": "^2.0.3",
     "nprogress": "^0.2.0",
-    "vue": "^2.2.6",
+    "vue": "^2.5.3",
     "vue-easytable": "^1.5.1",
     "vue-loader": "^12.2.1",
-    "vue-router": "^2.4.0",
+    "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.0",
-    "vue-template-compiler": "^2.2.6",
+    "vue-template-compiler": "^2.5.3",
+    "vuex": "^3.0.1",
     "webpack": "^3.0.0",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.5.0"

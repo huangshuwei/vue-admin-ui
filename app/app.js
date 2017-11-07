@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import APP from './components/app.vue'
+import store from './store'
 import router from './router'
 
 import NProgress from 'nprogress'; // Progress 进度条
@@ -21,6 +22,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     NProgress.done(); // 结束Progress
 });
+
 
 
 // 引入样式
@@ -177,6 +179,7 @@ Vue.prototype.$message = Message
 
 new Vue({
     el: '#app',
+    store,
     router,
     render: h => h(APP)
 })

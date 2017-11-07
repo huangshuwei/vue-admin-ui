@@ -1,12 +1,12 @@
 <template>
     <div class="top-bar">
         <el-row>
-            <el-col :span="1">
+            <el-col :span="2">
                 <div class="top-bar-expand">
-                    折叠吧
+                    <span @click.stop="switchLeftBar()" class="top-bar-expand-span"><i class="iconfont icon-caidan"></i></span>
                 </div>
             </el-col>
-            <el-col :span="23">
+            <el-col :span="22">
                 <el-menu
                         :default-active="activeIndex"
                         class="el-menu-demo"
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+    import {mapActions} from 'vuex'
+
     export default {
         data() {
             return {
@@ -37,9 +40,19 @@
             };
         },
         methods: {
+            ...mapActions({
+                'switchLeftBar': 'switchLeftBar',
+
+            }),
+
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
-            }
+            },
+
+            /* switchLeftBar(){
+
+
+             }*/
         }
     }
 </script>

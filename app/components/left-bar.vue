@@ -6,7 +6,9 @@
                 @close="handleClose"
                 background-color="#545c64"
                 text-color="#fff"
-                active-text-color="#ffd04b">
+                active-text-color="#ffd04b"
+                :collapse="!rootState.isExpand"
+        >
             <el-submenu index="1">
                 <template slot="title">
                     <i class="el-icon-location"></i>
@@ -37,8 +39,23 @@
     </div>
 </template>
 <script>
+
+    import {mapState} from 'vuex'
+
     export default{
         name: 'left-bar',
+        data(){
+            return {
+                collapse: false
+            }
+        },
+        computed: {
+
+            ...mapState({
+                rootState: state => state.root
+            }),
+        },
+
         methods: {
             handleOpen(key, keyPath) {
                 console.log(key, keyPath);

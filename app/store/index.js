@@ -4,7 +4,8 @@ import getters from "./getters";
 import actions from "./actions";
 import mutations from "./mutations";
 import state from './state'
-import createLogger from "../../../../../public/devtool/vue/plugins/logger";
+// 自带logger
+import createLogger from 'vuex/dist/logger'
 
 
 
