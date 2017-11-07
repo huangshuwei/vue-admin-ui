@@ -32,7 +32,6 @@
 <style>
     .top-bar-expand-i{
         display: inline-block;
-        cursor: pointer;
         transform: rotate(0deg);
         transition: .38s;
         transform-origin: 50% 50%;

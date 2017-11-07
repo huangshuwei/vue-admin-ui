@@ -3,7 +3,13 @@ export default {
     root: {
         leftBarExpandWidth:'200px',
         leftBarFoldWidth:'64px',
-        isExpand:true
+        isExpand:true,
+
+        // 面包屑
+        crumbsInfoList:[
+            {name:'11',path:'11'},
+            {name:'22',path:'22'},
+            ]
     }
 
 }

@@ -3,11 +3,15 @@
         <el-aside :style="leftBarWidth">
             <!--left bar-->
             <left-bar></left-bar>
+
         </el-aside>
         <el-container>
-            <el-header>
+            <el-header height="120">
                 <!--top bar-->
                 <top-bar></top-bar>
+
+                <!--breadcrumb-->
+                <breadcrumb></breadcrumb>
             </el-header>
             <el-main>
                 <!--container-->
@@ -22,12 +26,13 @@
 
     import leftBar from './left-bar.vue'
     import topBar from './top-bar.vue'
+    import breadcrumb from './breadcrumb.vue'
 
     export default{
         name: 'app',
 
         components: {
-            leftBar, topBar
+            leftBar, topBar, breadcrumb
         },
 
         computed: {
@@ -39,17 +44,38 @@
             leftBarWidth(){
 
                 console.log({
-                    'width':this.rootState.isExpand ? this.rootState.leftBarExpandWidth :  this.rootState.leftBarFoldWidth
+                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
                 })
                 return {
-                    'width':this.rootState.isExpand ? this.rootState.leftBarExpandWidth :  this.rootState.leftBarFoldWidth
+                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
                 }
             }
 
         },
 
-        created(){
-            console.log(this.rootState)
+        methods:{
+
+            ...mapActions({
+                setCrumbsInfoList:'setCrumbsInfoList'
+            })
+        },
+
+        watch : {
+            $route(to, from){
+
+                console.log(to)
+
+                let crumbs = [];
+                to.matched.forEach((item) =>{
+                    crumbs.push({name : item.name, path : item.path});
+                })
+                if(crumbs.length > 0){
+                    // 设置面包屑信息
+                    this.setCrumbsInfoList(crumbs);
+                    // 设置历史记录
+                    //this.addHistoryTab(crumbs[crumbs.length - 1])
+                }
+            }
         }
 
 
