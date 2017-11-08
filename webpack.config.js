@@ -36,7 +36,7 @@ module.exports = function (env) {
 
 
     var entry = {
-        app: "./app/app.js", // application code
+        index: "./src/index.js", // application code
         vendors: [
             'babel-polyfill',
             'vue',
@@ -180,12 +180,12 @@ module.exports = function (env) {
 
         // 创建html
         new HtmlWebpackPlugin({
-            filename: 'app.html',
-            template: __dirname + '/app/app.html',
+            filename: 'index.html',
+            template: __dirname + '/src/index.html',
             inject: 'true',
 
             // 需要依赖的模块
-            chunks: ['app', 'vendors', 'manifest'],
+            chunks: ['index', 'vendors', 'manifest'],
 
             // 根据依赖自动排序
             chunksSortMode: 'dependency'
@@ -213,7 +213,7 @@ module.exports = function (env) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
 
         // 编译完成自动打开浏览器
-        plugins.push(new OpenBrowserPlugin({url: 'http://localhost:' + SETTINGS.visitPort + SETTINGS.path.publicPath + 'app.html'}));
+        plugins.push(new OpenBrowserPlugin({url: 'http://localhost:' + SETTINGS.visitPort + SETTINGS.path.publicPath + 'index.html'}));
 
 
         devServer = {
