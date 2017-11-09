@@ -24,9 +24,9 @@
 <script>
     import {mapState, mapActions} from 'vuex'
 
-    import leftBar from './left-bar.vue'
-    import topBar from './top-bar.vue'
-    import breadcrumb from './breadcrumb.vue'
+    import leftBar from '../views/layout/left-bar.vue'
+    import topBar from '../views/layout/top-bar.vue'
+    import breadcrumb from '../views/layout/breadcrumb.vue'
 
     export default{
         name: 'app',
@@ -43,9 +43,6 @@
 
             leftBarWidth(){
 
-                console.log({
-                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
-                })
                 return {
                     'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
                 }
@@ -63,7 +60,7 @@
         watch : {
             $route(to, from){
 
-                console.log(to)
+                console.log(to.matched)
 
                 let crumbs = [];
                 to.matched.forEach((item) =>{

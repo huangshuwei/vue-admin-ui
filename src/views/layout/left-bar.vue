@@ -20,12 +20,14 @@
                     <span>表格控件</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/editTable">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
+                    <el-menu-item index="/components/editTable">编辑表格</el-menu-item>
+                    <el-menu-item index="/components/table1">表格1</el-menu-item>
+                    <el-menu-item index="/components/table2">表格2</el-menu-item>
                 </el-menu-item-group>
                 <el-submenu index="1-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
+                    <template slot="title">test</template>
+                    <el-menu-item index="/components/test/test1">test-1</el-menu-item>
+                    <el-menu-item index="/components/test/test2">test-2</el-menu-item>
                 </el-submenu>
             </el-submenu>
             <el-menu-item index="3">

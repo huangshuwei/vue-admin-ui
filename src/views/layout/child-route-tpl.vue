@@ -1,11 +1,11 @@
 <template>
     <div>
-        编辑表格
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
     export default{
-        name:'edit-table'
+        name:'index'
     }
 </script>

@@ -1,11 +1,11 @@
 <template>
     <div>
-        编辑表格
+        table1
     </div>
 </template>
 
 <script>
     export default{
-        name:'edit-table'
+        name:'table1'
     }
 </script>
