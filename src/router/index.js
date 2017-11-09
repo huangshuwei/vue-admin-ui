@@ -24,16 +24,13 @@ export default new VueRouter({
         { path: '/intro', component: intro,name:'简介' },
         { path: '/components', component: childRouterTpl,name:'表格控件',redirect:'/components/editTable',
             children : [
-                {path : 'index', component :childRouterTpl, name : 'index',redirect:'/components/editTable'},
                 {path : 'editTable', component :editTable, name : '编辑表格'},
                 {path : 'table1', component :table1, name : '表格1'},
                 {path : 'table2', component :table2, name : '表格2'},
                 {path : 'test', component :childRouterTpl, name : '测试',redirect:'/components/test/test1',
                     children : [
-                        {path : 'index', component :childRouterTpl, name : 'index',redirect:'/components/test/test1'},
                         {path : 'test1', component :test1, name : 'test1'},
                         {path : 'test2', component :test2, name : 'test2'},
-
                     ]
                 },
             ] },
