@@ -42,4 +42,21 @@
 
 }
 
+/*面包屑和历史tab start*/
+.header-operation{
+    height: 35px;
+    line-height: 35px;
+    background-color:#f5f4f4;
+}
 
+.header-operation-breadcrumb {
+    display: inline-block;
+    min-width: 230px;
+    padding-left: 10px;
+
+}
+
+.header-operation-history-tabs{
+    display: inline-block;
+}
+/*面包屑和历史tab end*/

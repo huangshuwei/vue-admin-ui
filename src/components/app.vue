@@ -10,8 +10,13 @@
                 <!--top bar-->
                 <top-bar></top-bar>
 
-                <!--breadcrumb-->
-                <breadcrumb></breadcrumb>
+                <div class="header-operation">
+                    <!--breadcrumb-->
+                    <breadcrumb class="header-operation-breadcrumb"></breadcrumb>
+
+                    <!--history tabs-->
+                    <history-tabs class="header-operation-history-tabs"></history-tabs>
+                </div>
             </el-header>
             <el-main>
                 <!--container-->
@@ -21,18 +26,20 @@
     </el-container>
 </template>
 
+
 <script>
     import {mapState, mapActions} from 'vuex'
 
     import leftBar from '../views/layout/left-bar.vue'
     import topBar from '../views/layout/top-bar.vue'
     import breadcrumb from '../views/layout/breadcrumb.vue'
+    import historyTabs from '../views/layout/history-tabs.vue'
 
     export default{
         name: 'app',
 
         components: {
-            leftBar, topBar, breadcrumb
+            leftBar, topBar, breadcrumb,historyTabs
         },
 
         computed: {
