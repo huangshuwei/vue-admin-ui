@@ -1,10 +1,11 @@
 <template>
     <div>
-        <!--用span 包裹是因为 el-tag 组件close 回调会冒泡 -->
-        <span v-for="item in historyTabs" @click.stop="openTabs(item.path)">
-            <el-tag @close="handleTabClose(item)"
-                    :type="item.colorType" size="small" closable>{{item.name}}</el-tag>
-        </span>
+        <el-tag v-for="item in historyTabs"
+                @click.native.self="openTabs(item.path)"
+                @close="handleTabClose(item)"
+                :type="item.colorType" size="small" closable>
+            {{item.name}}
+        </el-tag>
     </div>
 </template>
 
