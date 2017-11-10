@@ -60,7 +60,8 @@
         methods:{
 
             ...mapActions({
-                setCrumbsInfoList:'setCrumbsInfoList'
+                setCrumbsInfoList:'setCrumbsInfoList',
+                addHistoryTab:'addHistoryTab'
             })
         },
 
@@ -77,7 +78,7 @@
                     // 设置面包屑信息
                     this.setCrumbsInfoList(crumbs);
                     // 设置历史记录
-                    //this.addHistoryTab(crumbs[crumbs.length - 1])
+                    this.addHistoryTab(crumbs[crumbs.length - 1])
                 }
             }
         }

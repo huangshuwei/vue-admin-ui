@@ -53,10 +53,14 @@
     display: inline-block;
     min-width: 230px;
     padding-left: 10px;
-
 }
 
 .header-operation-history-tabs{
     display: inline-block;
+}
+
+.header-operation-history-tabs .el-tag{
+    margin-left: 10px;
+    cursor: pointer;
 }
 /*面包屑和历史tab end*/
