@@ -10,19 +10,24 @@
                 active-text-color="#ffd04b"
                 :collapse="!rootState.isExpand"
         >
+
             <el-menu-item index="/intro">
                 <i class="el-icon-menu"></i>
                 <span slot="title">简介</span>
             </el-menu-item>
+            <el-menu-item index="/settings">
+                <i class="el-icon-setting"></i>
+                <span slot="title">设置</span>
+            </el-menu-item>
             <el-submenu index="2">
                 <template slot="title">
                     <i class="el-icon-location"></i>
-                    <span>表格控件</span>
+                    <span>组件</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/components/editTable">编辑表格</el-menu-item>
-                    <el-menu-item index="/components/table1">表格1</el-menu-item>
-                    <el-menu-item index="/components/table2">表格2</el-menu-item>
+                    <el-menu-item index="/components/table">表格</el-menu-item>
+                   <!-- <el-menu-item index="/components/table1">表格1</el-menu-item>
+                    <el-menu-item index="/components/table2">表格2</el-menu-item>-->
                 </el-menu-item-group>
                 <el-submenu index="1-4">
                     <template slot="title">test</template>
@@ -34,10 +39,7 @@
                 <i class="el-icon-menu"></i>
                 <span slot="title">导航二</span>
             </el-menu-item>
-            <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航三</span>
-            </el-menu-item>
+
         </el-menu>
     </div>
 </template>
