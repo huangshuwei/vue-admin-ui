@@ -11,7 +11,7 @@
   },
   "files": [],
   "dependencies": {
-    "element-ui": "^2.0.3",
+    "element-ui": "^2.3.3",
     "nprogress": "^0.2.0",
     "vue": "^2.5.3",
     "vue-easytable": "^1.5.1",
