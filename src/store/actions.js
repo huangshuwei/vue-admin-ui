@@ -9,6 +9,12 @@ export default {
         context.commit(types.SWITCH_LEFT_BAR, {});
     },
 
+    // 菜单的选中
+    setDefaultMenuKey(context,payLoad){
+
+        context.commit(types.SET_DEFAULT_MENU_KEY, payLoad);
+    },
+
     // 设置面包屑
     setCrumbsInfoList(context, payload){
 

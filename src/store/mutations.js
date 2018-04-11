@@ -9,6 +9,12 @@ export default {
         state.root.isExpand = !state.root.isExpand;
     },
 
+    // 菜单的选中
+    [types.SET_DEFAULT_MENU_KEY](state,payload){
+
+        state.root.defaultMenuKey = payload;
+    },
+
     // 设置面包屑
     [types.SET_CRUMBS_INFO_LIST](state,payload){
 

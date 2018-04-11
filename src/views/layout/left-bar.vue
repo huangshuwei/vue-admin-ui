@@ -2,7 +2,7 @@
     <div class="left-bar">
         <el-menu
                 router
-                default-active="2"
+                :default-active="rootState.defaultMenuKey"
                 @open="handleOpen"
                 @close="handleClose"
                 background-color="#545c64"
@@ -51,7 +51,8 @@
         name: 'left-bar',
         data(){
             return {
-                collapse: false
+                collapse: false,
+
             }
         },
         computed: {

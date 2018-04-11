@@ -61,15 +61,19 @@
 
             ...mapActions({
                 setCrumbsInfoList:'setCrumbsInfoList',
-                addHistoryTab:'addHistoryTab'
+                addHistoryTab:'addHistoryTab',
+                setDefaultMenuKey:'setDefaultMenuKey'
             })
         },
 
         watch : {
+
             $route(to, from){
 
-                console.log(to.matched)
+                //console.log(to.matched)
 
+
+                // crumbs
                 let crumbs = [];
                 to.matched.forEach((item) =>{
                     crumbs.push({name : item.name, path : item.path});
@@ -80,7 +84,15 @@
                     // 设置历史记录
                     this.addHistoryTab(crumbs[crumbs.length - 1])
                 }
+
+                // menu active
+                let defaultMenuKey = to.matched[to.matched.length-1];
+
+                //console.log('---',defaultMenuKey.path)
+                this.setDefaultMenuKey(defaultMenuKey.path);
+
             }
+
         }
 
 
