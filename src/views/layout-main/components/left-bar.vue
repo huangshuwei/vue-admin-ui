@@ -2,7 +2,7 @@
     <div class="left-bar">
         <el-menu
                 router
-                :default-active="rootState.defaultMenuKey"
+                :default-active="defaultActive"
                 @open="handleOpen"
                 @close="handleClose"
                 background-color="#545c64"
@@ -13,9 +13,9 @@
 
             <el-menu-item index="/intro">
                 <i class="el-icon-menu"></i>
-                <span slot="title">简介</span>
+                <span slot="title">首页</span>
             </el-menu-item>
-            <el-menu-item index="/settings">
+            <el-menu-item index="/settings/index">
                 <i class="el-icon-setting"></i>
                 <span slot="title">设置</span>
             </el-menu-item>
@@ -52,7 +52,7 @@
         data(){
             return {
                 collapse: false,
-
+                defaultActive:'/intro'
             }
         },
         computed: {
@@ -63,11 +63,32 @@
         },
 
         methods: {
+
             handleOpen(key, keyPath) {
                 console.log(key, keyPath);
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
+            },
+
+            addDefaultMenuKey(route){
+
+                let defaultMenuKey = route.matched[route.matched.length-1];
+
+                this.defaultActive = defaultMenuKey.path;
+            }
+        },
+
+        created(){
+
+            this.addDefaultMenuKey(this.$route);
+        },
+
+        watch:{
+
+            $route(to, from){
+
+                this.addDefaultMenuKey(to);
             }
         }
     }

@@ -3,24 +3,7 @@ export default {
     root: {
         leftBarExpandWidth: '200px',
         leftBarFoldWidth: '64px',
-        isExpand: true,
-
-        // 面包屑
-        crumbsInfoList: [
-            /*
-            *{name: '11', path: '11'},
-            {name: '22', path: '22'},
-            **/
-        ],
-        // history tabs
-        historyTabs: [
-            /*{colorType: 'info', name: 'table1'},
-            {colorType: 'info', name: 'table2'},
-            {colorType: '', name: 'table3'},*/
-        ],
-
-        // default key
-        defaultMenuKey:""
+        isExpand: true
     }
 
 }
