@@ -1,52 +1,68 @@
 @import "../fonts/iconfont/iconfont.css";
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.left-bar{
-    height:calc(100vh);
+.left-bar {
+    height: calc(100vh);
     background-color: rgb(84, 92, 100);
 }
 
 /*重写nav-menu 样式 start*/
-.el-menu{
-    border-right:none !important;
+.el-menu--horizontal {
+    border-bottom: none !important;
 }
+
+.el-menu {
+    border-right: none !important;
+}
+
 /*重写nav-menu 样式 end*/
 
-
 /*重写el-header 样式 start*/
-.el-header{
+.el-header {
     padding: 0 !important;
 }
+
 /*重写el-header 样式 end*/
 
-.top-bar-expand{
+/*top-bar start*/
+
+.top-bar-expand {
     height: 60px;
-    line-height:60px;
+    line-height: 60px;
     padding: 0 15px;
     background-color: #fff;
-    border-bottom: solid 1px #e6e6e6;
+    /*    border-bottom: solid 1px #e6e6e6;*/
     min-width: 100px;
 
 }
 
-.top-bar-expand-span{
+.top-bar-expand-span {
     cursor: pointer;
 }
 
-.top-bar-expand i{
-    font-size:24px;
-
+.top-bar-expand i {
+    font-size: 24px;
 }
+/*top-bar end*/
+
+
+/* account start*/
+.top-bar-account {
+    height: 60px;
+    line-height: 60px;
+}
+/* account end*/
 
 /*面包屑和历史tab start*/
-.header-operation{
+.header-operation {
     height: 35px;
- /*   line-height: 35px;*/
-    background-color:#f5f4f4;
+    /*   line-height: 35px;*/
+    background-color: #f5f4f4;
+    border-top: solid 1px #e6e6e6;
 }
 
 .header-operation:before {
@@ -64,13 +80,14 @@
     padding-left: 10px;
 }
 
-.header-operation-history-tabs{
+.header-operation-history-tabs {
     vertical-align: middle;
     display: inline-block;
 }
 
-.header-operation-history-tabs .el-tag{
+.header-operation-history-tabs .el-tag {
     margin-left: 10px;
     cursor: pointer;
 }
+
 /*面包屑和历史tab end*/
