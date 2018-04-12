@@ -93,6 +93,7 @@
             loginOut(){
 
                 this.$router.replace({path : '/login'});
+
             }
         }
     }
