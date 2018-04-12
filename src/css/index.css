@@ -28,6 +28,18 @@
 
 /*重写el-header 样式 end*/
 
+/*layout-main start*/
+.layout-main{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+/*layout-main end*/
+
 /*top-bar start*/
 
 .top-bar-expand {
@@ -53,7 +65,18 @@
 /* account start*/
 .top-bar-account {
     height: 60px;
-    line-height: 60px;
+}
+
+.top-bar-account:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    /* border: 1px solid red;*/ /* so we can see what's going on */
+}
+
+.top-bar-account-link{
+    cursor:pointer;
 }
 /* account end*/
 

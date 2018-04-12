@@ -1,5 +1,5 @@
 <template>
-    <el-container>
+    <el-container class="layout-main">
         <el-aside :style="leftBarWidth">
             <!--left bar-->
             <left-bar></left-bar>
