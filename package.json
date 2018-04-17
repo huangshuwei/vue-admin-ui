@@ -11,7 +11,9 @@
   },
   "files": [],
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.3.3",
+    "js-cookie": "^2.2.0",
     "nprogress": "^0.2.0",
     "vue": "^2.5.3",
     "vue-easytable": "^1.5.1",

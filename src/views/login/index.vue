@@ -1,18 +1,17 @@
 <template>
     <div class="login-container">
         <div class="login-form">
-            <el-form label-width="0" :model="formLogin" label-position="left">
-                <el-form-item>
-                    <el-input placeholder="用户名" prefix-icon="iconfont icon-user" v-model="formLogin.name"></el-input>
+            <el-form label-width="0" ref="formLogin" :model="formLogin" :rules="rules" label-position="left">
+                <el-form-item prop="account">
+                    <el-input placeholder="用户名" prefix-icon="iconfont icon-user" v-model="formLogin.account"></el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-input placeholder="密码" prefix-icon="iconfont icon-lock" :type="passwordType"
-                              v-model="formLogin.region">
+                <el-form-item prop="password">
+                    <el-input placeholder="密码" prefix-icon="iconfont icon-lock" v-model="formLogin.password" :type="passwordType">
                         <i @click.stop.prevent="switchPWD" slot="suffix" class="iconfont icon-eyeoclose login-icon-pwd"></i>
                     </el-input>
                 </el-form-item>
             </el-form>
-            <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="login">登录
+            <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="login('formLogin')">登录
             </el-button>
         </div>
     </div>
@@ -23,9 +22,17 @@
         data() {
             return {
                 formLogin: {
-                    name: '',
-                    region: '',
-                    type: ''
+                    account: '',
+                    password: ''
+                },
+
+                rules:{
+                    account:[
+                        {required: true, message: '请输入用户名', trigger: 'blur' }
+                    ],
+                    password:[
+                        {required: true, message: '请输入密码', trigger: 'blur' }
+                    ]
                 },
 
                 loading: false,
@@ -35,10 +42,18 @@
         },
 
         methods: {
+            // 登录
+            login(formName) {
 
-            login() {
-
-                this.$router.replace({path : '/'});
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                        this.$router.replace({path : '/'});
+                    } else {
+                        alert('error submit!!');
+                        return false;
+                    }
+                });
             },
 
             switchPWD() {
