@@ -176,6 +176,7 @@ Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 
+Vue.config.devtools = process.env.NODE_ENV === 'dev';
 
 new Vue({
     el: '#app',
