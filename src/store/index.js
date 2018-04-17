@@ -8,9 +8,6 @@ import state from './state'
 import createLogger from 'vuex/dist/logger'
 
 
-
-
-
 // 将vuex注入到实例中
 Vue.use(Vuex);
 
@@ -24,6 +21,6 @@ export default new Vuex.Store({
         // 子模块
 
     },
-    plugins: __DEV__ ? [createLogger()] : [],
-    strict: __DEV__ ? true : false
+    plugins: process.env.NODE_ENV === 'dev' ? [createLogger()] : [],
+    strict: process.env.NODE_ENV === 'dev' ? true : false
 });
