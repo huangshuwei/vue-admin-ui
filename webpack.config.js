@@ -27,7 +27,6 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var settings = require('./build/webpack.settings.js');
 
 
-
 module.exports = function (env) {
 
 
@@ -153,16 +152,13 @@ module.exports = function (env) {
 
         // 全局标识
         new webpack.DefinePlugin({
-            // 开发标识
-            __DEV__: SETTINGS.isDebug,
-
             // 代理的标识
-            __DEVAPI__: SETTINGS.isDebug ? "/devApi/" : "''", // 热更新和后端服务结合的标识
-
-            // 去除vue的所有警告代码：http://vue-loader.vuejs.org/en/workflow/production.html
-            'process.env': SETTINGS.isDebug ? {
-                NODE_ENV: '"production"'
-            } : {}
+            // __DEVAPI__: SETTINGS.isDebug ? "/devApi/" : "''", // 热更新和后端服务结合的标识
+            'process.env': {
+                NODE_ENV: SETTINGS.isDebug ? '"dev"' : '"production"',// 去除vue的所有警告代码：http://vue-loader.vuejs.org/en/workflow/production.html
+                NODE_MOCK: SETTINGS.isDebug ? '"mock"' : '""', // mock 标识
+                DEV_API: SETTINGS.isDebug ? "/devApi/" : "''"
+            }
         }),
 
         /*
