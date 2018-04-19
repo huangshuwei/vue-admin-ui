@@ -24,11 +24,10 @@ router.afterEach(() => {
 });
 
 
-
 // 引入样式
 import 'vue-easytable/libs/themes-base/index.css'
 // 导入 table 和 分页组件
-import {VTable,VPagination} from 'vue-easytable'
+import {VTable, VPagination} from 'vue-easytable'
 
 // 注册到全局
 Vue.component(VTable.name, VTable)
@@ -177,6 +176,9 @@ Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 
 Vue.config.devtools = process.env.NODE_ENV === 'dev';
+
+//process.env.NODE_MOCK === 'mock' &&
+require('@/mock/index');
 
 new Vue({
     el: '#app',

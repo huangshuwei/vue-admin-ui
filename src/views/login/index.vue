@@ -18,6 +18,9 @@
 </template>
 
 <script>
+
+    import {mapActions,mapState} from 'vuex'
+
     export default {
         data() {
             return {
@@ -42,13 +45,31 @@
         },
 
         methods: {
+            ...mapActions("login",{
+                'loginAction': 'login',
+            }),
+
             // 登录
             login(formName) {
 
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
-                        this.$router.replace({path : '/'});
+
+                        this.loading = true;
+
+                        this.loginAction(this.formLogin).then(()=>{
+
+                            alert('登录成功')
+                            this.loading = false;
+                            this.$router.replace({path : '/'});
+
+                        }).catch(error=>{
+
+                            alert('登录失败')
+                            this.loading = false;
+                        });
+
+
                     } else {
                         alert('error submit!!');
                         return false;

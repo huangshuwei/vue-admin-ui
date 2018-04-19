@@ -1,3 +1,3 @@
 module.exports = {
-    BASE_API: '"https://api-prod"'
+    BASE_API: 'http://x/'
 }

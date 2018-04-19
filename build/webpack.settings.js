@@ -52,7 +52,7 @@ exports.getSettings = function (env) {
         settings.outputFolderName = 'dist';
 
         settings.path.outputPath = "./";
-        settings.path.publicPath = "/app/"
+        settings.path.publicPath = "/src/"
 
     } else if (env && env.build) {
 

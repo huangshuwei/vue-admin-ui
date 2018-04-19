@@ -196,7 +196,8 @@ module.exports = function (env) {
         extensions: ['.js', '.css', '.scss', '.ejs', '.png', '.jpg', '.vue'],
         modules: [SETTINGS.path.node_modulesPath],
         alias: {
-            'vue$': 'vue/dist/vue'
+            'vue$': 'vue/dist/vue',
+            '@': path.resolve('src'),
         }
     }
 

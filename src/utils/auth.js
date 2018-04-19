@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie.js'
+import Cookies from 'js-cookie'
 
 const tokenKey = 'Auth-Token-Key';
 
