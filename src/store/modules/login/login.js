@@ -21,7 +21,6 @@ export default {
                 login(account,payLoad.password).then(response=>{
 
                     const data = response.data;
-                    //context.commit(types.SET_TOKEN, data.token)
 
                     console.log(data)
 
