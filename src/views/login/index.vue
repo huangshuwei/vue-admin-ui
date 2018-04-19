@@ -25,7 +25,7 @@
         data() {
             return {
                 formLogin: {
-                    account: '',
+                    account: 'admin',
                     password: ''
                 },
 
@@ -57,12 +57,18 @@
 
                         this.loading = true;
 
-                        this.loginAction(this.formLogin).then(()=>{
+                        this.loginAction(this.formLogin).then((data)=>{
 
-                            alert('登录成功')
                             this.loading = false;
-                            this.$router.replace({path : '/'});
+                            if (data.status === 1){
 
+                                this.$message({type:'success',message:'登录成功',duration:1200});
+                                this.$router.replace({path : '/'});
+                            }else{
+
+                                this.$message({type:'error',message:data.msg});
+                                //alert('登录失败')
+                            }
                         }).catch(error=>{
 
                             alert('登录失败')

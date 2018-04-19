@@ -7,7 +7,7 @@ import serviceUrl from './serviceUrl'
 
 const service = axios.create({
     baseURL: serviceUrl.BASE_API, // 服务正式地址
-    timeout: 60000
+    timeout: 5000
 })
 
 // request interceptor

@@ -21,9 +21,21 @@ export default {
                 login(account,payLoad.password).then(response=>{
 
                     const data = response.data;
-                    context.commit(types.SET_TOKEN, data.token)
-                    setToken(response.data.token)
-                    resolve();
+                    //context.commit(types.SET_TOKEN, data.token)
+
+                    console.log(data)
+
+                    let status = data.status;
+
+                    if (status === 1){ // 登录成功
+
+                        setToken(data.data.token)
+                    }else{
+
+
+                    }
+
+                    resolve(data);
 
                 }).catch(error=>{
 
