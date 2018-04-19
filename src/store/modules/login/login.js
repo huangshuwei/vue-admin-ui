@@ -30,9 +30,6 @@ export default {
                     if (status === 1){ // 登录成功
 
                         setToken(data.data.token)
-                    }else{
-
-
                     }
 
                     resolve(data);
@@ -42,9 +39,6 @@ export default {
                     reject(error)
                 })
             })
-
-            // 异步请求
-            //context.commit(types.LOGIN, payLoad);
         }
     },
     mutations:{
