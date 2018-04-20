@@ -40,7 +40,8 @@ module.exports = function (env) {
             'babel-polyfill',
             'vue',
             'vuex',
-            'vue-router'
+            'vue-router',
+            'lodash'
         ]
     };
 
@@ -165,7 +166,9 @@ module.exports = function (env) {
          * 1、暴露到全局变量
          * 2、先找 .resolve.alias 中的属性，若没找到会找 node_modules 下的文件，直到找到为止
          * */
-        new webpack.ProvidePlugin({}),
+        new webpack.ProvidePlugin({
+            _: "lodash"
+        }),
 
         // 清空发布目录
         new CleanWebpackPlugin([SETTINGS.outputFolderName], {

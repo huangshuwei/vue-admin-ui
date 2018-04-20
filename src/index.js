@@ -1,27 +1,15 @@
 import Vue from 'vue'
-import APP from './components/app.vue'
-import store from './store'
-import router from './router'
-
-import NProgress from 'nprogress'; // Progress 进度条
+import APP from '@/components/app.vue'
+import store from '@/store'
+import router from '@/router'
 
 import './css/index.css'
 
-// Progress 进度条 样式
-import 'nprogress/nprogress.css';
+// mock
+process.env.NODE_MOCK === 'mock' && require('@/mock/index')
 
-router.beforeEach((to, from, next) => {
-
-    NProgress.start();
-
-    next();
-
-    NProgress.done();
-})
-
-router.afterEach(() => {
-    NProgress.done(); // 结束Progress
-});
+// 权限验证
+import '@/permission/permission.js'
 
 
 // 引入样式
@@ -176,9 +164,6 @@ Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 
 Vue.config.devtools = process.env.NODE_ENV === 'dev';
-
-//process.env.NODE_MOCK === 'mock' &&
-require('@/mock/index');
 
 new Vue({
     el: '#app',

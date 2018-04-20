@@ -1,9 +1,26 @@
+// loginInfo
 const loginInfo = [
     {
         status: 1,
         msg: '',
         data: {
-            account: 'admin',
+            token: 'abcdefghijklmn'
+        }
+    },
+    {
+        status: 0, // 错误
+        msg: '用户名或密码错误',
+        data: null
+    }
+];
+
+// userInfo
+const userInfo = [
+    {
+        status: 1,
+        msg: '',
+        data: {
+            userName: 'admin',
             token: 'abcdefghijklmn',
             avatar: '', // 头像
             roles: []
@@ -11,23 +28,22 @@ const loginInfo = [
     },
     {
         status: 0, // 错误
-        msg: '用户名或密码错误',
-        data: {
-        }
+        msg: '认证失败，请重新登录', // 可能是认证失败或者是过期
+        data: null
     }
-]
+];
 
 export default {
     // login
     login: config => {
 
-        let {account, password} = JSON.parse(config.body);
+        let {userName, password} = JSON.parse(config.body);
 
         console.log(config.body);
 
-        account = account && account.trim();
+        userName = userName && userName.trim();
 
-        if (account === 'admin') {
+        if (userName === 'admin') {
 
             return loginInfo[0];
         }
@@ -43,6 +59,14 @@ export default {
     //getUserInfo
     getUserInfo: config => {
 
+        console.log(config.body)
 
+     /*   let {token} = JSON.parse(config.url);
+
+        if (token === 'abcdefghijklmn'){
+
+            return userInfo[0];
+        }*/
+        return userInfo[0];
     }
 }

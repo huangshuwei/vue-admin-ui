@@ -3,15 +3,18 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 let types = {
     LOGIN: 'login',
-    SET_TOKEN:'setToken'
+    SET_TOKEN:'setToken',
+    GET_USER_INFO:'getUserInfo'
 };
 
 export default {
     namespaced: true,
     state:{
-        token:''
+        token:'',
+        userInfo:null
     },
     actions:{
+        // login
         login(context, payLoad) {
 
             const account = payLoad.account && payLoad.account.trim();
@@ -32,6 +35,39 @@ export default {
                     }
 
                     resolve(data);
+
+                }).catch(error=>{
+
+                    reject(error)
+                })
+            })
+        },
+
+        // getUserInfo
+        getUserInfo(context, payLoad){
+
+            const token = payLoad.token;
+
+            alert(token)
+
+            return new Promise((resolve,reject)=>{
+
+                getUserInfo(token).then(response=>{
+
+                    const data = response.data;
+
+                    console.log(data);
+
+                    let status = data.status;
+
+                    if (status === 1){
+
+                        this.state.userInfo = data.data;
+                        resolve(data);
+                    }else{
+
+                        reject(data)
+                    }
 
                 }).catch(error=>{
 

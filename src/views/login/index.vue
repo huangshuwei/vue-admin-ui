@@ -64,20 +64,19 @@
 
                                 this.$message({type:'success',message:'登录成功',duration:1200});
                                 this.$router.replace({path : '/'});
+
                             }else{
 
                                 this.$message({type:'error',message:data.msg});
-                                //alert('登录失败')
                             }
                         }).catch(error=>{
 
-                            alert('登录失败')
+                            this.$message({type:'error',message:'登录失败'});
                             this.loading = false;
                         });
-
-
+                        
                     } else {
-                        alert('error submit!!');
+
                         return false;
                     }
                 });
