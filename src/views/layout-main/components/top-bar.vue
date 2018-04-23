@@ -82,8 +82,11 @@
         },
         methods: {
             ...mapActions({
-                'switchLeftBar': 'switchLeftBar',
+                'switchLeftBar': 'switchLeftBar'
+            }),
 
+            ...mapActions('login',{
+                'loginOutAction':'loginOut'
             }),
 
             handleSelect(key, keyPath) {
@@ -92,7 +95,14 @@
 
             loginOut(){
 
-                this.$router.replace({path : '/login'});
+                this.loginOutAction().then(()=>{
+
+                    this.$router.replace({path : '/login'});
+
+                }).catch((error)=>{
+
+                    this.$message({type:'error',message:'登出失败'});
+                });
 
             }
         }

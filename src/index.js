@@ -171,3 +171,6 @@ new Vue({
     router,
     render: h => h(APP)
 })
+
+
+/*alert(JSON.stringify(Utils.url.parseQueryString('?a=b&c=d')))*/

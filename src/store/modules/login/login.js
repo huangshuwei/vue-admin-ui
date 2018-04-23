@@ -43,12 +43,22 @@ export default {
             })
         },
 
+        loginOut(context, payLoad){
+
+            return new Promise((resolve,reject)=>{
+
+                setTimeout(()=>{
+
+                    removeToken()
+                    resolve();
+                })
+            })
+        },
+
         // getUserInfo
         getUserInfo(context, payLoad){
 
             const token = payLoad.token;
-
-            alert(token)
 
             return new Promise((resolve,reject)=>{
 

@@ -61,12 +61,12 @@ export default {
 
         console.log(config.body)
 
-     /*   let {token} = JSON.parse(config.url);
+        let {token} = Utils.url.parseQueryString(config.url);
 
         if (token === 'abcdefghijklmn'){
 
             return userInfo[0];
-        }*/
-        return userInfo[0];
+        }
+        return userInfo[1];
     }
 }
