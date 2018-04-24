@@ -12,14 +12,14 @@ process.env.NODE_MOCK === 'mock' && require('@/mock/index')
 import '@/permission/permission.js'
 
 
-// 引入样式
+/*// 引入样式
 import 'vue-easytable/libs/themes-base/index.css'
 // 导入 table 和 分页组件
 import {VTable, VPagination} from 'vue-easytable'
 
 // 注册到全局
 Vue.component(VTable.name, VTable)
-Vue.component(VPagination.name, VPagination)
+Vue.component(VPagination.name, VPagination)*/
 
 import {
     Pagination,
@@ -172,5 +172,3 @@ new Vue({
     render: h => h(APP)
 })
 
-
-/*alert(JSON.stringify(Utils.url.parseQueryString('?a=b&c=d')))*/

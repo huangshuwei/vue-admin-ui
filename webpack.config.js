@@ -41,7 +41,6 @@ module.exports = function (env) {
             'vue',
             'vuex',
             'vue-router',
-            'lodash',
             'Utils'
         ]
     };
@@ -168,7 +167,6 @@ module.exports = function (env) {
          * 2、先找 .resolve.alias 中的属性，若没找到会找 node_modules 下的文件，直到找到为止
          * */
         new webpack.ProvidePlugin({
-            _: "lodash",
             Utils:'Utils'
         }),
 
