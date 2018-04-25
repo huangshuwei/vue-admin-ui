@@ -8,6 +8,12 @@ const layoutChild = r => require.ensure([], () => r(require('../views/layout-chi
 // login
 const login = r => require.ensure([], () => r(require('../views/login/index.vue')), 'login');
 
+// user
+const userList = r => require.ensure([], () => r(require('@/components/user/user-list.vue')), 'userList');
+
+// permission
+const permissionList = r => require.ensure([], () => r(require('@/components/permission/permission-list.vue')), 'permissionList');
+
 // comps
 const intro = r => require.ensure([], () => r(require('../components/intro.vue')), 'intro');
 const settings = r => require.ensure([], () => r(require('../components/settings.vue')), 'settings');
@@ -50,6 +56,22 @@ export default new VueRouter({
                         {path: 'test2', component: test2, name: 'test2'},
                     ]
                 },
+            ]
+        },
+
+        // user
+        {
+            path: '/user', component: layoutMain, name: '用户管理', redirect: '/user/userList',
+            children: [
+                {path: 'userList', component: userList, name: '用户列表'},
+            ]
+        },
+
+        // permission
+        {
+            path: '/permission', component: layoutMain, name: '权限管理', redirect: '/permission/permissionList',
+            children: [
+                {path: 'permissionList', component: permissionList, name: '权限列表'}
             ]
         },
 
