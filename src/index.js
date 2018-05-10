@@ -6,7 +6,9 @@ import router from '@/router'
 import './css/index.css'
 
 // mock
-process.env.NODE_MOCK === 'mock' && require('@/mock/index')
+//process.env.NODE_MOCK === 'mock' && require('@/mock/index')
+//
+require('@/mock/index')
 
 // 权限验证
 import '@/permission/permission.js'

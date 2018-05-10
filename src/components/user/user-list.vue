@@ -8,6 +8,15 @@
 
         data(){
             return {}
+        },
+        created(){
+
+            console.log(document.cookie)
+        },
+
+        mounted(){
+
+
         }
     }
 </script>
