@@ -86,6 +86,10 @@
                 'loginOutAction': 'loginOut'
             }),
 
+            handleSelect(){
+
+			},
+
 
             loginOut() {
 

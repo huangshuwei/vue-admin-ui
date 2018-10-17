@@ -1,21 +1,16 @@
-const baseConfig = require('./config/base.config')
-var path = require("path");
-
-
+const path = require("path");
 const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
-const npmEvent = process.env.npm_lifecycle_event,
-    nodeENV = process.env.NODE_ENV;
-console.log('current baseUrl is: ', baseConfig.baseUrl)
-console.log('process.env.npm_lifecycle_event:', npmEvent)
-console.log('process.env.NODE_ENV:', nodeENV)
+const npmEvent = process.env.npm_lifecycle_event;
+    /*nodeENV = process.env.NODE_ENV;*/
+
 
 module.exports = {
     // webpack assets reference path . such as: http://www.eastmoney.com/child-path/
-    baseUrl: baseConfig.baseUrl,
+    baseUrl: '',
 
     devServer: {
         proxy: {
