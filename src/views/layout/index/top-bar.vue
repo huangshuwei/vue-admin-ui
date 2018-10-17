@@ -53,6 +53,7 @@
 <script>
 
     import {mapActions, mapState} from 'vuex'
+    import * as identitys from "@/config/identity.config.js"
 
     export default {
         data() {
@@ -95,7 +96,7 @@
 
                 this.loginOutAction().then(() => {
 
-                    this.$router.replace({path: '/login'});
+                    window.location.href = identitys.LOGIN_PATH;
 
                 }).catch(() => {
 
