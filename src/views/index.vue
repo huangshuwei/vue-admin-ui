@@ -1,7 +1,7 @@
 <template>
 	<el-container class="layout-main">
-		<el-aside 
-			:style="leftBarWidth" 
+		<el-aside
+			:style="leftBarWidth"
 			class="left-bar-container">
 			<!--left bar-->
 			<left-bar/>
@@ -12,8 +12,8 @@
 				<!--top bar-->
 				<top-bar/>
 
-				<div 
-					v-if="rootState.showHeaderOperation" 
+				<div
+					v-if="rootState.showHeaderOperation"
 					class="header-operation">
 					<!--breadcrumb-->
 					<breadcrumb class="header-operation-breadcrumb"/>
@@ -23,8 +23,10 @@
 				</div>
 			</el-header>
 			<el-main>
-				<!--container-->
-				<router-view/>
+				<keep-alive>
+					<router-view v-if="$route.meta.keepAlive"/>
+				</keep-alive>
+				<router-view v-if="!$route.meta.keepAlive"/>
 			</el-main>
 		</el-container>
 	</el-container>
@@ -34,7 +36,7 @@
 
     import {mapState} from 'vuex'
 
-    import {breadcrumb, historyTabs, leftBar, topBar, childRouteTpl} from './components'
+    import {breadcrumb, historyTabs, leftBar, topBar, childRouteTpl} from './layout/index'
 
     export default {
 
@@ -59,8 +61,8 @@
 </script>
 
 <style>
-    .left-bar-container {
-        border-right: 1px solid #e6e6e6;
-        overflow-x: hidden;
-    }
+	.left-bar-container {
+		border-right: 1px solid #e6e6e6;
+		overflow-x: hidden;
+	}
 </style>

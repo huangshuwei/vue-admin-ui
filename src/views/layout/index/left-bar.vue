@@ -13,7 +13,7 @@
 				<!--<i class="iconfont icon-jianjie"></i>-->
 				<span slot="title">简介</span>
 			</el-menu-item>
-			<el-menu-item index="/example/index">
+			<el-menu-item index="/example">
 				<i class="el-icon-setting"/>
 				<span slot="title">其他</span>
 			</el-menu-item>

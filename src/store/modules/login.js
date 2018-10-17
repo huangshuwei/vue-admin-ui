@@ -16,7 +16,7 @@ export default {
     actions:{
         // login
         login(context, payLoad) {
-
+            alert(1)
             const account = payLoad.account && payLoad.account.trim();
 
             return new Promise((resolve,reject)=>{

@@ -1,11 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router/index'
+import App from './views/login.vue'
 import store from './store'
 
-import '@babel/polyfill'
-
-import './css/app.css'
+import './css/login.css'
 
 if (process.env.NODE_ENV === 'development'){
 
@@ -155,11 +152,9 @@ Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 
-
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    store,
+    render: h => h(App)
 }).$mount('#app')
