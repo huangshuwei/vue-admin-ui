@@ -1,5 +1,0 @@
-export { default as breadcrumb } from './breadcrumb.vue'
-export { default as historyTabs } from './history-tabs.vue'
-export { default as leftBar } from './left-bar.vue'
-export { default as topBar } from './top-bar.vue'
-export { default as childRouteTpl } from '../../layout-child/index.vue'
