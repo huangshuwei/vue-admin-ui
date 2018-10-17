@@ -1,0 +1,49 @@
+{
+  "name": "vue-admin-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run lint & vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:prev": "vue-cli-service build && npm run preview",
+    "build:report": "vue-cli-service build",
+    "lint": "vue-cli-service lint --fix",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "preview": "serve -s dist"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.6",
+    "js-cookie": "^2.2.0",
+    "jsonp": "^0.2.1",
+    "nprogress": "^0.2.0",
+    "register-service-worker": "^1.0.0",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0-rc.1",
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-pwa": "^3.0.1",
+    "@vue/cli-plugin-unit-mocha": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.24",
+    "babel-plugin-component": "^1.1.1",
+    "chai": "^4.1.2",
+    "mockjs": "^1.0.1-beta3",
+    "eslint-plugin-cypress": "^2.0.1",
+    "node-sass": "^4.9.0",
+    "open-browser-webpack-plugin": "0.0.5",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "webpack-bundle-analyzer": "^2.13.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
