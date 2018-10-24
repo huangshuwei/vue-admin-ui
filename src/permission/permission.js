@@ -9,7 +9,7 @@ import * as identitys from "@/config/identity.config.js"
 import 'nprogress/nprogress.css';
 
 
-function toLogin(to, next) {
+function toLogin() {
 
     window.location.href = identitys.LOGIN_PATH;
 }

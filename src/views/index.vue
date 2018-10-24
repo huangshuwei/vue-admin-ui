@@ -36,7 +36,7 @@
 
     import {mapState} from 'vuex'
 
-    import {breadcrumb, historyTabs, leftBar, topBar, childRouteTpl} from './layout/index'
+    import {breadcrumb, historyTabs, leftBar, topBar, childRouteTpl} from './_layout/index'
 
     export default {
 
