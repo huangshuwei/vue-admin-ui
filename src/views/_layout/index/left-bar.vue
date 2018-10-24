@@ -7,16 +7,36 @@
 			@open="handleOpen"
 			@close="handleClose"
 		>
-
 			<el-menu-item index="/intro">
 				<i class="el-icon-menu"/>
 				<!--<i class="iconfont icon-jianjie"></i>-->
 				<span slot="title">简介</span>
 			</el-menu-item>
+			<el-submenu index="1">
+				<template slot="title">
+					<i class="el-icon-setting"></i>
+					<span>员工管理</span>
+				</template>
+				<el-menu-item index="1-1">员工录入</el-menu-item>
+			</el-submenu>
+			<el-submenu index="2">
+				<template slot="title">
+					<i class="el-icon-setting"></i>
+					<span>权限管理</span>
+				</template>
+				<el-menu-item index="1-1">角色设置</el-menu-item>
+				<el-menu-item index="1-2">菜单设置</el-menu-item>
+				<el-menu-item index="1-3">权限设置</el-menu-item>
+			</el-submenu>
+			<!--<el-menu-item index="/intro">
+				<i class="el-icon-menu"/>
+				&lt;!&ndash;<i class="iconfont icon-jianjie"></i>&ndash;&gt;
+				<span slot="title">简介</span>
+			</el-menu-item>
 			<el-menu-item index="/example">
 				<i class="el-icon-setting"/>
 				<span slot="title">其他</span>
-			</el-menu-item>
+			</el-menu-item>-->
 		</el-menu>
 	</div>
 </template>

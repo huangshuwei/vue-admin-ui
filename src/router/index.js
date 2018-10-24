@@ -6,6 +6,12 @@ const example = r => require.ensure([], () => r(require('../views/example/index.
 // comps
 const intro = r => require.ensure([], () => r(require('../views/intro/index.vue')), 'intro');
 
+/*
+* 权限管理
+* */
+
+
+
 
 Vue.use(VueRouter)
 
