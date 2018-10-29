@@ -1,12 +1,10 @@
 import Mock from 'mockjs'
 
-/*import example from './example'*/
+import apiStart from './api-start'
 import login from './login'
 
-// articleList info tab
-/*Mock.mock(/\/web\/webapi/, 'get', articleList.getArticleList)*/
-//Mock.mock(/\/web\/webapi\?type=newList&count=20&nrType=45/, 'get', articleList.getArticleList)
 
+Mock.mock(/\/apis.json/, 'get', apiStart.getApis)
 
 // 登录相关
 Mock.mock(/\/auth\/login/, 'post', login.login)

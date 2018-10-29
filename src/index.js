@@ -7,6 +7,8 @@ import '@babel/polyfill'
 
 import './css/index.css'
 
+import {getApis} from './service/api/api-start'
+
 if (process.env.NODE_ENV === 'development'){
 
     require('@/mock/index')
@@ -158,8 +160,21 @@ Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app')
+getApis().then(() => {
+
+    new Vue({
+        router,
+        store,
+        render: h => h(App)
+    }).$mount('#app');
+
+}).catch(error => {
+
+    new Vue({
+        router,
+        store,
+        render: h => h(App)
+    }).$mount('#app');
+
+    console.log("get api error: ",error)
+})

@@ -1,0 +1,12 @@
+{
+  "common": {
+    "_comment": "数据中心||基金",
+    "supportCrossDomain": true,
+    "apiUrl": "http://172.16.57.120:8080/api/",
+    "remark": "支持cors",
+    "proxyFlag": "",
+    "auth": {
+      "isAuth": false
+    }
+  }
+}
