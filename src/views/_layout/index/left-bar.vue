@@ -14,14 +14,14 @@
 			</el-menu-item>
 			<el-submenu index="1">
 				<template slot="title">
-					<i class="el-icon-setting"></i>
+					<i class="el-icon-setting"/>
 					<span>员工管理</span>
 				</template>
 				<el-menu-item index="1-1">员工录入</el-menu-item>
 			</el-submenu>
 			<el-submenu index="2">
 				<template slot="title">
-					<i class="el-icon-setting"></i>
+					<i class="el-icon-setting"/>
 					<span>权限管理</span>
 				</template>
 				<el-menu-item index="1-1">角色设置</el-menu-item>
