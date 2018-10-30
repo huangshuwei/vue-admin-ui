@@ -19,13 +19,23 @@
 
     import {topBar} from './_layout/main_layout'
 
+    import {mapActions} from 'vuex'
+
     export default {
 
         components: {
             topBar
+        },
+
+        methods: {
+            ...mapActions({
+                getMenuInfoAction: 'getMenuInfo',
+            }),
+        },
+        created(){
+
+            this.getMenuInfoAction();
         }
-
-
     }
 </script>
 

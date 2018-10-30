@@ -45,7 +45,10 @@ export default new VueRouter({
             path: '/system-manage', component: leftMenuLayout, redirect: '/system-manage/system-setting', name: '系统管理',
             children: [
                 {
-                    path: '/system-manage/system-setting', component: emptyLayout, redirect: '/system-manage/system-setting/department', name: '系统设置',
+                    path: '/system-manage/system-setting',
+                    component: emptyLayout,
+                    redirect: '/system-manage/system-setting/department',
+                    name: '系统设置',
                     children: [
                         {path: 'department', component: department, name: '部门维护'},
                         {path: 'module', component: module, name: '模块维护'},
@@ -55,10 +58,10 @@ export default new VueRouter({
                 },
             ]
         },
-        /*  {
-              path: '*', component: {
-              template: '<div>抱歉，没有您要的页面。</div>'
-               }
-          }*/
+        {
+            path: '*', component: {
+                template: '<div>抱歉，没有您要的页面。</div>'
+            }
+        }
     ]
 })

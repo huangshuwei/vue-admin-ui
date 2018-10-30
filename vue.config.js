@@ -13,16 +13,10 @@ module.exports = {
 
     devServer: {
         proxy: {
-            // 通用代理 占位
+            // 通用代理
             '/commonApi': {
-                target: 'http://...',
+                target: 'http://172.16.60.11:8055',
                 pathRewrite: {'^/commonApi': ''}
-            },
-
-            // 示例代理
-            '/exampleApi': {
-                target: 'http://172.16.50.24:8002/',
-                pathRewrite: {'^/exampleApi': ''}
             }
         }
     },

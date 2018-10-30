@@ -1,10 +1,10 @@
 {
   "common": {
     "_comment": "通用接口",
-    "supportCrossDomain": true,
-    "apiUrl": "http://172.16.60.11:8055/",
+    "supportCrossDomain": false,
+    "apiUrl": "http://172.16.60.11:8055",
     "remark": "支持cors",
-    "proxyFlag": "",
+    "proxyFlag": "commonApi",
     "auth": {
       "isAuth": false
     }
