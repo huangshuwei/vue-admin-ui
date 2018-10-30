@@ -9,7 +9,7 @@
 				<el-row>
 					<el-col :span="19">
 						<el-menu
-							:default-active="activeIndex"
+							:default-active="defaultActive"
 							router
 							class="el-menu-demo"
 							mode="horizontal"
@@ -18,7 +18,7 @@
 							active-text-color="#000"
 							@select="handleSelect">
 							<el-menu-item index="1">员工管理</el-menu-item>
-							<el-menu-item index="/system-setting">系统管理</el-menu-item>
+							<el-menu-item index="/system-manage">系统管理</el-menu-item>
 							<!--<el-submenu index="2">
                                 <template slot="title">我的工作台</template>
                                 <el-menu-item index="2-1">选项1</el-menu-item>
@@ -59,6 +59,7 @@
     export default {
         data() {
             return {
+                defaultActive: '/system-manage',
                 activeIndex: '1',
                 previewBtnLoading: false,
                 saveBtnLoading: false,
@@ -78,6 +79,7 @@
                 }
             }
         },
+
         methods: {
             ...mapActions({
                 'switchLeftBar': 'switchLeftBar',
@@ -103,7 +105,16 @@
 
                     this.$message({type: 'error', message: '登出失败'});
                 });
+            },
 
+			// 绑定数组第一个
+            addDefaultMenuKey(route) {
+
+                let defaultMenuKey = route.matched[route.matched.length - 1];
+
+
+                console.log("defaultMenuKey.path::",defaultMenuKey.path)
+                this.defaultActive = defaultMenuKey.path;
             }
         }
     }

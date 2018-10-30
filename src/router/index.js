@@ -5,6 +5,8 @@ import VueRouter from "vue-router";
 // 包含左侧菜单的布局
 const leftMenuLayout = r => require.ensure([], () => r(require('../views/_layout/left-menu-layout/index')), 'left-menu-layout');
 
+// 空布局
+const emptyLayout = r => require.ensure([], () => r(require('../views/_layout/empty-layout/index')), 'empty-layout');
 
 
 // 系统介绍
@@ -32,21 +34,25 @@ const role = r => require.ensure([], () => r(require('../views/system-management
 const employee = r => require.ensure([], () => r(require('../views/system-management/employee/user/index.vue')), 'employee');
 
 
-
 Vue.use(VueRouter)
 
 export default new VueRouter({
     linkActiveClass: 'active',
     routes: [
-        {path: '', redirect: '/intro', name: '简介'}, // 默认路由
+        {path: '', redirect: '/system-manage', name: '系统设置'}, // 默认路由
         {path: '/intro', component: intro, name: '首页', meta: {isHomePage: true}},
-        {path: '/system-setting', component: leftMenuLayout, name: '系统设置',
-            children:[
-                { path: '', component: department , name: '部门维护'},
-                { path: 'department', component: department , name: '部门维护'},
-                { path: 'module', component: module , name: '模块维护'},
-                { path: 'position', component: position , name: '岗位维护'},
-                { path: 'role', component: role , name: '角色维护'},
+        {
+            path: '/system-manage', component: leftMenuLayout, redirect: '/system-manage/system-setting', name: '系统管理',
+            children: [
+                {
+                    path: '/system-manage/system-setting', component: emptyLayout, redirect: '/system-manage/system-setting/department', name: '系统设置',
+                    children: [
+                        {path: 'department', component: department, name: '部门维护'},
+                        {path: 'module', component: module, name: '模块维护'},
+                        {path: 'position', component: position, name: '岗位维护'},
+                        {path: 'role', component: role, name: '角色维护'},
+                    ]
+                },
             ]
         },
         /*  {
