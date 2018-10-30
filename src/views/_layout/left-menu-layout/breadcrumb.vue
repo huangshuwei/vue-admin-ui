@@ -1,6 +1,8 @@
 <template>
 	<el-breadcrumb separator="/">
-		<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+		<el-breadcrumb-item
+				v-if="rootState.showHomeBreadcrumb"
+				:to="{ path: '/' }">首页</el-breadcrumb-item>
 		<el-breadcrumb-item 
 			v-for="item in crumbsInfoList" 
 			v-if="item.name && item.name.length > 0" 
@@ -12,6 +14,8 @@
 
 <script>
 
+    import {mapState} from 'vuex'
+
     export default {
 
         name: 'Breadcrumb',
@@ -22,6 +26,12 @@
 
                 crumbsInfoList: []
             }
+        },
+        computed: {
+
+            ...mapState({
+                rootState: state => state.root
+            })
         },
 
         watch: {

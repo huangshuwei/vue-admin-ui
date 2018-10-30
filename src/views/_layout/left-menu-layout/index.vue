@@ -5,7 +5,7 @@
 				class="left-bar-container"/>
 		</el-aside>
 		<el-container>
-			<el-header>
+			<el-header height="35px">
 				<div
 					v-if="rootState.showHeaderOperation"
 					class="header-operation">

@@ -5,7 +5,9 @@ export default {
         leftBarFoldWidth: '64px',
         isExpand: true,
         // 是否显示面包屑、历史记录
-        showHeaderOperation:true
+        showHeaderOperation:true,
+        // 是否显示首页的面包屑（当是左右结构的菜单一般需要）
+        showHomeBreadcrumb:false
     }
 
 }
