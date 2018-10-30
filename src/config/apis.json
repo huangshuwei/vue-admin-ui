@@ -1,8 +1,8 @@
 {
   "common": {
-    "_comment": "数据中心||基金",
+    "_comment": "通用接口",
     "supportCrossDomain": true,
-    "apiUrl": "http://172.16.57.120:8080/api/",
+    "apiUrl": "http://172.16.60.11:8055/",
     "remark": "支持cors",
     "proxyFlag": "",
     "auth": {
