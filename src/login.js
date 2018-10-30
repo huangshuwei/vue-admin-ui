@@ -9,9 +9,6 @@ if (process.env.NODE_ENV === 'development'){
     require('@/mock/index')
 }
 
-// 权限验证
-import '@/permission/permission.js'
-
 import {
     Pagination,
     Dialog,

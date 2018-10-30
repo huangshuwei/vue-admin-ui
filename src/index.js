@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development'){
 }
 
 // 权限验证
-import '@/permission/permission.js'
+import '@/permission/router-auth.js'
 
 import {
     Pagination,

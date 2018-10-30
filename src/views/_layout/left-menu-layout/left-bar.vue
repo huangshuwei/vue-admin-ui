@@ -12,21 +12,22 @@
 				<!--<i class="iconfont icon-jianjie"></i>-->
 				<span slot="title">简介</span>
 			</el-menu-item>
-			<el-submenu index="1">
+			<!--	<el-submenu index="1">
 				<template slot="title">
 					<i class="el-icon-setting"/>
 					<span>员工管理</span>
 				</template>
 				<el-menu-item index="1-1">员工录入</el-menu-item>
-			</el-submenu>
-			<el-submenu index="2">
+			</el-submenu>-->
+			<el-submenu index="/system-setting">
 				<template slot="title">
 					<i class="el-icon-setting"/>
-					<span>权限管理</span>
+					<span>系统设置</span>
 				</template>
-				<el-menu-item index="1-1">角色设置</el-menu-item>
-				<el-menu-item index="1-2">菜单设置</el-menu-item>
-				<el-menu-item index="1-3">权限设置</el-menu-item>
+				<el-menu-item index="/system-setting/department">部门设置</el-menu-item>
+				<el-menu-item index="/system-setting/module">模块设置</el-menu-item>
+				<el-menu-item index="/system-setting/position">岗位设置</el-menu-item>
+				<el-menu-item index="/system-setting/role">角色设置</el-menu-item>
 			</el-submenu>
 			<!--<el-menu-item index="/intro">
 				<i class="el-icon-menu"/>

@@ -1,53 +1,53 @@
 <template>
 	<div class="top-bar">
-		<el-row>
-			<el-col :span="2">
-				<div class="top-bar-expand">
-					<span 
-						class="top-bar-expand-span" 
-						@click.stop="switchLeftBar()"><i
-							:class="['top-bar-expand-i','iconfont','icon-caidan',topBarExpandIClasses]"/></span>
-				</div>
-			</el-col>
-			<el-col :span="19">
-				<el-menu
-					:default-active="activeIndex"
-					class="el-menu-demo"
-					mode="horizontal"
-					background-color="#fff"
-					text-color="#666"
-					active-text-color="#000"
-					@select="handleSelect">
-					<el-menu-item index="1">员工管理</el-menu-item>
-					<el-menu-item index="2">系统管理</el-menu-item>
-					<!--<el-submenu index="2">
-						<template slot="title">我的工作台</template>
-						<el-menu-item index="2-1">选项1</el-menu-item>
-						<el-menu-item index="2-2">选项2</el-menu-item>
-						<el-menu-item index="2-3">选项3</el-menu-item>
-					</el-submenu>-->
-					<el-menu-item index="4"><a
-						href="http://www.google.com"
-						target="_blank">其他模块</a></el-menu-item>
-				</el-menu>
-			</el-col>
-			<el-col 
-				:span="2" 
-				:offset="1">
-				<div class="top-bar-account">
-					<el-dropdown trigger="click">
-						<span class="el-dropdown-link top-bar-account-link">
-							设置<i class="el-icon-arrow-down el-icon--right"/>
-						</span>
-						<el-dropdown-menu slot="dropdown">
-							<!--<el-dropdown-item>test</el-dropdown-item>
-                            <el-dropdown-item>test</el-dropdown-item>-->
-							<el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
-						</el-dropdown-menu>
-					</el-dropdown>
-				</div>
-			</el-col>
-		</el-row>
+
+		<el-container>
+			<el-aside 
+				width="200px" 
+				style="text-align:center">logo</el-aside>
+			<el-main style="padding: 0 !important;">
+				<el-row>
+					<el-col :span="19">
+						<el-menu
+							:default-active="activeIndex"
+							router
+							class="el-menu-demo"
+							mode="horizontal"
+							background-color="#fff"
+							text-color="#666"
+							active-text-color="#000"
+							@select="handleSelect">
+							<el-menu-item index="1">员工管理</el-menu-item>
+							<el-menu-item index="/system-setting">系统管理</el-menu-item>
+							<!--<el-submenu index="2">
+                                <template slot="title">我的工作台</template>
+                                <el-menu-item index="2-1">选项1</el-menu-item>
+                                <el-menu-item index="2-2">选项2</el-menu-item>
+                                <el-menu-item index="2-3">选项3</el-menu-item>
+                            </el-submenu>-->
+							<el-menu-item index="4"><a
+								href="http://www.google.com"
+								target="_blank">其他模块</a></el-menu-item>
+						</el-menu>
+					</el-col>
+					<el-col
+						:span="5">
+						<div class="top-bar-account">
+							<el-dropdown trigger="click">
+								<span class="el-dropdown-link top-bar-account-link">
+									设置<i class="el-icon-arrow-down el-icon--right"/>
+								</span>
+								<el-dropdown-menu slot="dropdown">
+									<!--<el-dropdown-item>test</el-dropdown-item>
+                                    <el-dropdown-item>test</el-dropdown-item>-->
+									<el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+						</div>
+					</el-col>
+				</el-row>
+			</el-main>
+		</el-container>
 	</div>
 </template>
 
@@ -88,9 +88,9 @@
                 'loginOutAction': 'loginOut'
             }),
 
-            handleSelect(){
+            handleSelect() {
 
-			},
+            },
 
 
             loginOut() {

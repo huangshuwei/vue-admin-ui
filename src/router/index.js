@@ -1,9 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-// 示例
-const example = r => require.ensure([], () => r(require('../views/example/index.vue')), 'example');
-// comps
+
+// 包含左侧菜单的布局
+const leftMenuLayout = r => require.ensure([], () => r(require('../views/_layout/left-menu-layout/index')), 'left-menu-layout');
+
+
+
+// 系统介绍
 const intro = r => require.ensure([], () => r(require('../views/intro/index.vue')), 'intro');
 
 
@@ -11,7 +15,7 @@ const intro = r => require.ensure([], () => r(require('../views/intro/index.vue'
 * 系统管理
 */
 
-// 01 系统设置
+// 01 系统设置 system-setting
 // 部门设置
 const department = r => require.ensure([], () => r(require('../views/system-management/system-setting/department/index.vue')), 'department');
 // 模块设置
@@ -35,8 +39,16 @@ export default new VueRouter({
     linkActiveClass: 'active',
     routes: [
         {path: '', redirect: '/intro', name: '简介'}, // 默认路由
-        /*{path: '/intro', component: intro, name: '首页', meta: {isHomePage: true}},*/
         {path: '/intro', component: intro, name: '首页', meta: {isHomePage: true}},
+        {path: '/system-setting', component: leftMenuLayout, name: '系统设置',
+            children:[
+                { path: '', component: department , name: '部门维护'},
+                { path: 'department', component: department , name: '部门维护'},
+                { path: 'module', component: module , name: '模块维护'},
+                { path: 'position', component: position , name: '岗位维护'},
+                { path: 'role', component: role , name: '角色维护'},
+            ]
+        },
         /*  {
               path: '*', component: {
               template: '<div>抱歉，没有您要的页面。</div>'

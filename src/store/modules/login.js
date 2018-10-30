@@ -1,5 +1,5 @@
 import { login, getUserInfo } from '@/service/api/login'
-import { setToken, removeToken } from '@/permission/src/auth'
+import { setToken, removeToken } from '@/permission/src/token'
 
 let types = {
     LOGIN: 'login',
