@@ -36,6 +36,34 @@ const employee = r => require.ensure([], () => r(require('../views/system-manage
 
 Vue.use(VueRouter)
 
+/*VueRouter.addRoutes([
+    {path: '', redirect: '/system-manage', name: '系统设置'}, // 默认路由
+    {path: '/intro', component: intro, name: '首页', meta: {isHomePage: true}},
+    {
+        path: '/system-manage', component: leftMenuLayout, redirect: '/system-manage/system-setting', name: '系统管理',
+        children: [
+            {
+                path: '/system-manage/system-setting',
+                component: emptyLayout,
+                redirect: '/system-manage/system-setting/department',
+                name: '系统设置',
+                children: [
+                    {path: 'department', component: department, name: '部门维护'},
+                    {path: 'module', component: module, name: '模块维护'},
+                    {path: 'position', component: position, name: '岗位维护'},
+                    {path: 'role', component: role, name: '角色维护'},
+                ]
+            },
+        ]
+    },
+    {
+        path: '*', component: {
+            template: '<div>抱歉，没有您要的页面。</div>'
+        }
+    }
+])*/
+
+
 export default new VueRouter({
     linkActiveClass: 'active',
     routes: [

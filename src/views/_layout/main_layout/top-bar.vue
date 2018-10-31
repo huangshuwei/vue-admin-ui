@@ -112,8 +112,6 @@
 
                 let defaultMenuKey = route.matched[route.matched.length - 1];
 
-
-                console.log("defaultMenuKey.path::",defaultMenuKey.path)
                 this.defaultActive = defaultMenuKey.path;
             }
         }

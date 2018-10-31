@@ -27,8 +27,8 @@ export default {
                         childrenKey: 'children'
                     });
 
-                    console.log("treeList::",treeList)
-
+                    context.commit(types.SET_MENU_INFO, menuList);
+                    console.log("treeList::",menuList)
                 }
 
 

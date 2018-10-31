@@ -7,7 +7,11 @@ export default {
         // 是否显示面包屑、历史记录
         showHeaderOperation:true,
         // 是否显示首页的面包屑（当是左右结构的菜单一般需要）
-        showHomeBreadcrumb:false
+        showHomeBreadcrumb:false,
+
+
+        // 菜单信息
+        menuInfo:[]
     }
 
 }

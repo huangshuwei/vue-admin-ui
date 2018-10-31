@@ -60,8 +60,6 @@ export default {
 
             const token = payLoad.token;
 
-            console.log("getUserInfo::",token)
-
             return new Promise((resolve,reject)=>{
 
                 getUserInfo(token).then(response=>{
