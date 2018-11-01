@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 
 // 设置1秒至4秒间响应
-Mock.setup({ timeout: '1000-3000' });
+Mock.setup({ timeout: '100-600' });
 
 import apiStart from './api-start'
 import common from './common'

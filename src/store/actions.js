@@ -3,6 +3,7 @@ import * as types from './types'
 
 import {getMenuInfo} from  '../service/api/common'
 
+
 import listToTree from '../utils/array/listToTree'
 
 export default {
@@ -28,11 +29,13 @@ export default {
                     });
 
                     context.commit(types.SET_MENU_INFO, menuList);
-                    console.log("treeList::",menuList)
+
+                    resolve(menuList);
+
+                }else{
+
+                    reject(res)
                 }
-
-
-                resolve();
             }).catch(error=>{
 
                 reject(error)

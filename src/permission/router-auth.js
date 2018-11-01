@@ -2,7 +2,7 @@
 * 使用路由页面的验证
 * */
 
-import router from '@/router'
+import router from '@/router/index/base-router'
 import NProgress from 'nprogress'; // Progress 进度条
 import {Message} from 'element-ui'
 import baseAuth from './base-auth'

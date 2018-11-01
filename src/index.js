@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './views/index.vue'
-import router from './router/index'
+import router from './router/index/base-router'
 import store from './store'
 
 import '@babel/polyfill'
@@ -161,7 +161,6 @@ Vue.prototype.$message = Message
 Vue.config.productionTip = false
 
 getApis().then((data) => {
-
 
     new Vue({
         router,
