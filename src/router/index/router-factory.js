@@ -81,46 +81,12 @@ const createRouteObj = (routeSource, tempData) => {
         routeItem.children = routeItemChildren // 注意这里
     } else {
 
-        // 无子节点顶级菜单
-        if (routeSource.parentId === 0 && routeSource.children.length === 0) {
-
-            //  如果不需要左侧菜单模板需要添加属性控制（noLeftMenu）
-            if (routeSource.noLeftMenu) {
-
-                routeItem = {
-                    path: `/${routeSource.url}`,
-                    component: ROUTES[routeSource.url],
-                    name: routeSource.name
-                }
-
-            } else {
-
-                routeItem = {
-                    path: `/${routeSource.url}`,
-                    component: ROUTES.leftMenuLayout,
-                    redirect: `/${routeSource.url}/index`,
-                    name: routeSource.name,
-                    children: [
-                        {
-                            path: 'index',
-                            component: ROUTES[routeSource.url],
-                            name: routeSource.name
-                        },
-                    ]
-                }
-            }
-
-        } else {
-
-            //  末级菜单
-            routeItem = {
-                path: routeSource.url,
-                component: ROUTES[routeSource.url],
-                name: routeSource.name
-            }
+        //  末级菜单
+        routeItem = {
+            path: routeSource.url,
+            component: ROUTES[routeSource.url],
+            name: routeSource.name
         }
-
-
     }
 
     return routeItem;
