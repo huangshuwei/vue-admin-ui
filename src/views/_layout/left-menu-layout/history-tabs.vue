@@ -15,6 +15,9 @@
 
 <script>
 
+	/*
+	* 组件销毁后历史记录消失
+	* */
     export default{
         name:'HistoryTabs',
 
