@@ -11,7 +11,12 @@ export default {
 
 
         // 菜单信息
-        menuInfo:[]
+        menuInfo:[],
+
+        // 权限
+        permission:{
+            isRouteLoaded:false
+        }
     }
 
 }

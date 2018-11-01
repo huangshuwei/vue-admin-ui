@@ -18,9 +18,6 @@
 <script>
 
     import {topBar} from './_layout/main_layout'
-    import routerFactory from '../router/index/router-factory'
-
-    import {mapActions} from 'vuex'
 
     export default {
 
@@ -29,34 +26,10 @@
         },
 
         methods: {
-            ...mapActions({
-                getMenuInfoAction: 'getMenuInfo',
-            }),
 
-            // 获取菜单信息
-            getMenuInfo() {
-
-                this.getMenuInfoAction().then(menuList => {
-
-                    // 动态添加路由
-                    routerFactory.addDynamicRoutes(menuList).then(routeObj => {
-
-                        this.$router.addRoutes(routeObj);
-                        this.$router.options.routes.push(routeObj);
-                    }).catch(error => {
-
-                        console.log("addDynamicRoutes error:", error)
-                    })
-
-                }).catch(error => {
-
-                    console.log("getMenuInfo error:", error)
-                });
-            }
         },
         created() {
 
-            this.getMenuInfo();
         }
     }
 </script>

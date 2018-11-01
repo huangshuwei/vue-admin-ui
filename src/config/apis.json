@@ -6,7 +6,8 @@
     "remark": "支持cors",
     "proxyFlag": "commonApi",
     "auth": {
-      "isAuth": false
+      "isAuth": true,
+      "authKey": "authKey"
     }
   }
 }

@@ -7,6 +7,7 @@ import axios from 'axios'
 import apiConfig from '../config/api.config'
 
 import responseFormatter from '../service/response/response-formatter'
+import {getToken} from '../permission/src/token'
 
 const service = axios.create({
 
@@ -20,22 +21,14 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(request => {
 
-    /*// 每个请求带上 token
-    let token = getToken();
-
-    if (token && token.length > 0){
-
-        request.headers['Auth-Token'] = token;
-    }*/
-
-    let authInfo =apiConfig.getAuthInfo(request.url);
+    let authInfo = apiConfig.getAuthInfo(request.url);
 
     // 网关鉴权
-    if (authInfo){
+    if (authInfo) {
 
-        if (authInfo.appid){
+        if (authInfo.authKey) {
 
-            request.headers['appid'] = authInfo.appid;
+            request.headers[authInfo.authKey] = getToken();
         }
     }
 
@@ -51,10 +44,10 @@ service.interceptors.response.use(
     response => {
 
         let result = responseFormatter(2, response, null);
-        if (result.code === 200){
+        if (result.code === 200) {
 
             return result;
-        }else{
+        } else {
 
             return Promise.reject(result);
         }

@@ -8,13 +8,19 @@ import listToTree from '../utils/array/listToTree'
 
 export default {
     // 左侧菜单展开折叠
-    switchLeftBar(context) {
+    [types.SWITCH_LEFT_BAR](context) {
 
         context.commit(types.SWITCH_LEFT_BAR, {});
     },
 
+    // 修改路由装载信息
+    [types.UPDATE_ROUTE_LOAD_INFO](context){
+
+        context.commit(types.UPDATE_ROUTE_LOAD_INFO)
+    },
+
     // 获取菜单信息
-    getMenuInfo(context){
+    [types.SET_MENU_INFO](context){
 
         return new Promise((resolve, reject) => {
 
@@ -40,15 +46,6 @@ export default {
 
                 reject(error)
             })
-        })
-    },
-
-    // 预览
-    preview() {
-
-        return new Promise((resolve, reject) => {
-
-
         })
     }
 }

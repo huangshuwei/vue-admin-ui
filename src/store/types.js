@@ -6,6 +6,8 @@ export const SWITCH_LEFT_BAR = 'switchLeftBar'
 // 菜单
 export const SET_MENU_INFO = 'setMenuInfo'
 
-// 预览
-export const PREVIEW = 'preview'
+/*
+* 权限
+* */
+export const UPDATE_ROUTE_LOAD_INFO = 'updateRouteLoadInfo'
 

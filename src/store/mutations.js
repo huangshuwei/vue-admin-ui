@@ -13,5 +13,11 @@ export default {
     [types.SET_MENU_INFO](state,payload){
 
         state.root.menuInfo = payload;
-    }
+    },
+
+    // 修改权限信息
+    [types.UPDATE_ROUTE_LOAD_INFO](state){
+
+        state.root.permission.isRouteLoaded = true;
+    },
 }
