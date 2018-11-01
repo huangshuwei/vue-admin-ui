@@ -9,7 +9,7 @@
 		>
 			<el-submenu index="/system-manage/system-setting">
 				<template slot="title">
-					<i class="el-icon-setting"/>
+					<!--<i class="el-icon-setting"/>-->
 					<span>系统设置</span>
 				</template>
 				<el-menu-item index="/system-manage/system-setting/department">部门设置</el-menu-item>
