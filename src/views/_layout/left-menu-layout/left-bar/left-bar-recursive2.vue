@@ -1,23 +1,22 @@
 <template>
 	<div>
-		<template v-if="menuInfo.children.length > 0">
+		<template v-if="menuTree.children.length > 0">
 			<el-submenu :index="getCurrentUrl()">
 				<template slot="title">
 					<!--<i class="el-icon-setting"/>-->
-					<span>{{ menuInfo.name }}</span>
+					<span>{{ menuTree.name }}</span>
 				</template>
 
 				<!--菜单项-->
 				<left-bar-recursive 
-					v-for="item in menuInfo.children"
-					:key="item.id"
-					:menu-info="item" 
+					v-for="item in menuTree.children" 
+					:menu-tree="item" 
 					:parent-url="getCurrentUrl()"/>
 
 			</el-submenu>
 		</template>
 		<template v-else>
-			<el-menu-item :index="getCurrentUrl()">{{ menuInfo.name }}</el-menu-item>
+			<el-menu-item :index="getCurrentUrl()">{{ menuTree.name }}</el-menu-item>
 		</template>
 	</div>
 </template>
@@ -26,7 +25,7 @@
     export default {
         name: "LeftBarRecursive",
         props: {
-            menuInfo: {
+            menuTree: {
                 type: Object,
                 required: true
             },
@@ -43,10 +42,10 @@
 
                 if (this.parentUrl.indexOf('/') === 0){
 
-                    return `${this.parentUrl}/${this.menuInfo.url}`;
+                    return `${this.parentUrl}/${this.menuTree.url}`;
                 }
 
-                return `/${this.parentUrl}/${this.menuInfo.url}`;
+                return `/${this.parentUrl}/${this.menuTree.url}`;
             }
         }
     }

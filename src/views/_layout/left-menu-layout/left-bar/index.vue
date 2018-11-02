@@ -7,7 +7,11 @@
 			@open="handleOpen"
 			@close="handleClose"
 		>
-            <left-bar-recursive v-for="item in leftMenuInfo.children" :menu-tree="item" :parent-url="leftMenuInfo.url"/>
+			<left-bar-recursive 
+				v-for="item in leftMenuInfo.children"
+				:key="item.id"
+				:menu-info="item"
+				:parent-url="leftMenuInfo.url"/>
 		</el-menu>
 	</div>
 </template>
