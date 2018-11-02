@@ -64,14 +64,10 @@ export default {
 
                 context.commit(TYPES.SET_LEFT_MENU_INFO,leftMenuInfo)
 
-                console.log("leftMenuInfo.children::",JSON.stringify(leftMenuInfo))
-
             }else{
 
                 console.log(`can't find leftMenuInfo by  ${menuUrl}`)
             }
         }
-
-        //console.log("context.state.root.menuInfo::",context.state.root.menuInfo)
     }
 }
