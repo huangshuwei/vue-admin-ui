@@ -62,9 +62,9 @@ export default {
 
             if (Array.isArray(leftMenuInfo.children) && leftMenuInfo.children.length > 0){
 
-                context.commit(TYPES.SET_LEFT_MENU_INFO,leftMenuInfo.children)
+                context.commit(TYPES.SET_LEFT_MENU_INFO,leftMenuInfo)
 
-                //console.log("leftMenuInfo.children::",JSON.stringify(leftMenuInfo.children))
+                console.log("leftMenuInfo.children::",JSON.stringify(leftMenuInfo))
 
             }else{
 

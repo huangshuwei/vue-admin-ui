@@ -12,8 +12,8 @@ export default {
 
         // 全部菜单信息
         menuInfo:[],
-        // 左侧菜单数据
-        leftMenuInfo:[],
+        // 左侧菜单数据（包括当前顶级菜单）
+        leftMenuInfo:{},
 
 
         // 权限

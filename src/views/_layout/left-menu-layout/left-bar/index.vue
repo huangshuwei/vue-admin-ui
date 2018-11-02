@@ -7,22 +7,7 @@
 			@open="handleOpen"
 			@close="handleClose"
 		>
-			<el-submenu index="/system-manage/system-setting">
-				<template slot="title">
-					<!--<i class="el-icon-setting"/>-->
-					<span>系统设置</span>
-				</template>
-
-				<!--菜单项-->
-				<left-bar-recursive :menu-tree="menuInfo"/>
-
-				<div>
-					<el-menu-item index="/system-manage/system-setting/department">部门设置</el-menu-item>
-					<el-menu-item index="/system-manage/system-setting/module">模块设置</el-menu-item>
-					<el-menu-item index="/system-manage/system-setting/position">岗位设置</el-menu-item>
-					<el-menu-item index="/system-manage/system-setting/role">角色设置</el-menu-item>
-				</div>
-			</el-submenu>
+            <left-bar-recursive v-for="item in leftMenuInfo.children" :menu-tree="item" :parent-url="leftMenuInfo.url"/>
 		</el-menu>
 	</div>
 </template>
@@ -44,7 +29,7 @@
 
             ...mapState({
                 rootState: state => state.root,
-                menuInfo: state => state.root.menuInfo
+                leftMenuInfo: state => state.root.leftMenuInfo
             }),
         },
 
