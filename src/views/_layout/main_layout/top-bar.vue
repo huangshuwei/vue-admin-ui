@@ -77,6 +77,21 @@
             }
         },
 
+        watch: {
+
+            $route(to) {
+
+                this.addDefaultMenuKey(to);
+            },
+
+            // 切换左侧树菜单
+            defaultActive(newVal){
+
+                this.setLeftMenuInfoAction(newVal);
+            }
+        },
+
+
         methods: {
             ...mapActions({
                 'switchLeftBar': 'switchLeftBar',
@@ -114,20 +129,6 @@
                     this.defaultActive = defaultMenuKey.path;
                 }
             }
-        },
-
-        watch: {
-
-            $route(to) {
-
-                this.addDefaultMenuKey(to);
-            },
-
-			// 切换左侧树菜单
-            defaultActive(newVal){
-
-                this.setLeftMenuInfoAction(newVal);
-			}
         }
     }
 </script>

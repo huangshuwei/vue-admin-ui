@@ -160,7 +160,7 @@ Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 
-getApis().then((data) => {
+getApis().then(() => {
 
     new Vue({
         router,

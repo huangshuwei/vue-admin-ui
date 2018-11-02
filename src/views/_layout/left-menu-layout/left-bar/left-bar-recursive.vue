@@ -1,24 +1,24 @@
 <template>
 	<div>
-		<template v-if="menuInfo.children.length > 0">
-			<el-submenu :index="getCurrentUrl()">
-				<template slot="title">
-					<!--<i class="el-icon-setting"/>-->
-					<span>{{ menuInfo.name }}</span>
-				</template>
+		<div v-for="item in menuTree">
+			<template v-if="item.children.length > 0">
+				<el-submenu :index="getCurrentUrl(item)">
+					<template slot="title">
+						<!--<i class="el-icon-setting"/>-->
+						<span>{{ item.name }}</span>
+					</template>
 
-				<!--菜单项-->
-				<left-bar-recursive 
-					v-for="item in menuInfo.children"
-					:key="item.id"
-					:menu-info="item" 
-					:parent-url="getCurrentUrl()"/>
+					<!--递归-->
+					<left-bar-recursive
+						:menu-tree="item.children"
+						:parent-url="getCurrentUrl(item)"/>
 
-			</el-submenu>
-		</template>
-		<template v-else>
-			<el-menu-item :index="getCurrentUrl()">{{ menuInfo.name }}</el-menu-item>
-		</template>
+				</el-submenu>
+			</template>
+			<template v-else>
+				<el-menu-item :index="getCurrentUrl(item)">{{ item.name }}</el-menu-item>
+			</template>
+		</div>
 	</div>
 </template>
 
@@ -26,8 +26,8 @@
     export default {
         name: "LeftBarRecursive",
         props: {
-            menuInfo: {
-                type: Object,
+            menuTree: {
+                type: Array,
                 required: true
             },
             parentUrl: {
@@ -36,17 +36,17 @@
             }
         },
 
-        methods:{
+        methods: {
 
             // 获取 subMenu url
-            getCurrentUrl(){
+            getCurrentUrl(item) {
 
-                if (this.parentUrl.indexOf('/') === 0){
+                if (this.parentUrl.indexOf('/') === 0) {
 
-                    return `${this.parentUrl}/${this.menuInfo.url}`;
+                    return `${this.parentUrl}/${item.url}`;
                 }
 
-                return `/${this.parentUrl}/${this.menuInfo.url}`;
+                return `/${this.parentUrl}/${item.url}`;
             }
         }
     }
