@@ -9,10 +9,16 @@ export default {
         state.root.isExpand = !state.root.isExpand;
     },
 
-    // 设置菜单信息
+    // 设置全部菜单信息
     [types.SET_MENU_INFO](state,payload){
 
         state.root.menuInfo = payload;
+    },
+
+    // 设置左侧菜单信息
+    [types.SET_LEFT_MENU_INFO](state,payload){
+
+        state.root.leftMenuInfo = payload;
     },
 
     // 修改权限信息

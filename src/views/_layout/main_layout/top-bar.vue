@@ -1,48 +1,51 @@
 <template>
-    <div class="top-bar">
+	<div class="top-bar">
 
-        <el-container>
-            <el-aside
-                    width="200px"
-                    style="text-align:center">logo
-            </el-aside>
-            <el-main style="padding: 0 !important;">
-                <el-row>
-                    <el-col :span="19">
-                        <el-menu
-                                :default-active="defaultActive"
-                                router
-                                class="el-menu-demo"
-                                mode="horizontal"
-                                background-color="#fff"
-                                text-color="#666"
-                                active-text-color="#000"
-                                @select="handleSelect">
-                            <el-menu-item :key="item.id" v-for="item in rootState.menuInfo" :index="'/'+item.url">
-                                {{item.name}}
-                            </el-menu-item>
-                            &nbsp;
-                        </el-menu>
-                    </el-col>
-                    <el-col
-                            :span="5">
-                        <div class="top-bar-account">
-                            <el-dropdown trigger="click">
+		<el-container>
+			<el-aside
+				width="200px"
+				style="text-align:center">logo
+			</el-aside>
+			<el-main style="padding: 0 !important;">
+				<el-row>
+					<el-col :span="19">
+						<el-menu
+							:default-active="defaultActive"
+							router
+							class="el-menu-demo"
+							mode="horizontal"
+							background-color="#fff"
+							text-color="#666"
+							active-text-color="#000"
+							@select="handleSelect">
+							<el-menu-item 
+								v-for="item in rootState.menuInfo" 
+								:key="item.id" 
+								:index="'/'+item.url">
+								{{ item.name }}
+							</el-menu-item>
+							&nbsp;
+						</el-menu>
+					</el-col>
+					<el-col
+						:span="5">
+						<div class="top-bar-account">
+							<el-dropdown trigger="click">
 								<span class="el-dropdown-link top-bar-account-link">
 									设置<i class="el-icon-arrow-down el-icon--right"/>
 								</span>
-                                <el-dropdown-menu slot="dropdown">
-                                    <!--<el-dropdown-item>test</el-dropdown-item>
+								<el-dropdown-menu slot="dropdown">
+									<!--<el-dropdown-item>test</el-dropdown-item>
                                     <el-dropdown-item>test</el-dropdown-item>-->
-                                    <el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                        </div>
-                    </el-col>
-                </el-row>
-            </el-main>
-        </el-container>
-    </div>
+									<el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+						</div>
+					</el-col>
+				</el-row>
+			</el-main>
+		</el-container>
+	</div>
 </template>
 
 <script>
@@ -77,6 +80,7 @@
         methods: {
             ...mapActions({
                 'switchLeftBar': 'switchLeftBar',
+				'setLeftMenuInfoAction':'setLeftMenuInfo'
             }),
 
             ...mapActions('login', {
@@ -114,10 +118,16 @@
 
         watch: {
 
-            $route(to, from) {
+            $route(to) {
 
                 this.addDefaultMenuKey(to);
-            }
+            },
+
+			// 切换左侧树菜单
+            defaultActive(newVal){
+
+                this.setLeftMenuInfoAction(newVal);
+			}
         }
     }
 </script>

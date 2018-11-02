@@ -96,7 +96,21 @@ const menuInfo = {
         "createTime": "2018-10-29 19:21",
         "updater": "0",
         "updateTime": "2018-10-29 19:21"
-    }]
+    }, {
+        "id": 8,
+        "deptId": 0,
+        "name": "员工录入",
+        "parentId": 7,
+        "order": 99,
+        "status": 1,
+        "url": "addUser",
+        "permissionTag": "",
+        "creator": "0",
+        "createTime": "2018-10-29 19:21",
+        "updater": "0",
+        "updateTime": "2018-10-29 19:21"
+    }
+    ]
 }
 
 

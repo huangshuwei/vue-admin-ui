@@ -56,7 +56,7 @@
 
 <script>
     import {mapState} from 'vuex'
-    import leftBar from './left-bar'
+    import leftBar from './left-bar/index'
     import breadcrumb from './breadcrumb'
     import historyTabs from './history-tabs'
 

@@ -10,8 +10,11 @@ export default {
         showHomeBreadcrumb:false,
 
 
-        // 菜单信息
+        // 全部菜单信息
         menuInfo:[],
+        // 左侧菜单数据
+        leftMenuInfo:[],
+
 
         // 权限
         permission:{

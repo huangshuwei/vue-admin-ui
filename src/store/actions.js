@@ -1,5 +1,5 @@
 // 公共 action
-import * as types from './types'
+import * as TYPES from './types'
 
 import {getMenuInfo} from  '../service/api/common'
 
@@ -8,19 +8,19 @@ import listToTree from '../utils/array/listToTree'
 
 export default {
     // 左侧菜单展开折叠
-    [types.SWITCH_LEFT_BAR](context) {
+    [TYPES.SWITCH_LEFT_BAR](context) {
 
-        context.commit(types.SWITCH_LEFT_BAR, {});
+        context.commit(TYPES.SWITCH_LEFT_BAR, {});
     },
 
     // 修改路由装载信息
-    [types.UPDATE_ROUTE_LOAD_INFO](context){
+    [TYPES.UPDATE_ROUTE_LOAD_INFO](context){
 
-        context.commit(types.UPDATE_ROUTE_LOAD_INFO)
+        context.commit(TYPES.UPDATE_ROUTE_LOAD_INFO)
     },
 
-    // 获取菜单信息
-    [types.SET_MENU_INFO](context){
+    // 获取全部菜单信息（包含顶级菜单）
+    [TYPES.SET_MENU_INFO](context){
 
         return new Promise((resolve, reject) => {
 
@@ -34,7 +34,7 @@ export default {
                         childrenKey: 'children'
                     });
 
-                    context.commit(types.SET_MENU_INFO, menuList);
+                    context.commit(TYPES.SET_MENU_INFO, menuList);
 
                     resolve(menuList);
 
@@ -47,5 +47,31 @@ export default {
                 reject(error)
             })
         })
+    },
+
+    // 获取左侧菜单信息
+    [TYPES.SET_LEFT_MENU_INFO](context,menuUrl){
+
+        if (menuUrl && menuUrl.indexOf('/') === 0){
+
+            menuUrl = menuUrl.split('/')[1];
+
+            const menuInfo = context.state.root.menuInfo;
+
+            let leftMenuInfo = menuInfo.find(item =>item.url === menuUrl);
+
+            if (Array.isArray(leftMenuInfo.children) && leftMenuInfo.children.length > 0){
+
+                context.commit(TYPES.SET_LEFT_MENU_INFO,leftMenuInfo.children)
+
+                //console.log("leftMenuInfo.children::",JSON.stringify(leftMenuInfo.children))
+
+            }else{
+
+                console.log(`can't find leftMenuInfo by  ${menuUrl}`)
+            }
+        }
+
+        //console.log("context.state.root.menuInfo::",context.state.root.menuInfo)
     }
 }

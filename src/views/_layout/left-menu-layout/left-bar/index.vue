@@ -12,10 +12,16 @@
 					<!--<i class="el-icon-setting"/>-->
 					<span>系统设置</span>
 				</template>
-				<el-menu-item index="/system-manage/system-setting/department">部门设置</el-menu-item>
-				<el-menu-item index="/system-manage/system-setting/module">模块设置</el-menu-item>
-				<el-menu-item index="/system-manage/system-setting/position">岗位设置</el-menu-item>
-				<el-menu-item index="/system-manage/system-setting/role">角色设置</el-menu-item>
+
+				<!--菜单项-->
+				<left-bar-recursive :menu-tree="menuInfo"/>
+
+				<div>
+					<el-menu-item index="/system-manage/system-setting/department">部门设置</el-menu-item>
+					<el-menu-item index="/system-manage/system-setting/module">模块设置</el-menu-item>
+					<el-menu-item index="/system-manage/system-setting/position">岗位设置</el-menu-item>
+					<el-menu-item index="/system-manage/system-setting/role">角色设置</el-menu-item>
+				</div>
 			</el-submenu>
 		</el-menu>
 	</div>
@@ -23,9 +29,11 @@
 <script>
 
     import {mapState} from 'vuex'
+    import leftBarRecursive from './left-bar-recursive'
 
     export default {
         name: 'LeftBar',
+        components: {leftBarRecursive},
         data() {
             return {
                 collapse: false,
@@ -35,7 +43,8 @@
         computed: {
 
             ...mapState({
-                rootState: state => state.root
+                rootState: state => state.root,
+                menuInfo: state => state.root.menuInfo
             }),
         },
 
@@ -65,7 +74,7 @@
         },
 
         created() {
-
+           // alert(1)
             this.addDefaultMenuKey(this.$route);
         },
     }
