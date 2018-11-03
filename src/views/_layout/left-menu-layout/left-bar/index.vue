@@ -1,18 +1,18 @@
 <template>
-    <div class="left-bar">
-        <el-menu
-                :default-active="defaultActive"
-                :collapse="!rootState.isExpand"
-                router
-                @open="handleOpen"
-                @close="handleClose"
-        >
-            <!--递归组件-->
-            <left-bar-recursive
-                    :menu-tree="leftMenuInfo.children"
-                    :parent-url="leftMenuInfo.url"/>
-        </el-menu>
-    </div>
+	<div class="left-bar">
+		<el-menu
+			:default-active="defaultActive"
+			:collapse="!rootState.isExpand"
+			router
+			@open="handleOpen"
+			@close="handleClose"
+		>
+			<!--递归组件-->
+			<left-bar-recursive
+				:menu-tree="leftMenuInfo.children"
+				:parent-url="leftMenuInfo.url"/>
+		</el-menu>
+	</div>
 </template>
 <script>
 
@@ -39,7 +39,7 @@
         watch: {
 
             $route(to) {
-
+                console.log("$route")
                 this.addDefaultMenuKey(to);
             }
         },
@@ -55,16 +55,29 @@
 
             addDefaultMenuKey(route) {
 
+
                 let defaultMenuKey = route.matched[route.matched.length - 1];
 
                 this.defaultActive = defaultMenuKey.path;
+                console.log("this.defaultActive::", this.defaultActive)
+
+           /*     this.$nextTick(()=>{
+                    this.defaultActive = defaultMenuKey.path;
+                    console.log("this.defaultActive::", this.defaultActive)
+                })*/
             }
         },
 
         created() {
-            // alert(1)
+
+            console.log("created")
             this.addDefaultMenuKey(this.$route);
         },
+
+        updated(){
+
+            console.log("updated")
+        }
     }
 </script>
 
