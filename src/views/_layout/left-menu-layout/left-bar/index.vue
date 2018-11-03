@@ -1,18 +1,21 @@
 <template>
-	<div class="left-bar">
-		<el-menu
-			:default-active="defaultActive"
-			:collapse="!rootState.isExpand"
-			router
-			@open="handleOpen"
-			@close="handleClose"
-		>
-			<!--递归组件-->
-			<left-bar-recursive
-				:menu-tree="leftMenuInfo.children"
-				:parent-url="leftMenuInfo.url"/>
-		</el-menu>
-	</div>
+    <div class="left-bar">
+
+        <el-menu
+                :key="resetLeftMenuKey"
+                :collapse-transition="false"
+                :default-active="defaultActive"
+                :collapse="!rootState.isExpand"
+                router
+                @open="handleOpen"
+                @close="handleClose"
+        >
+            <!--递归组件-->
+            <left-bar-recursive
+                    :menu-tree="leftMenuInfo.children"
+                    :parent-url="leftMenuInfo.url"/>
+        </el-menu>
+    </div>
 </template>
 <script>
 
@@ -25,7 +28,8 @@
         data() {
             return {
                 collapse: false,
-                defaultActive: ''
+                defaultActive: '',
+                resetLeftMenuKey: 1 // 重置左侧菜单
             }
         },
         computed: {
@@ -39,8 +43,13 @@
         watch: {
 
             $route(to) {
-                console.log("$route")
+
                 this.addDefaultMenuKey(to);
+            },
+
+            leftMenuInfo() {
+
+                ++this.resetLeftMenuKey;
             }
         },
 
@@ -61,10 +70,10 @@
                 this.defaultActive = defaultMenuKey.path;
                 console.log("this.defaultActive::", this.defaultActive)
 
-           /*     this.$nextTick(()=>{
-                    this.defaultActive = defaultMenuKey.path;
-                    console.log("this.defaultActive::", this.defaultActive)
-                })*/
+                /*     this.$nextTick(()=>{
+                         this.defaultActive = defaultMenuKey.path;
+                         console.log("this.defaultActive::", this.defaultActive)
+                     })*/
             }
         },
 
@@ -72,11 +81,6 @@
 
             console.log("created")
             this.addDefaultMenuKey(this.$route);
-        },
-
-        updated(){
-
-            console.log("updated")
         }
     }
 </script>
