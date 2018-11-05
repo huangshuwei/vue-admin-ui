@@ -1,57 +1,57 @@
 <template>
-	<el-container>
-		<el-aside :style="leftBarWidth">
-			<left-bar
-				class="left-bar-container"/>
-		</el-aside>
-		<el-container>
-			<el-header height="35px">
-				<div
-					v-if="rootState.showHeaderOperation"
-					class="header-operation">
-					<!--breadcrumb-->
-					<breadcrumb class="header-operation-breadcrumb"/>
+    <el-container>
+        <el-aside :style="leftBarWidth">
+            <left-bar
+                    class="left-bar-container"/>
+        </el-aside>
+        <el-container style="height: 100%;">
+            <el-header height="35px">
+                <div
+                        v-if="rootState.showHeaderOperation"
+                        class="header-operation">
+                    <!--breadcrumb-->
+                    <breadcrumb class="header-operation-breadcrumb"/>
 
-					<!--history tabs-->
-					<history-tabs class="header-operation-history-tabs"/>
-				</div>
-			</el-header>
-			<el-main>
-				<keep-alive>
-					<router-view v-if="$route.meta.keepAlive"/>
-				</keep-alive>
-				<router-view v-if="!$route.meta.keepAlive"/>
-			</el-main>
-		</el-container>
-	</el-container>
-	<!--<el-row>
-		<el-row>
-			<el-col :span="24">
-				<div
-					v-if="rootState.showHeaderOperation"
-					class="header-operation">
-					&lt;!&ndash;breadcrumb&ndash;&gt;
-					<breadcrumb class="header-operation-breadcrumb"/>
+                    <!--history tabs-->
+                    <history-tabs class="header-operation-history-tabs"/>
+                </div>
+            </el-header>
+            <el-main class="main-container">
+                <keep-alive>
+                    <router-view v-if="$route.meta.keepAlive"/>
+                </keep-alive>
+                <router-view v-if="!$route.meta.keepAlive"/>
+            </el-main>
+        </el-container>
+    </el-container>
+    <!--<el-row>
+        <el-row>
+            <el-col :span="24">
+                <div
+                    v-if="rootState.showHeaderOperation"
+                    class="header-operation">
+                    &lt;!&ndash;breadcrumb&ndash;&gt;
+                    <breadcrumb class="header-operation-breadcrumb"/>
 
-					&lt;!&ndash;history tabs&ndash;&gt;
-					<history-tabs class="header-operation-history-tabs"/>
-				</div>
-			</el-col>
-		</el-row>
-		<el-row>
-			<el-col :span="3">
-				<left-bar
-					:style="leftBarWidth"
-					class="left-bar-container"/>
-			</el-col>
-			<el-col :span="21">
-				<keep-alive>
-					<router-view v-if="$route.meta.keepAlive"/>
-				</keep-alive>
-				<router-view v-if="!$route.meta.keepAlive"/>
-			</el-col>
-		</el-row>
-	</el-row>-->
+                    &lt;!&ndash;history tabs&ndash;&gt;
+                    <history-tabs class="header-operation-history-tabs"/>
+                </div>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">
+                <left-bar
+                    :style="leftBarWidth"
+                    class="left-bar-container"/>
+            </el-col>
+            <el-col :span="21">
+                <keep-alive>
+                    <router-view v-if="$route.meta.keepAlive"/>
+                </keep-alive>
+                <router-view v-if="!$route.meta.keepAlive"/>
+            </el-col>
+        </el-row>
+    </el-row>-->
 </template>
 
 <script>
@@ -87,4 +87,11 @@
         border-right: 1px solid #e6e6e6;
         overflow-x: hidden;
     }
+
+    .main-container {
+        overflow-y: scroll;
+        height: calc(100vh - 96px);
+    }
+
+
 </style>
