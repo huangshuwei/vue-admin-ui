@@ -1,7 +1,7 @@
 import { login, getUserInfo } from '@/service/api/login'
 import { setToken, removeToken } from '@/permission/src/token'
 
-let types = {
+let TYPES = {
     LOGIN: 'login',
     SET_TOKEN:'setToken',
     GET_USER_INFO:'getUserInfo'
@@ -87,12 +87,12 @@ export default {
         }
     },
     mutations:{
-        [types.LOGIN]() {
+        [TYPES.LOGIN]() {
 
             //state.historyManagerData = payload.dataJson
         },
 
-        [types.SET_TOKEN](state,payload){
+        [TYPES.SET_TOKEN](state,payload){
 
             state.token = payload;
         }
