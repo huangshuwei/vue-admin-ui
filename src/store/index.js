@@ -10,6 +10,7 @@ import createLogger from 'vuex/dist/logger'
 
 // 示例
 import login from "./modules/login.js";
+import department from "./modules/department.js";
 
 
 
@@ -24,7 +25,8 @@ export default new Vuex.Store({
     mutations,
     modules: {
         // 子模块
-        login
+        login,
+        department
     },
     plugins: process.env.NODE_ENV === 'development' ? [createLogger()] : [],
     strict: process.env.NODE_ENV === 'development' ? true : false
