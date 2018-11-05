@@ -24,34 +24,6 @@
             </el-main>
         </el-container>
     </el-container>
-    <!--<el-row>
-        <el-row>
-            <el-col :span="24">
-                <div
-                    v-if="rootState.showHeaderOperation"
-                    class="header-operation">
-                    &lt;!&ndash;breadcrumb&ndash;&gt;
-                    <breadcrumb class="header-operation-breadcrumb"/>
-
-                    &lt;!&ndash;history tabs&ndash;&gt;
-                    <history-tabs class="header-operation-history-tabs"/>
-                </div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="3">
-                <left-bar
-                    :style="leftBarWidth"
-                    class="left-bar-container"/>
-            </el-col>
-            <el-col :span="21">
-                <keep-alive>
-                    <router-view v-if="$route.meta.keepAlive"/>
-                </keep-alive>
-                <router-view v-if="!$route.meta.keepAlive"/>
-            </el-col>
-        </el-row>
-    </el-row>-->
 </template>
 
 <script>
