@@ -12,7 +12,7 @@
 						<el-menu
 							:default-active="defaultActive"
 							router
-							class="el-menu-demo"
+							class="el-menu-top-bar"
 							mode="horizontal"
 							background-color="#fff"
 							text-color="#666"
@@ -134,6 +134,11 @@
 </script>
 
 <style>
+
+	.el-menu-top-bar .el-menu-item{
+		font-size:16px !important;
+		/*font-weight: 500;*/
+	}
 
     /* account start*/
     .top-bar-account {

@@ -3,6 +3,7 @@
 		:style="leftBarStyle" 
 		class="left-bar">
 		<el-menu
+				class="el-menu-left-bar"
 			:key="resetLeftMenuKey"
 			:collapse-transition="false"
 			:default-active="defaultActive"
@@ -86,3 +87,9 @@
         }
     }
 </script>
+
+<style>
+	.el-menu-left-bar .el-submenu__title{
+		font-weight: bold;
+	}
+</style>
