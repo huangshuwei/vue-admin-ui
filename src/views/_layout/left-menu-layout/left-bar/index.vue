@@ -1,21 +1,20 @@
 <template>
-    <div class="left-bar">
-
-        <el-menu
-                :key="resetLeftMenuKey"
-                :collapse-transition="false"
-                :default-active="defaultActive"
-                :collapse="!rootState.isExpand"
-                router
-                @open="handleOpen"
-                @close="handleClose"
-        >
-            <!--递归组件-->
-            <left-bar-recursive
-                    :menu-tree="leftMenuInfo.children"
-                    :parent-url="leftMenuInfo.url"/>
-        </el-menu>
-    </div>
+	<div class="left-bar">
+		<el-menu
+			:key="resetLeftMenuKey"
+			:collapse-transition="false"
+			:default-active="defaultActive"
+			:collapse="!rootState.isExpand"
+			router
+			@open="handleOpen"
+			@close="handleClose"
+		>
+			<!--递归组件-->
+			<left-bar-recursive
+				:menu-tree="leftMenuInfo.children"
+				:parent-url="leftMenuInfo.url"/>
+		</el-menu>
+	</div>
 </template>
 <script>
 
@@ -64,22 +63,14 @@
 
             addDefaultMenuKey(route) {
 
-
                 let defaultMenuKey = route.matched[route.matched.length - 1];
 
                 this.defaultActive = defaultMenuKey.path;
-                console.log("this.defaultActive::", this.defaultActive)
-
-                /*     this.$nextTick(()=>{
-                         this.defaultActive = defaultMenuKey.path;
-                         console.log("this.defaultActive::", this.defaultActive)
-                     })*/
             }
         },
 
         created() {
 
-            console.log("created")
             this.addDefaultMenuKey(this.$route);
         }
     }
