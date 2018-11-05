@@ -40,8 +40,8 @@
 }
 
 .scroll::-webkit-scrollbar-track-piece {
-    background: #f5f5f5;
-    -webkit-border-radius: 6px;
+/*    background: #f5f5f5;
+    -webkit-border-radius: 6px;*/
 }
 
 .scroll::-webkit-scrollbar-thumb

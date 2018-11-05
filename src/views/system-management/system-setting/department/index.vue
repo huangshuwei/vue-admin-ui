@@ -85,6 +85,7 @@
 
 <style>
     .department-tree{
+        background: #fff;
         overflow-y: scroll;
         height: calc(100vh - 120px);
     }
