@@ -1,4 +1,7 @@
 
 
 - 获取菜单  /system/common/GetModule
-- 获取当前用户部门 system/common/GetUserDepts
+
+**部门信息**
+- 获取当前所属部门 system/common/GetUserDepts
+- 获取部门树结构 system/common/GetDept
