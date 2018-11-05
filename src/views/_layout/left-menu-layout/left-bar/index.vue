@@ -78,6 +78,6 @@
 
 <style>
     .left-bar {
-        height: calc(100vh);
+        height: calc(100vh - 61px);
     }
 </style>
