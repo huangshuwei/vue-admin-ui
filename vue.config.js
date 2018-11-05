@@ -15,7 +15,7 @@ module.exports = {
         proxy: {
             // 通用代理
             '/commonApi': {
-                target: 'http://localhost:64642/',
+                target: 'http://172.16.60.11:8055',
                 pathRewrite: {'^/commonApi': ''}
             }
         }
