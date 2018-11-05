@@ -48,7 +48,7 @@
             leftBarWidth() {
 
                 return {
-                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
+                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth + 'px' : this.rootState.leftBarFoldWidth + 'px'
                 }
             },
             headerOperationHeight() {
@@ -69,7 +69,7 @@
 </script>
 
 <style>
-    .el-main{
+    .el-main {
         padding: 12px !important;
     }
 
