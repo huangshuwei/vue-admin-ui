@@ -1,5 +1,7 @@
 <template>
-	<div class="left-bar" :style="leftBarStyle">
+	<div 
+		:style="leftBarStyle" 
+		class="left-bar">
 		<el-menu
 			:key="resetLeftMenuKey"
 			:collapse-transition="false"

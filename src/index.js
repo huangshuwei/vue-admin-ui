@@ -17,6 +17,9 @@ if (process.env.NODE_ENV === 'development'){
 // 权限验证
 import '@/permission/router-auth.js'
 
+import comps from './components/index'
+Vue.use(comps)
+
 import {
     Pagination,
     Dialog,

@@ -1,29 +1,31 @@
 <template>
-    <el-container>
-        <el-aside :style="leftBarWidth">
-            <left-bar
-                    class="left-bar-container"/>
-        </el-aside>
-        <el-container>
-            <el-header :style="headerOperationHeight">
-                <div
-                        v-if="rootState.showHeaderOperation"
-                        class="header-operation">
-                    <!--breadcrumb-->
-                    <breadcrumb class="header-operation-breadcrumb"/>
+	<el-container>
+		<el-aside :style="leftBarWidth">
+			<left-bar
+				class="left-bar-container"/>
+		</el-aside>
+		<el-container>
+			<el-header :style="headerOperationHeight">
+				<div
+					v-if="rootState.showHeaderOperation"
+					class="header-operation">
+					<!--breadcrumb-->
+					<breadcrumb class="header-operation-breadcrumb"/>
 
-                    <!--history tabs-->
-                    <history-tabs class="header-operation-history-tabs"/>
-                </div>
-            </el-header>
-            <el-main class="main-container scroll" :style="mainContainerHeight">
-                <keep-alive>
-                    <router-view v-if="$route.meta.keepAlive"/>
-                </keep-alive>
-                <router-view v-if="!$route.meta.keepAlive"/>
-            </el-main>
-        </el-container>
-    </el-container>
+					<!--history tabs-->
+					<history-tabs class="header-operation-history-tabs"/>
+				</div>
+			</el-header>
+			<el-main 
+				:style="mainContainerStyle" 
+				class="main-container scroll">
+				<keep-alive>
+					<router-view v-if="$route.meta.keepAlive"/>
+				</keep-alive>
+				<router-view v-if="!$route.meta.keepAlive"/>
+			</el-main>
+		</el-container>
+	</el-container>
 </template>
 
 <script>
@@ -57,10 +59,11 @@
                     'height': this.rootState.headerOperationHeight + 'px'
                 }
             },
-            mainContainerHeight() {
+            mainContainerStyle() {
 
                 return {
-                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px'
+                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px',
+                    'padding': this.rootState.contentPadding+'px !important'
                 }
             }
         }
@@ -69,9 +72,6 @@
 </script>
 
 <style>
-    .el-main {
-        padding: 12px !important;
-    }
 
     .left-bar-container {
         border-right: 1px solid #e6e6e6;

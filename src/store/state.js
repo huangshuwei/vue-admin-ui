@@ -1,11 +1,18 @@
 export default {
     // 所有的对象属性必须添加在root节点下（防止和非公共组件的状态属性重复，重复会导致覆盖）
     root: {
+        // 左侧菜单展开后的宽度
         leftBarExpandWidth: 200,
+        // 左侧菜单收起后的宽度
         leftBarFoldWidth: 64,
+        // 顶部导航栏的宽度
         topBarHeight:60,
         // 面包屑、历史记录
         headerOperationHeight:35,
+        // 内容展示区的 padding
+        contentPadding:12,
+
+
         isExpand: true,
         // 是否显示面包屑、历史记录
         showHeaderOperation:true,

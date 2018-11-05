@@ -8,7 +8,7 @@
 			</el-aside>
 			<el-main style="padding: 0 !important;">
 				<el-row>
-					<el-col :span="19">
+					<el-col :span="22">
 						<el-menu
 							:default-active="defaultActive"
 							router
@@ -28,7 +28,7 @@
 						</el-menu>
 					</el-col>
 					<el-col
-						:span="5">
+						:span="2">
 						<div class="top-bar-account">
 							<el-dropdown trigger="click">
 								<span class="el-dropdown-link top-bar-account-link">
