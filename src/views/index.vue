@@ -1,6 +1,6 @@
 <template>
 	<el-container class="layout-main">
-		<el-header height="120">
+		<el-header>
 			<!--top bar-->
 			<top-bar/>
 		</el-header>

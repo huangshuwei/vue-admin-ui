@@ -1,5 +1,5 @@
 <template>
-	<div class="left-bar">
+	<div class="left-bar" :style="leftBarStyle">
 		<el-menu
 			:key="resetLeftMenuKey"
 			:collapse-transition="false"
@@ -21,6 +21,8 @@
     import {mapState} from 'vuex'
     import leftBarRecursive from './left-bar-recursive'
 
+    import vh from '@/utils/dom/viewport-height'
+
     export default {
         name: 'LeftBar',
         components: {leftBarRecursive},
@@ -37,6 +39,13 @@
                 rootState: state => state.root,
                 leftMenuInfo: state => state.root.leftMenuInfo
             }),
+
+			leftBarStyle(){
+
+                return {
+                    'height': (vh() - this.rootState.topBarHeight) + 'px'
+                }
+			}
         },
 
         watch: {
@@ -75,9 +84,3 @@
         }
     }
 </script>
-
-<style>
-    .left-bar {
-        height: calc(100vh - 61px);
-    }
-</style>

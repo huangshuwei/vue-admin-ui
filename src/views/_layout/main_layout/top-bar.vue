@@ -134,25 +134,6 @@
 </script>
 
 <style>
-    .top-bar-expand {
-        height: 60px;
-        line-height: 60px;
-        padding: 0 15px;
-        background-color: #fff;
-        /*    border-bottom: solid 1px #e6e6e6;*/
-        min-width: 100px;
-
-    }
-
-    .top-bar-expand-span {
-        cursor: pointer;
-    }
-
-    .top-bar-expand i {
-        font-size: 24px;
-    }
-
-    /*top-bar end*/
 
     /* account start*/
     .top-bar-account {
@@ -171,24 +152,7 @@
         cursor: pointer;
     }
 
-    .top-bar-expand-i {
-        display: inline-block;
-        transform: rotate(0deg);
-        transition: .38s;
-        transform-origin: 50% 50%;
-    }
-
-    .top-bar-expand-i.active {
-        transform: rotate(-90deg);
-    }
-
     .top-bar {
         border-bottom: 1px solid #e6e6e6;
-    }
-
-    .top-bar-operation-button {
-        height: 60px;
-        line-height: 60px;
-        float: right;
     }
 </style>

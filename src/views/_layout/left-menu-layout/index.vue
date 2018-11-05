@@ -5,7 +5,7 @@
                     class="left-bar-container"/>
         </el-aside>
         <el-container>
-            <el-header style="height: 35px;">
+            <el-header :style="headerOperationHeight">
                 <div
                         v-if="rootState.showHeaderOperation"
                         class="header-operation">
@@ -16,7 +16,7 @@
                     <history-tabs class="header-operation-history-tabs"/>
                 </div>
             </el-header>
-            <el-main class="main-container scroll">
+            <el-main class="main-container scroll" :style="mainContainerHeight">
                 <keep-alive>
                     <router-view v-if="$route.meta.keepAlive"/>
                 </keep-alive>
@@ -31,7 +31,9 @@
     import leftBar from './left-bar/index'
     import breadcrumb from './breadcrumb'
     import historyTabs from './history-tabs'
-    
+
+    import vh from '@/utils/dom/viewport-height'
+
     export default {
         name: 'LeftBar',
         components: {
@@ -48,6 +50,18 @@
                 return {
                     'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth : this.rootState.leftBarFoldWidth
                 }
+            },
+            headerOperationHeight() {
+
+                return {
+                    'height': this.rootState.headerOperationHeight + 'px'
+                }
+            },
+            mainContainerHeight() {
+
+                return {
+                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px'
+                }
             }
         }
 
@@ -55,6 +69,10 @@
 </script>
 
 <style>
+    .el-main{
+        padding: 12px !important;
+    }
+
     .left-bar-container {
         border-right: 1px solid #e6e6e6;
         overflow-x: hidden;
@@ -62,16 +80,14 @@
 
     .main-container {
         overflow-y: scroll;
-        height: calc(100vh - 96px);
+        /*height: calc(100vh - 96px);*/
         background: #f0f2f5;
         border-top: 1px solid #eee;
     }
 
     .header-operation {
-        height: 35px;
-        /*   line-height: 35px;*/
-        background-color: #f5f4f4;
-        /*border-top: solid 1px #e6e6e6;*/
+        height: 100%;
+        /* background-color: #f5f4f4;*/
     }
 
     .header-operation:before {

@@ -5,9 +5,9 @@ import VueRouter from "vue-router";
 * base route
 * */
 // 401 无权限访问
-const noPermission = r => require.ensure([], () => r(require('../../views/common/401.vue')), 'no-permission');
+const noPermission = r => require.ensure([], () => r(require('../../views/_layout/401.vue')), 'no-permission');
 // 404 找不到页面
-const notFound = r => require.ensure([], () => r(require('../../views/common/404.vue')), 'not-found');
+const notFound = r => require.ensure([], () => r(require('../../views/_layout/404.vue')), 'not-found');
 
 
 Vue.use(VueRouter)

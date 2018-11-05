@@ -3,6 +3,9 @@ export default {
     root: {
         leftBarExpandWidth: '200px',
         leftBarFoldWidth: '64px',
+        topBarHeight:60,
+        // 面包屑、历史记录
+        headerOperationHeight:35,
         isExpand: true,
         // 是否显示面包屑、历史记录
         showHeaderOperation:true,
