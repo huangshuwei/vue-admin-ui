@@ -68,37 +68,3 @@
         },
     }
 </script>
-
-<style>
-	.header-operation {
-		height: 35px;
-		/*   line-height: 35px;*/
-		background-color: #f5f4f4;
-		border-top: solid 1px #e6e6e6;
-	}
-
-	.header-operation:before {
-		content: '';
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-		/* border: 1px solid red;*/ /* so we can see what's going on */
-	}
-
-	.header-operation-breadcrumb {
-		vertical-align: middle;
-		display: inline-block;
-		min-width: 230px;
-		padding-left: 10px;
-	}
-
-	.header-operation-history-tabs {
-		vertical-align: middle;
-		display: inline-block;
-	}
-
-	.header-operation-history-tabs .el-tag {
-		margin-left: 10px;
-		cursor: pointer;
-	}
-</style>
