@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<div v-for="item in menuTree">
+		<div 
+			v-for="item in menuTree" 
+			:key="item.id">
 			<template v-if="item.children.length > 0">
 				<el-submenu :index="getCurrentUrl(item)">
 					<template slot="title">
