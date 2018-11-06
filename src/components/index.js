@@ -1,7 +1,9 @@
 import IMainContainer from './i-main-container'
+import IDepartmentTree from './i-department-tree'
 
 const components = [
-    IMainContainer
+    IMainContainer,
+    IDepartmentTree
 ];
 
 const install = Vue => {
@@ -15,7 +17,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export {
-    IMainContainer
+    IMainContainer,
+    IDepartmentTree
 };
 
 export default {

@@ -1,4 +1,4 @@
-import { getDepartmentTree } from '@/service/api/department'
+import {getDepartmentTree} from '@/service/api/department'
 import listToTree from '../../utils/array/listToTree'
 
 let TYPES = {
@@ -9,22 +9,22 @@ let TYPES = {
 export default {
 
     namespaced: true,
-    state:{
-        //departmentTree:[],
+    state: {
+        departmentTree: [],
     },
 
-    actions:{
+    actions: {
 
         // 获取部门数结构
-        [TYPES.GET_DEPARTMENT_TREE](){
+        [TYPES.GET_DEPARTMENT_TREE](context) {
 
-            return new Promise((resolve,reject)=>{
+            return new Promise((resolve, reject) => {
 
-                getDepartmentTree().then(response=>{
+                getDepartmentTree().then(response => {
 
                     const data = response.data;
 
-                    if (data && Array.isArray(data.data) && data.data.length > 0){
+                    if (data && Array.isArray(data.data) && data.data.length > 0) {
 
                         let menuList = listToTree(data.data, {
                             idKey: 'id',
@@ -32,20 +32,28 @@ export default {
                             childrenKey: 'children'
                         });
 
+
+                        context.commit(TYPES.GET_DEPARTMENT_TREE, menuList)
                         resolve(menuList);
 
-                    }else{
+                    } else {
 
                         reject(response)
                     }
-                }).catch(error=>{
+                }).catch(error => {
 
                     reject(error)
                 })
             })
         }
-    }
+    },
+    mutations: {
 
+        [TYPES.GET_DEPARTMENT_TREE](state, payload) {
+
+            state.departmentTree = payload;
+        }
+    }
 
 
 }

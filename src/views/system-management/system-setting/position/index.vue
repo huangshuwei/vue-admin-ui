@@ -1,3 +1,3 @@
 <template>
-	<div>职位维护</div>
+	<div><i-department-tree></i-department-tree></div>
 </template>
