@@ -12,10 +12,12 @@
             <i-main-container allow-scroll-y padding="10px">
                 <!--按钮操作区-->
                 <el-row class="operation-btns">
-                    <el-button @click.native.stop="addDepart()" type="primary" size="medium" plain>新增</el-button>
+                    <el-button @click.native.stop="openAddDialog()" type="primary" size="medium" plain>新增</el-button>
                     <el-button type="primary" size="medium" plain :disabled="!isSelectedRow">修改</el-button>
                     <el-button type="danger" size="medium" plain :disabled="!isSelectedRow" :loading="false">删除
                     </el-button>
+
+                    <addDialog width="500px" ref="formDialog"></addDialog>
                 </el-row>
 
                 <!--列表数据-->
@@ -52,16 +54,31 @@
 <script>
 
     import {mapActions} from 'vuex'
+    import addDialog from './add-dialog'
 
     export default {
         name: 'Department',
+        components:{addDialog},
         data() {
 
             return {
 
                 tableData: [],
-                isSelectedRow: false,
-                selectedRow: null
+                isSelectedRow: false, // 是否选中了行
+                selectedRow: null, // 选中的行数据
+
+                dialogFormVisible: false,
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                formLabelWidth: '120px'
             }
         },
 
@@ -81,7 +98,6 @@
             // tree 节点变化触发的事件
             currentNodeChange(node) {
 
-
                 this.tableData = node.children;
                 this.restTableSelectedInfo();
             },
@@ -96,9 +112,9 @@
                 }
             },
 
-            addDepart() {
+            openAddDialog() {
 
-
+                this.$refs.formDialog.openDialog({title:'新增'});
             }
         }
     }
