@@ -1,9 +1,10 @@
 <template>
-	<el-tree
-		:data="departmentTree"
-		:props="treeCompDefaultProps"
-		:default-expanded-keys="[1]"
-		node-key="id"/>
+    <el-tree
+            :data="departmentTree"
+            :props="treeCompDefaultProps"
+            :default-expanded-keys="defaultExpandedKeys"
+            :empty-text="emptyText"
+            node-key="id"/>
 </template>
 
 <script>
@@ -23,6 +24,10 @@
                 },
                 // 默认展开的key
                 defaultExpandedKeys: [],
+
+                // 内容为空的时候展示的文本
+                emptyText:'加载中...',
+                errorTex:'数据加载失败'
             }
         },
         computed: {
@@ -34,16 +39,38 @@
 
             ...mapActions('department', {
                 'getDepartmentTreeAction': 'getDepartmentTree'
-            })
+            }),
+
+            /*
+            * 设置要展开的层级
+            * 默认只展开第一层级
+            * */
+            setDefaultExpandedKeys() {
+
+                const ids = this.departmentTree.map(item => {
+
+                    return item.id
+                })
+
+                this.defaultExpandedKeys = ids
+            }
         },
         created() {
 
             if (!(Array.isArray(this.departmentTree) && this.departmentTree.length > 0)) {
 
-                this.getDepartmentTreeAction().catch(error => {
+                this.getDepartmentTreeAction().then(() => {
 
-                    console.log("获取部门信息异常，" + error)
+                    this.setDefaultExpandedKeys()
+
+                }).catch(error => {
+
+                    this.emptyText = this.errorTex
                 })
+
+            } else {
+
+                this.setDefaultExpandedKeys()
             }
         }
 
