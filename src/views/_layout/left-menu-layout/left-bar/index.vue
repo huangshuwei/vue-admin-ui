@@ -3,11 +3,11 @@
 		:style="leftBarStyle" 
 		class="left-bar">
 		<el-menu
-				class="el-menu-left-bar"
 			:key="resetLeftMenuKey"
 			:collapse-transition="false"
 			:default-active="defaultActive"
 			:collapse="!rootState.isExpand"
+			class="el-menu-left-bar"
 			router
 			@open="handleOpen"
 			@close="handleClose"

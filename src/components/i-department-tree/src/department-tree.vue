@@ -1,9 +1,9 @@
 <template>
-    <el-tree
-            :data="departmentTree"
-            :props="treeCompDefaultProps"
-            node-key="id"
-            :default-expanded-keys="[1]"/>
+	<el-tree
+		:data="departmentTree"
+		:props="treeCompDefaultProps"
+		:default-expanded-keys="[1]"
+		node-key="id"/>
 </template>
 
 <script>
@@ -12,6 +12,7 @@
 
     export default {
         name: 'IDepartmentTree',
+        props: {},
         data() {
             return {
                 treeData: [],
@@ -24,7 +25,6 @@
                 defaultExpandedKeys: [],
             }
         },
-        props: {},
         computed: {
             ...mapState('department', {
                 'departmentTree': 'departmentTree'
