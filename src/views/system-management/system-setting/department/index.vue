@@ -12,15 +12,16 @@
             <i-main-container allow-scroll-y padding="10px">
                 <!--按钮操作区-->
                 <el-row class="operation-btns">
-                    <el-button @click.native.stop="addDepart()" type="primary" size="small" plain>新增</el-button>
-                    <el-button type="primary" size="small" plain :disabled="!isSelectedRow">修改</el-button>
-                    <el-button type="warning" size="small" plain :disabled="!isSelectedRow" :loading="false">删除
+                    <el-button @click.native.stop="addDepart()" type="primary" size="medium" plain>新增</el-button>
+                    <el-button type="primary" size="medium" plain :disabled="!isSelectedRow">修改</el-button>
+                    <el-button type="danger" size="medium" plain :disabled="!isSelectedRow" :loading="false">删除
                     </el-button>
                 </el-row>
 
                 <!--列表数据-->
                 <el-table
                         :data="tableData"
+                        width="100%"
                         border
                         highlight-current-row
                         @current-change="handleTableRowChange">
@@ -40,7 +41,7 @@
                     <el-table-column
                             prop="updater"
                             label="修改人"
-                            width="180"
+
                     />
                 </el-table>
             </i-main-container>
