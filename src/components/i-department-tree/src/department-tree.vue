@@ -1,10 +1,16 @@
 <template>
-    <el-tree
-            :data="departmentTree"
-            :props="treeCompDefaultProps"
-            :default-expanded-keys="defaultExpandedKeys"
-            :empty-text="emptyText"
-            node-key="id"/>
+	<div>
+		<el-tree
+			ref="tree"
+			:data="departmentTree"
+			:props="treeCompDefaultProps"
+			:default-expanded-keys="defaultExpandedKeys"
+			:empty-text="emptyText"
+			node-key="id"
+			@current-change="currentNodeChange"
+
+		/>
+	</div>
 </template>
 
 <script>
@@ -13,7 +19,12 @@
 
     export default {
         name: 'IDepartmentTree',
-        props: {},
+        props: {
+            // 是否选中第一个节点（选中后将触发选中事件）
+            isFirstNodeCheck: {
+                type: Boolean
+            }
+        },
         data() {
             return {
                 treeData: [],
@@ -26,8 +37,8 @@
                 defaultExpandedKeys: [],
 
                 // 内容为空的时候展示的文本
-                emptyText:'加载中...',
-                errorTex:'数据加载失败'
+                emptyText: '加载中...',
+                errorTex: '数据加载失败'
             }
         },
         computed: {
@@ -52,7 +63,30 @@
                     return item.id
                 })
 
+                // 默认设置第一项
+                if (this.isFirstNodeCheck) {
+
+                    this.$nextTick(()=>{
+
+                        this.setCurrentKey(ids[0])
+                    })
+                }
+
                 this.defaultExpandedKeys = ids
+            },
+
+            // 通过 key 设置某个节点的当前选中状态，使用此方法必须设置 node-key 属性
+            setCurrentKey(key) {
+
+                this.$refs.tree.setCurrentKey(key)
+
+                this.$emit('current-node-change', this.$refs.tree.getCurrentNode(key))
+            },
+
+            // 节点选中变化时触发的事件
+            currentNodeChange(node) {
+
+                this.$emit('current-node-change', node)
             }
         },
         created() {
@@ -72,6 +106,10 @@
 
                 this.setDefaultExpandedKeys()
             }
+        },
+        mounted() {
+
+            //console.log(this.getCurrentNode())
         }
 
     }
