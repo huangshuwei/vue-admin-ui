@@ -62,7 +62,8 @@
             mainContainerStyle() {
 
                 return {
-                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px',
+                    //'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px',
+                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - 10) + 'px',
                     'padding': this.rootState.contentPadding+'px !important'
                 }
             }

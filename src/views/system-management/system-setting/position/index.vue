@@ -1,3 +1,5 @@
 <template>
-	<div><i-department-tree/></div>
+    <i-main-container>
+        <i-department-tree/>
+    </i-main-container>
 </template>
