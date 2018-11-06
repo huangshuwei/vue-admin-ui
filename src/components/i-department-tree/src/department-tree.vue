@@ -8,7 +8,7 @@
 			:empty-text="emptyText"
 			node-key="id"
 			@current-change="currentNodeChange"
-
+            @node-click="nodeClick"
 		/>
 	</div>
 </template>
@@ -87,6 +87,12 @@
             currentNodeChange(node) {
 
                 this.$emit('current-node-change', node)
+            },
+
+            // 节点点击事件
+            nodeClick(node){
+
+                //this.$emit('current-node-change', node)
             }
         },
         created() {

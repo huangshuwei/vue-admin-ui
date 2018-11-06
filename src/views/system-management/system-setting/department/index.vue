@@ -9,12 +9,21 @@
             </i-main-container>
         </el-col>
         <el-col :span="19">
-            <i-main-container allow-scroll-y>
+            <i-main-container allow-scroll-y padding="10px">
+                <!--按钮操作区-->
+                <el-row class="operation-btns">
+                    <el-button @click.native.stop="addDepart()" type="primary" size="small" plain>新增</el-button>
+                    <el-button type="primary" size="small" plain :disabled="!isSelectedRow">修改</el-button>
+                    <el-button type="warning" size="small" plain :disabled="!isSelectedRow" :loading="false">删除
+                    </el-button>
+                </el-row>
 
+                <!--列表数据-->
                 <el-table
                         :data="tableData"
                         border
-                        style="width: 100%">
+                        highlight-current-row
+                        @current-change="handleTableRowChange">
                     <el-table-column
                             type="index"
                             label="序号"
@@ -31,6 +40,7 @@
                     <el-table-column
                             prop="updater"
                             label="修改人"
+                            width="180"
                     />
                 </el-table>
             </i-main-container>
@@ -48,17 +58,54 @@
 
             return {
 
-                tableData: []
+                tableData: [],
+                isSelectedRow: false,
+                selectedRow: null
             }
         },
 
         methods: {
-            // 节点变化触发的事件
+            restTableSelectedInfo() {
+
+                this.isSelectedRow = false;
+                this.selectedRow = null;
+            },
+
+            setTableSelectedInfo(row) {
+
+                this.isSelectedRow = true;
+                this.selectedRow = row;
+            },
+
+            // tree 节点变化触发的事件
             currentNodeChange(node) {
 
+
                 this.tableData = node.children;
-                console.log("node::::", node)
+                this.restTableSelectedInfo();
+            },
+
+            // 处理 table 行点击事件
+            handleTableRowChange(row) {
+
+                if (row){
+
+                    this.setTableSelectedInfo(row);
+                    console.log("handleTableRowChange::", row)
+                }
+            },
+
+            addDepart() {
+
+
             }
         }
     }
 </script>
+
+<style scoped>
+
+    .operation-btns {
+        margin: 10px 0 20px 0;
+    }
+</style>

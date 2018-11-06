@@ -1,9 +1,9 @@
 <template>
-	<div
-		:style="mainStyle"
-		:class="(allowScrollY||allowScrollX) ? 'scroll' :''">
-		<slot/>
-	</div>
+    <div
+            :style="mainStyle"
+            :class="(allowScrollY||allowScrollX) ? 'scroll' :''">
+        <slot/>
+    </div>
 </template>
 
 <script>
@@ -20,6 +20,10 @@
             background: {
                 type: String,
                 default: '#fff'
+            },
+            padding: {
+                type: String,
+                default: ""
             },
             // 纵向滚动条
             allowScrollY: {
@@ -44,20 +48,21 @@
 
                 let style = {
                     'background': this.background,
-                    'overflow-y':this.allowScrollY ? 'auto' :'',
-                    'overflow-x':this.allowScrollX ? 'auto' :'',
+                    'overflow-y': this.allowScrollY ? 'auto' : '',
+                    'overflow-x': this.allowScrollX ? 'auto' : '',
+                    'padding': this.padding ? this.padding : 0
                 }
 
                 // 如果需要出纵向滚动条（局部滚动），则是 max-height
-                if (this.allowScrollY){
+                if (this.allowScrollY) {
 
-                    style["height"] =  height
+                    style["height"] = height
 
-				}else{ // 内容多了整页滚动
+                } else { // 内容多了整页滚动
 
 
-                    style["min-height"] =  height
-				}
+                    style["min-height"] = height
+                }
 
                 return style
             }
