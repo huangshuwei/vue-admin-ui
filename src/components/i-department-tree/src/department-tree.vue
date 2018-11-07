@@ -2,6 +2,7 @@
 	<div>
 		<el-tree
 			ref="tree"
+			highlight-current
 			:data="departmentTree"
 			:props="treeCompDefaultProps"
 			:default-expanded-keys="defaultExpandedKeys"
