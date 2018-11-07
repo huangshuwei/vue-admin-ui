@@ -1,18 +1,36 @@
 <template>
-    <el-dialog :width="width" :title="title" :visible.sync="dialogVisible">
-        <el-form :model="form" :rules="rules" ref="ruleForm" :label-width="getFormLabelWidth">
-            <el-form-item label="父级部门">
-                <el-input :placeholder="parentDepart" disabled></el-input>
-            </el-form-item>
-            <el-form-item label="新增部门" prop="departmentName">
-                <el-input v-model.trim="form.departmentName" autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" :loading="isConfirmBtnLoading" @click="btnConfirm('ruleForm')">确 定</el-button>
-        </div>
-    </el-dialog>
+	<el-dialog 
+		:width="width" 
+		:title="title" 
+		:visible.sync="dialogVisible">
+		<el-form 
+			ref="ruleForm" 
+			:model="form" 
+			:rules="rules" 
+			:label-width="getFormLabelWidth">
+			<el-form-item label="父级部门">
+				<el-input 
+					:placeholder="parentDepart" 
+					disabled/>
+			</el-form-item>
+			<el-form-item 
+				label="新增部门" 
+				prop="departmentName">
+				<el-input 
+					v-model.trim="form.departmentName" 
+					autocomplete="off"/>
+			</el-form-item>
+		</el-form>
+		<div 
+			slot="footer" 
+			class="dialog-footer">
+			<el-button @click="dialogVisible = false">取 消</el-button>
+			<el-button 
+				:loading="isConfirmBtnLoading" 
+				type="primary" 
+				@click="btnConfirm('ruleForm')">确 定</el-button>
+		</div>
+	</el-dialog>
 </template>
 
 <script>
@@ -60,6 +78,7 @@
                 return this.formLabelWidth + 'px'
             }
         },
+        watch: {},
         methods: {
             // 打开弹窗
             openDialog(option) {
@@ -90,7 +109,6 @@
                 })
             }
         },
-        watch: {},
         created() {
 
         }

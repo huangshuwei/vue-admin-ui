@@ -74,11 +74,13 @@ export function updateDepartment(payload) {
 /*
 * 删除部门
 * */
-export function deleteDepartment(id) {
+export function deleteDepartment(payload) {
 
     return axiosRequest({
         url: `${config.getApiUrl().common}/system/common/DeleteDept`,
         method: 'POST',
-        data: {id}
+        data: {
+            id: payload.id
+        }
     })
 }

@@ -97,7 +97,7 @@ export default {
 
             return new Promise((resolve, reject) => {
 
-                updateDepartment(payload).then(response => {
+                deleteDepartment(payload).then(response => {
 
                     if (response && response.data.errCode === 0) {
 

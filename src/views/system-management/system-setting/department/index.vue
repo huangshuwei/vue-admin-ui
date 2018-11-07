@@ -1,62 +1,77 @@
 <template>
-    <el-row :gutter="10">
-        <el-col :span="5">
-            <i-main-container allow-scroll-y>
-                <i-department-tree
-                        isFirstNodeCheck
-                        @current-node-change="currentNodeChange"
-                />
-            </i-main-container>
-        </el-col>
-        <el-col :span="19">
-            <i-main-container allow-scroll-y padding="10px">
-                <!--按钮操作区-->
-                <el-row class="operation-btns">
-                    <el-button @click.native.stop="openAddDialog()" type="primary" size="medium" plain>新增</el-button>
-                    <el-button @click.native.stop="openUpdateDialog()" type="primary" size="medium" plain
-                               :disabled="!isSelectedRow">修改
-                    </el-button>
-                    <el-button type="danger" size="medium" plain :disabled="!isSelectedRow" :loading="false">删除
-                    </el-button>
+	<el-row :gutter="10">
+		<el-col :span="5">
+			<i-main-container allow-scroll-y>
+				<i-department-tree
+					is-first-node-check
+					@current-node-change="currentNodeChange"
+				/>
+			</i-main-container>
+		</el-col>
+		<el-col :span="19">
+			<i-main-container 
+				allow-scroll-y 
+				padding="10px">
+				<!--按钮操作区-->
+				<el-row class="operation-btns">
+					<el-button 
+						type="primary" 
+						size="medium" 
+						plain 
+						@click.native.stop="openAddDialog()">新增</el-button>
+					<el-button 
+						:disabled="!isSelectedRow" 
+						type="primary" 
+						size="medium" 
+						plain
+						@click.native.stop="openUpdateDialog()">修改
+					</el-button>
+					<el-button 
+						:disabled="!isSelectedRow" 
+						:loading="isDeleteBtnLoading" 
+						type="danger" 
+						size="medium"
+						plain 
+						@click.native.stop="deleteDepartment">删除
+					</el-button>
 
-                    <!--弹窗-->
-                    <dm-dialog
-                            ref="formDialog"
-                            :is-confirm-btn-loading="isConfirmBtnLoading"
-                            @dialog-confirm="dialogConfirm"
-                            width="500px"
-                    ></dm-dialog>
-                </el-row>
+					<!--弹窗-->
+					<dm-dialog
+						ref="formDialog"
+						:is-confirm-btn-loading="isConfirmBtnLoading"
+						width="500px"
+						@dialog-confirm="dialogConfirm"
+					/>
+				</el-row>
 
-                <!--列表数据-->
-                <el-table
-                        :data="tableData"
-                        width="100%"
-                        border
-                        highlight-current-row
-                        @current-change="handleTableRowChange">
-                    <el-table-column
-                            type="index"
-                            label="序号"
-                            width="50">
-                    </el-table-column>
-                    <el-table-column
-                            prop="name"
-                            label="部门名称"
-                            width="180"/>
-                    <el-table-column
-                            prop="updateTime"
-                            label="修改时间"
-                            width="180"/>
-                    <el-table-column
-                            prop="updater"
-                            label="修改人"
+				<!--列表数据-->
+				<el-table
+					:data="tableData"
+					width="100%"
+					border
+					highlight-current-row
+					@current-change="handleTableRowChange">
+					<el-table-column
+						type="index"
+						label="序号"
+						width="50"/>
+					<el-table-column
+						prop="name"
+						label="部门名称"
+						width="180"/>
+					<el-table-column
+						prop="updateTime"
+						label="修改时间"
+						width="180"/>
+					<el-table-column
+						prop="updater"
+						label="修改人"
 
-                    />
-                </el-table>
-            </i-main-container>
-        </el-col>
-    </el-row>
+					/>
+				</el-table>
+			</i-main-container>
+		</el-col>
+	</el-row>
 </template>
 
 <script>
@@ -83,7 +98,8 @@
                 currentTreeNode: null, // 当前选中tree 节点
                 formLabelWidth: '120px',
 
-                isConfirmBtnLoading: false // 确认按钮加载中（后台提交时）
+                isConfirmBtnLoading: false, // 确认按钮加载中（后台提交时）
+                isDeleteBtnLoading:false // 是否删除按钮开启loading
             }
         },
 
@@ -91,7 +107,8 @@
 
             ...mapActions('department', {
                 'addDepartmentAction': 'addDepartment',
-                'updateDepartmentAction': 'updateDepartment'
+                'updateDepartmentAction': 'updateDepartment',
+                'deleteDepartmentAction': 'deleteDepartment'
             }),
 
             // 重置表格选中信息
@@ -157,10 +174,12 @@
                     }).then(() => {
 
                         this.$refs.formDialog.closeDialog();
+                        this.$message({message: '新增成功', type: "success"})
 
-                    }).catch(error => {
+                    }).catch(() => {
 
-                        alert('异常')
+                        this.$alert("新增失败")
+
                     }).finally(() => {
 
                         this.isConfirmBtnLoading = false;
@@ -176,16 +195,59 @@
                     }).then(() => {
 
                         this.$refs.formDialog.closeDialog();
+                        this.$message({message: '修改成功', type: "success"})
 
-                    }).catch(error => {
+                    }).catch(() => {
 
-                        alert('异常')
+                        this.$alert("修改失败")
+
                     }).finally(() => {
 
                         this.isConfirmBtnLoading = false;
                     })
 
                 }
+            },
+
+            // 删除部门
+            deleteDepartment() {
+
+
+                this.$confirm(`是否要删除部门"${this.selectedRow.name}"？`, '确认删除', {
+                    distinguishCancelAndClose: true,
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消'
+                })
+                .then(() => {
+
+                    this.isDeleteBtnLoading = true;
+
+                    this.deleteDepartmentAction({
+                        id: this.selectedRow.id
+                    }).then(() => {
+
+                        this.$message({message: '删除成功', type: "success"})
+
+                    }).catch(() => {
+
+                        this.$alert("删除失败")
+                    }).finally(()=>{
+
+                        this.isDeleteBtnLoading = false;
+                    })
+
+                })
+                .catch(action => {
+
+                    console.log("$confirm::",action)
+                   /* this.$message({
+                        type: 'info',
+                        message: action === 'cancel'
+                            ? '放弃保存并离开页面'
+                            : '停留在当前页面'
+                    })*/
+                });
+
             }
         }
     }
