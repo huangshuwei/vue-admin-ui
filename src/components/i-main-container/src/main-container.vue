@@ -1,9 +1,9 @@
 <template>
-    <div
-            :style="mainStyle"
-            :class="(allowScrollY||allowScrollX) ? 'scroll' :''">
-        <slot/>
-    </div>
+	<div
+		:style="mainStyle"
+		:class="(allowScrollY||allowScrollX) ? 'scroll' :''">
+		<slot/>
+	</div>
 </template>
 
 <script>
