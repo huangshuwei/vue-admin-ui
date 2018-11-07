@@ -114,5 +114,7 @@
     .header-operation-history-tabs .el-tag {
         margin-left: 10px;
         cursor: pointer;
+		background: #fff !important;
+		border-radius:0;
     }
 </style>
