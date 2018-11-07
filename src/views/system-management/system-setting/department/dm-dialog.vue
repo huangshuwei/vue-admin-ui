@@ -22,7 +22,7 @@
     }
 
     export default {
-        name: 'AddDialog',
+        name: 'DmDialog',
         props: {
             formLabelWidth: {
                 type: Number,

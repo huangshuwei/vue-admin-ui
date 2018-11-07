@@ -19,9 +19,10 @@
                     <el-button type="danger" size="medium" plain :disabled="!isSelectedRow" :loading="false">删除
                     </el-button>
 
-                    <addDialog
+                    <!--弹窗-->
+                    <dm-dialog
                             @dialog-confirm="dialogConfirm"
-                            width="500px" ref="formDialog"></addDialog>
+                            width="500px" ref="formDialog"></dm-dialog>
                 </el-row>
 
                 <!--列表数据-->
@@ -58,14 +59,14 @@
 <script>
 
     import {mapActions} from 'vuex'
-    import addDialog from './add-dialog'
+    import DmDialog from './dm-dialog'
 
 
     const OPERATIONS = {ADD: 0, UPDATE: 1}
 
     export default {
         name: 'Department',
-        components: {addDialog},
+        components: {DmDialog},
         data() {
 
             return {
@@ -143,9 +144,6 @@
 
                 if (this.operationType === OPERATIONS.ADD) {
 
-
-                    console.log("dialogConfirm::", data)
-
                     this.addDepartmentAction({
                         Name: data.departmentName,
                         ParentId: this.currentTreeNode.id
@@ -158,13 +156,11 @@
                         alert('异常')
                     })
 
-
                 } else if (this.operationType === OPERATIONS.UPDATE) {
 
-                    alert('修改')
                     this.updateDepartmentAction({
                         Name: data.departmentName,
-                        Id: this.currentTreeNode.id
+                        Id: this.selectedRow.id
                     }).then(response => {
 
                         this.$refs.formDialog.closeDialog();
