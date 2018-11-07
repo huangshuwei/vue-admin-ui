@@ -93,6 +93,7 @@ export default {
             })
         },
 
+        // 删除部门
         [TYPES.DELETE_DEPARTMENT](context, payload) {
 
             return new Promise((resolve, reject) => {
