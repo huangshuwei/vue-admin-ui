@@ -50,12 +50,12 @@ export default {
             })
         },
 
-        // 删除部门信息
+        // 新增部门信息
         [TYPES.ADD_DEPARTMENT](context, payload) {
 
             return new Promise((resolve, reject) => {
 
-                deleteDepartment(payload).then(response => {
+                addDepartment(payload).then(response => {
 
                     if (response && response.data.errCode === 0) {
 

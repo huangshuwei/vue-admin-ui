@@ -15,7 +15,7 @@ export function getDepartmentTree() {
 
 
 // 获取用户直属部门
-export function directDepartment() {
+export function getDirectDepartment() {
 
     return axiosRequest({
         url: `${config.getApiUrl().common}/system/common/GetUserDepts`,

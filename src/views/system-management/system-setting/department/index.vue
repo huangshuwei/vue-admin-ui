@@ -3,6 +3,7 @@
 		<el-col :span="5">
 			<i-main-container allow-scroll-y>
 				<i-department-tree
+						ref="dmTree"
 					is-first-node-check
 					@current-node-change="currentNodeChange"
 				/>
@@ -227,6 +228,8 @@
                     }).then(() => {
 
                         this.$message({message: '删除成功', type: "success"})
+
+						//this.$refs.dmTree.removeNodeByKey(this.selectedRow.id)
 
                     }).catch(() => {
 

@@ -94,7 +94,13 @@
             nodeClick(node){
 
                 //this.$emit('current-node-change', node)
-            }
+            },
+
+			// 通过key移除node节点
+			removeNodeByKey(key){
+
+				console.log("remove key::",this.$refs.tree.remove(key))
+			}
         },
         created() {
 
