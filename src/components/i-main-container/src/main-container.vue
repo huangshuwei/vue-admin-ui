@@ -1,9 +1,9 @@
 <template>
-	<div
-		:style="mainStyle"
-		:class="(allowScrollY||allowScrollX) ? 'scroll' :''">
-		<slot/>
-	</div>
+    <div
+            :style="mainStyle"
+            :class="(allowScrollY||allowScrollX) ? 'scroll' :''">
+        <slot/>
+    </div>
 </template>
 
 <script>
@@ -21,9 +21,9 @@
                 type: String,
                 default: '#fff'
             },
-            padding: {
-                type: String,
-                default: ""
+            paddingAll: {
+                type: Number,
+                default: 0
             },
             // 纵向滚动条
             allowScrollY: {
@@ -43,14 +43,13 @@
 
             mainStyle() {
 
-
-                const height = this.height > 0 ? this.height : (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - 1) + 'px';
+                const height = this.height > 0 ? this.height : (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - this.paddingAll * 2 - 1) + 'px';
 
                 let style = {
                     'background': this.background,
                     'overflow-y': this.allowScrollY ? 'auto' : '',
                     'overflow-x': this.allowScrollX ? 'auto' : '',
-                    'padding': this.padding ? this.padding : 0
+                    'padding': this.paddingAll + 'px'
                 }
 
                 // 如果需要出纵向滚动条（局部滚动），则是 max-height

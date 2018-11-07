@@ -11,7 +11,7 @@
 		<el-col :span="19">
 			<i-main-container 
 				allow-scroll-y 
-				padding="10px">
+				:padding-all="10">
 				<!--按钮操作区-->
 				<el-row class="operation-btns">
 					<el-button 
