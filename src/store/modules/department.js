@@ -1,11 +1,12 @@
-import {getDepartmentTree, addDepartment, updateDepartment} from '@/service/api/department'
+import {getDepartmentTree, addDepartment, updateDepartment, deleteDepartment} from '@/service/api/department'
 import listToTree from '../../utils/array/listToTree'
 
 let TYPES = {
 
     GET_DEPARTMENT_TREE: 'getDepartmentTree',
     ADD_DEPARTMENT: 'addDepartment',
-    UPDATE_DEPARTMENT:'updateDepartment'
+    UPDATE_DEPARTMENT: 'updateDepartment',
+    DELETE_DEPARTMENT: 'deleteDepartment',
 };
 
 export default {
@@ -49,12 +50,33 @@ export default {
             })
         },
 
-        // 新增部门信息
+        // 删除部门信息
         [TYPES.ADD_DEPARTMENT](context, payload) {
 
             return new Promise((resolve, reject) => {
 
-                addDepartment(payload).then(response => {
+                deleteDepartment(payload).then(response => {
+
+                    if (response && response.data.errCode === 0) {
+
+                        resolve(response)
+                    } else {
+
+                        reject(response.data)
+                    }
+                }).catch(error => {
+
+                    reject(error)
+                })
+            })
+        },
+
+        // 修改部门信息
+        [TYPES.UPDATE_DEPARTMENT](context, payload) {
+
+            return new Promise((resolve, reject) => {
+
+                updateDepartment(payload).then(response => {
 
                     if (response && response.data.errCode === 0) {
 
@@ -71,8 +93,7 @@ export default {
             })
         },
 
-        // 修改部门信息
-        [TYPES.UPDATE_DEPARTMENT](context, payload) {
+        [TYPES.DELETE_DEPARTMENT](context, payload) {
 
             return new Promise((resolve, reject) => {
 

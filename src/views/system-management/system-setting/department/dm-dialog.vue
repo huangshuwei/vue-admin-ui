@@ -10,7 +10,7 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="btnConfirm('ruleForm')">确 定</el-button>
+            <el-button type="primary" :loading="isConfirmBtnLoading" @click="btnConfirm('ruleForm')">确 定</el-button>
         </div>
     </el-dialog>
 </template>
@@ -31,6 +31,11 @@
             width: {
                 type: String,
                 default: '50%'
+            },
+            // 确认按钮加载中（后台提交时）
+            isConfirmBtnLoading: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -40,7 +45,7 @@
                 },
                 dialogVisible: false,
                 title: '', // 标题
-                parentDepart:'', // 父级部门
+                parentDepart: '', // 父级部门
                 // 校验规则
                 rules: {
                     departmentName: [
@@ -65,7 +70,7 @@
                 this.form.departmentName = option.currentDepartName ? option.currentDepartName : '';
             },
             // 关闭弹窗
-            closeDialog(){
+            closeDialog() {
 
                 this.dialogVisible = false;
             },
@@ -75,7 +80,7 @@
 
                     if (isValid) {
 
-                        this.$emit(EVENTS.DIALOG_CONFIRM,this.form)
+                        this.$emit(EVENTS.DIALOG_CONFIRM, this.form)
 
                         //this.dialogVisible = false;
                     } else {

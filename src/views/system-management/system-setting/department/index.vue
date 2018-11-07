@@ -21,8 +21,11 @@
 
                     <!--弹窗-->
                     <dm-dialog
+                            ref="formDialog"
+                            :is-confirm-btn-loading="isConfirmBtnLoading"
                             @dialog-confirm="dialogConfirm"
-                            width="500px" ref="formDialog"></dm-dialog>
+                            width="500px"
+                    ></dm-dialog>
                 </el-row>
 
                 <!--列表数据-->
@@ -78,7 +81,9 @@
                 operationType: -1, // 操作类型
 
                 currentTreeNode: null, // 当前选中tree 节点
-                formLabelWidth: '120px'
+                formLabelWidth: '120px',
+
+                isConfirmBtnLoading: false // 确认按钮加载中（后台提交时）
             }
         },
 
@@ -144,31 +149,42 @@
 
                 if (this.operationType === OPERATIONS.ADD) {
 
+                    this.isConfirmBtnLoading = true;
+
                     this.addDepartmentAction({
-                        Name: data.departmentName,
-                        ParentId: this.currentTreeNode.id
-                    }).then(response => {
+                        name: data.departmentName,
+                        parentId: this.currentTreeNode.id
+                    }).then(() => {
 
                         this.$refs.formDialog.closeDialog();
 
                     }).catch(error => {
 
                         alert('异常')
+                    }).finally(() => {
+
+                        this.isConfirmBtnLoading = false;
                     })
 
                 } else if (this.operationType === OPERATIONS.UPDATE) {
 
+                    this.isConfirmBtnLoading = true;
+
                     this.updateDepartmentAction({
-                        Name: data.departmentName,
-                        Id: this.selectedRow.id
-                    }).then(response => {
+                        name: data.departmentName,
+                        id: this.selectedRow.id
+                    }).then(() => {
 
                         this.$refs.formDialog.closeDialog();
 
                     }).catch(error => {
 
                         alert('异常')
+                    }).finally(() => {
+
+                        this.isConfirmBtnLoading = false;
                     })
+
                 }
             }
         }

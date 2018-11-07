@@ -35,12 +35,15 @@ export function directDepartment() {
         public int Updater { get; set; }
         public DateTime UpdateTime { get; set; }
 * */
-export function addDepartment(data) {
+export function addDepartment(payload) {
 
     return axiosRequest({
         url: `${config.getApiUrl().common}/system/common/AddDept`,
         method: 'POST',
-        data: data
+        data: {
+            name: payload.name,
+            parentId: payload.parentId
+        }
     })
 }
 
@@ -56,11 +59,26 @@ export function addDepartment(data) {
         public int Updater { get; set; }
         public DateTime UpdateTime { get; set; }
 * */
-export function updateDepartment(data) {
+export function updateDepartment(payload) {
 
     return axiosRequest({
         url: `${config.getApiUrl().common}/system/common/UpdateDept`,
         method: 'POST',
-        data: data
+        data: {
+            name: payload.name,
+            id: payload.id
+        }
+    })
+}
+
+/*
+* 删除部门
+* */
+export function deleteDepartment(id) {
+
+    return axiosRequest({
+        url: `${config.getApiUrl().common}/system/common/DeleteDept`,
+        method: 'POST',
+        data: {id}
     })
 }
