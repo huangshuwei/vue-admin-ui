@@ -3,7 +3,7 @@
 		<el-col :span="5">
 			<i-main-container allow-scroll-y>
 				<i-department-tree
-						ref="dmTree"
+					ref="dmTree"
 					is-first-node-check
 					@current-node-change="currentNodeChange"
 				/>
@@ -11,8 +11,8 @@
 		</el-col>
 		<el-col :span="19">
 			<i-main-container 
-				allow-scroll-y 
-				:padding-all="10">
+				:padding-all="10" 
+				allow-scroll-y>
 				<!--按钮操作区-->
 				<el-row class="operation-btns">
 					<el-button 

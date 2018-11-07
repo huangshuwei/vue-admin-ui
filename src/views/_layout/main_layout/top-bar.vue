@@ -1,51 +1,53 @@
 <template>
-    <div class="top-bar">
-        <el-container>
-            <el-aside
-                    class="top-bar-logo"
-                    :style="logoStyle">
-                logo
-            </el-aside>
-            <el-main style="padding: 0 !important;">
-                <el-row>
-                    <el-col :span="22">
-                        <el-menu
-                                :default-active="defaultActive"
-                                router
-                                class="el-menu-top-bar"
-                                mode="horizontal"
-                                background-color="#fff"
-                                text-color="#666"
-                                active-text-color="#000"
-                                @select="handleSelect">
-                            <el-menu-item
-                                    v-for="item in rootState.menuInfo"
-                                    :key="item.id"
-                                    :index="'/'+item.url">
-                                {{ item.name }}
-                            </el-menu-item>
-                            &nbsp;
-                        </el-menu>
-                    </el-col>
-                    <el-col
-                            :span="2">
-                        <div class="top-bar-account" :style="topBarStyle">
-                            <el-dropdown trigger="click">
+	<div class="top-bar">
+		<el-container>
+			<el-aside
+				:style="logoStyle"
+				class="top-bar-logo">
+				logo
+			</el-aside>
+			<el-main style="padding: 0 !important;">
+				<el-row>
+					<el-col :span="22">
+						<el-menu
+							:default-active="defaultActive"
+							router
+							class="el-menu-top-bar"
+							mode="horizontal"
+							background-color="#fff"
+							text-color="#666"
+							active-text-color="#000"
+							@select="handleSelect">
+							<el-menu-item
+								v-for="item in rootState.menuInfo"
+								:key="item.id"
+								:index="'/'+item.url">
+								{{ item.name }}
+							</el-menu-item>
+							&nbsp;
+						</el-menu>
+					</el-col>
+					<el-col
+						:span="2">
+						<div 
+							:style="topBarStyle" 
+							class="top-bar-account">
+							<el-dropdown trigger="click">
 								<span class="el-dropdown-link top-bar-account-link">
 									设置<i class="el-icon-arrow-down el-icon--right"/>
 								</span>
-                                <el-dropdown-menu slot="dropdown">
-                                    <!--<el-dropdown-item>test</el-dropdown-item>
+								<el-dropdown-menu slot="dropdown">
+									<!--<el-dropdown-item>test</el-dropdown-item>
                                     <el-dropdown-item>test</el-dropdown-item>-->
-                                    <el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                        </div>
-                    </el-col>
-                </el-row>
-            </el-main>
-        </el-container>
-    </div>
+									<el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+						</div>
+					</el-col>
+				</el-row>
+			</el-main>
+		</el-container>
+	</div>
 </template>
 
 <script>
