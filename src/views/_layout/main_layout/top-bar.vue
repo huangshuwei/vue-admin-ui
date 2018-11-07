@@ -3,8 +3,9 @@
 
 		<el-container>
 			<el-aside
-				width="200px"
-				style="text-align:center">logo
+				class="top-bar-logo"
+				:style="logoStyle">
+				logo
 			</el-aside>
 			<el-main style="padding: 0 !important;">
 				<el-row>
@@ -74,7 +75,15 @@
                 return {
                     'active': !this.rootState.isExpand
                 }
-            }
+            },
+
+            logoStyle() {
+
+                return {
+                    'width': this.rootState.isExpand ? this.rootState.leftBarExpandWidth + 'px' : this.rootState.leftBarFoldWidth + 'px',
+					'text-align':'center',
+                }
+            },
         },
 
         watch: {
