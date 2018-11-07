@@ -22,3 +22,45 @@ export function directDepartment() {
         method: 'get'
     })
 }
+
+/*
+ 添加部门
+*  public int Id { get; set; }
+        public string Name { get; set; }
+        public int ParentId { get; set; }
+        public int Order { get; set; }
+        public int Status { get; set; }
+        public int Creator { get; set; }
+        public DateTime CreateTime { get; set; }
+        public int Updater { get; set; }
+        public DateTime UpdateTime { get; set; }
+* */
+export function addDepartment(data) {
+
+    return axiosRequest({
+        url: `${config.getApiUrl().common}/system/common/AddDept`,
+        method: 'POST',
+        data: data
+    })
+}
+
+/*
+ 添加部门
+*  public int Id { get; set; }
+        public string Name { get; set; }
+        public int ParentId { get; set; }
+        public int Order { get; set; }
+        public int Status { get; set; }
+        public int Creator { get; set; }
+        public DateTime CreateTime { get; set; }
+        public int Updater { get; set; }
+        public DateTime UpdateTime { get; set; }
+* */
+export function updateDepartment(data) {
+
+    return axiosRequest({
+        url: `${config.getApiUrl().common}/system/common/UpdateDept`,
+        method: 'POST',
+        data: data
+    })
+}

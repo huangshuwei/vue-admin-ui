@@ -1,8 +1,11 @@
 <template>
     <el-dialog :width="width" :title="title" :visible.sync="dialogVisible">
         <el-form :model="form" :rules="rules" ref="ruleForm" :label-width="getFormLabelWidth">
-            <el-form-item label="部门名称"  prop="name">
-                <el-input v-model.trim="form.name" autocomplete="off"></el-input>
+            <el-form-item label="父级部门">
+                <el-input :placeholder="parentDepart" disabled></el-input>
+            </el-form-item>
+            <el-form-item label="新增部门" prop="departmentName">
+                <el-input v-model.trim="form.departmentName" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -13,40 +16,35 @@
 </template>
 
 <script>
+
+    const EVENTS = {
+        DIALOG_CONFIRM: 'dialog-confirm'
+    }
+
     export default {
         name: 'AddDialog',
         props: {
-            form: {
-                type: Object,
-                default: function () {
-                    return {
-                        name: '',
-                        region: '',
-                        date1: '',
-                        date2: '',
-                        delivery: false,
-                        type: [],
-                        resource: '',
-                        desc: ''
-                    }
-                }
-            },
             formLabelWidth: {
                 type: Number,
                 default: 120
             },
-            width:{
-                type:String,
-                default:'50%'
+            width: {
+                type: String,
+                default: '50%'
             }
         },
         data() {
             return {
+                form: {
+                    departmentName: ''
+                },
                 dialogVisible: false,
-                title:'', // 标题
-                rules:{
-                    name: [
-                        { required: true, message: '请输入部门名称', trigger: 'blur' }
+                title: '', // 标题
+                parentDepart:'', // 父级部门
+                // 校验规则
+                rules: {
+                    departmentName: [
+                        {required: true, message: '请输入部门名称', trigger: 'blur'}
                     ],
                 }
             }
@@ -58,22 +56,29 @@
             }
         },
         methods: {
-
             // 打开弹窗
             openDialog(option) {
 
                 this.dialogVisible = true;
                 this.title = option.title;
+                this.parentDepart = option.parentDepart;
+                this.form.departmentName = option.currentDepartName ? option.currentDepartName : '';
             },
-            btnConfirm(name){
+            // 关闭弹窗
+            closeDialog(){
 
-                this.$refs[name].validate(isValid=>{
+                this.dialogVisible = false;
+            },
+            btnConfirm(name) {
 
-                    if (isValid){
+                this.$refs[name].validate(isValid => {
 
-                        alert('成功')
-                        this.dialogVisible = false;
-                    }else{
+                    if (isValid) {
+
+                        this.$emit(EVENTS.DIALOG_CONFIRM,this.form)
+
+                        //this.dialogVisible = false;
+                    } else {
 
                         return false
                     }

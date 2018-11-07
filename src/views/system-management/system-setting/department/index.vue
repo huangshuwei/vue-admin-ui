@@ -13,11 +13,15 @@
                 <!--按钮操作区-->
                 <el-row class="operation-btns">
                     <el-button @click.native.stop="openAddDialog()" type="primary" size="medium" plain>新增</el-button>
-                    <el-button type="primary" size="medium" plain :disabled="!isSelectedRow">修改</el-button>
+                    <el-button @click.native.stop="openUpdateDialog()" type="primary" size="medium" plain
+                               :disabled="!isSelectedRow">修改
+                    </el-button>
                     <el-button type="danger" size="medium" plain :disabled="!isSelectedRow" :loading="false">删除
                     </el-button>
 
-                    <addDialog width="500px" ref="formDialog"></addDialog>
+                    <addDialog
+                            @dialog-confirm="dialogConfirm"
+                            width="500px" ref="formDialog"></addDialog>
                 </el-row>
 
                 <!--列表数据-->
@@ -56,9 +60,12 @@
     import {mapActions} from 'vuex'
     import addDialog from './add-dialog'
 
+
+    const OPERATIONS = {ADD: 0, UPDATE: 1}
+
     export default {
         name: 'Department',
-        components:{addDialog},
+        components: {addDialog},
         data() {
 
             return {
@@ -67,28 +74,28 @@
                 isSelectedRow: false, // 是否选中了行
                 selectedRow: null, // 选中的行数据
 
-                dialogFormVisible: false,
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
+                operationType: -1, // 操作类型
+
+                currentTreeNode: null, // 当前选中tree 节点
                 formLabelWidth: '120px'
             }
         },
 
         methods: {
+
+            ...mapActions('department', {
+                'addDepartmentAction': 'addDepartment',
+                'updateDepartmentAction': 'updateDepartment'
+            }),
+
+            // 重置表格选中信息
             restTableSelectedInfo() {
 
                 this.isSelectedRow = false;
                 this.selectedRow = null;
             },
 
+            // 设置表格选中信息
             setTableSelectedInfo(row) {
 
                 this.isSelectedRow = true;
@@ -98,6 +105,7 @@
             // tree 节点变化触发的事件
             currentNodeChange(node) {
 
+                this.currentTreeNode = node;
                 this.tableData = node.children;
                 this.restTableSelectedInfo();
             },
@@ -105,16 +113,67 @@
             // 处理 table 行点击事件
             handleTableRowChange(row) {
 
-                if (row){
+                if (row) {
 
                     this.setTableSelectedInfo(row);
                     console.log("handleTableRowChange::", row)
                 }
             },
 
+            // 打开新增弹窗
             openAddDialog() {
 
-                this.$refs.formDialog.openDialog({title:'新增'});
+                this.operationType = OPERATIONS.ADD;
+                this.$refs.formDialog.openDialog({title: '新增部门', parentDepart: this.currentTreeNode.name});
+            },
+
+            // 打开修改弹窗
+            openUpdateDialog() {
+
+                this.operationType = OPERATIONS.UPDATE;
+                this.$refs.formDialog.openDialog({
+                    title: '修改部门',
+                    currentDepartName: this.selectedRow.name,
+                    parentDepart: this.currentTreeNode.name
+                });
+            },
+
+            // 确认行为
+            dialogConfirm(data) {
+
+                if (this.operationType === OPERATIONS.ADD) {
+
+
+                    console.log("dialogConfirm::", data)
+
+                    this.addDepartmentAction({
+                        Name: data.departmentName,
+                        ParentId: this.currentTreeNode.id
+                    }).then(response => {
+
+                        this.$refs.formDialog.closeDialog();
+
+                    }).catch(error => {
+
+                        alert('异常')
+                    })
+
+
+                } else if (this.operationType === OPERATIONS.UPDATE) {
+
+                    alert('修改')
+                    this.updateDepartmentAction({
+                        Name: data.departmentName,
+                        Id: this.currentTreeNode.id
+                    }).then(response => {
+
+                        this.$refs.formDialog.closeDialog();
+
+                    }).catch(error => {
+
+                        alert('异常')
+                    })
+                }
             }
         }
     }
