@@ -47,6 +47,7 @@
 
 				<!--列表数据-->
 				<el-table
+						ref="dmTable"
 					:data="tableData"
 					width="100%"
 					border
@@ -117,6 +118,7 @@
 
                 this.isSelectedRow = false;
                 this.selectedRow = null;
+                this.$refs.dmTable.setCurrentRow(null);
             },
 
             // 设置表格选中信息
@@ -198,6 +200,9 @@
                         this.$refs.formDialog.closeDialog();
                         this.$message({message: '修改成功', type: "success"})
 
+						// 取消选中
+						this.restTableSelectedInfo();
+
                     }).catch(() => {
 
                         this.$alert("修改失败")
@@ -228,8 +233,6 @@
                     }).then(() => {
 
                         this.$message({message: '删除成功', type: "success"})
-
-						//this.$refs.dmTree.removeNodeByKey(this.selectedRow.id)
 
                     }).catch(() => {
 

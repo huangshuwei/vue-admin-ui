@@ -1,3 +1,4 @@
+import Vue from "vue";
 import {getDepartmentTree, addDepartment, updateDepartment, deleteDepartment} from '@/service/api/department'
 import listToTree from '../../utils/array/listToTree'
 
@@ -55,9 +56,9 @@ export default {
 
                     if (response && response.data.errCode === 0) {
 
-                        const newDepart = response.data.data;
+                        const department = response.data.data;
 
-                        context.commit('addDepartmentDataSource', newDepart)
+                        context.commit('addDepartmentDataSource', department)
                         context.commit('setDepartmentTree')
 
                         resolve(response)
@@ -81,6 +82,11 @@ export default {
 
                     if (response && response.data.errCode === 0) {
 
+                        const department = response.data.data;
+
+                        context.commit('updateDepartmentDataSource', department)
+                        context.commit('setDepartmentTree')
+
                         resolve(response)
                     } else {
 
@@ -102,6 +108,9 @@ export default {
                 deleteDepartment(payload).then(response => {
 
                     if (response && response.data.errCode === 0) {
+
+                        context.commit('deleteDepartmentDataSource', payload.id)
+                        context.commit('setDepartmentTree')
 
                         resolve(response)
                     } else {
@@ -137,9 +146,31 @@ export default {
         },
 
         // 添加到现有的部门树
-        addDepartmentDataSource(state, newDepartment){
+        addDepartmentDataSource(state, department){
 
-            state.departmentDataSource.push(newDepartment)
+            state.departmentDataSource.push(department)
+        },
+
+        // 添加到现有的部门树
+        updateDepartmentDataSource(state, department){
+
+            // 方法1
+            const index = state.departmentDataSource.findIndex(item => item.id === department.id)
+            state.departmentDataSource.splice(index,1,department)
+
+            // 方法2
+            //Vue.set(state.departmentDataSource, index, department);
+
+            // 方法3
+            // let departmentDataSourceItem = state.departmentDataSource.find(item => item.id === department.id)
+            // Object.assign(departmentDataSourceItem, department);
+        },
+
+        // 删除现有的部门树
+        deleteDepartmentDataSource(state, id){
+
+            const index = state.departmentDataSource.findIndex(item => item.id === id)
+            state.departmentDataSource.splice(index,1)
         }
     }
 
