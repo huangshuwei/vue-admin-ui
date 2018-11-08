@@ -6,7 +6,7 @@ let TYPES = {
     GET_DEPARTMENT_TREE: 'getDepartmentTree',
     ADD_DEPARTMENT: 'addDepartment',
     UPDATE_DEPARTMENT: 'updateDepartment',
-    DELETE_DEPARTMENT: 'deleteDepartment',
+    DELETE_DEPARTMENT: 'deleteDepartment'
 };
 
 export default {
@@ -14,6 +14,7 @@ export default {
     namespaced: true,
     state: {
         departmentTree: [],
+        departmentDataSource:[] // 部门源数据
     },
 
     actions: {
@@ -29,15 +30,10 @@ export default {
 
                     if (data && Array.isArray(data.data) && data.data.length > 0) {
 
-                        let menuList = listToTree(data.data, {
-                            idKey: 'id',
-                            parentKey: 'parentId',
-                            childrenKey: 'children'
-                        });
+                        context.commit('setDepartmentDataSource', data.data)
+                        context.commit('setDepartmentTree')
 
-
-                        context.commit(TYPES.GET_DEPARTMENT_TREE, menuList)
-                        resolve(menuList);
+                        resolve();
 
                     } else {
 
@@ -58,6 +54,11 @@ export default {
                 addDepartment(payload).then(response => {
 
                     if (response && response.data.errCode === 0) {
+
+                        const newDepart = response.data.data;
+
+                        context.commit('addDepartmentDataSource', newDepart)
+                        context.commit('setDepartmentTree')
 
                         resolve(response)
                     } else {
@@ -117,11 +118,29 @@ export default {
     },
     mutations: {
 
-        [TYPES.GET_DEPARTMENT_TREE](state, payload) {
+        // 设置部门源数据
+        setDepartmentDataSource(state, payload){
 
-            state.departmentTree = payload;
+            state.departmentDataSource = payload;
+        },
+
+        // 设置部门树信息
+        setDepartmentTree(state) {
+
+            let departmentTree = listToTree(state.departmentDataSource, {
+                idKey: 'id',
+                parentKey: 'parentId',
+                childrenKey: 'children'
+            });
+
+            state.departmentTree = departmentTree;
+        },
+
+        // 添加到现有的部门树
+        addDepartmentDataSource(state, newDepartment){
+
+            state.departmentDataSource.push(newDepartment)
         }
     }
-
 
 }
