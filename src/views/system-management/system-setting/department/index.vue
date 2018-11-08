@@ -47,7 +47,7 @@
 
 				<!--列表数据-->
 				<el-table
-						ref="dmTable"
+					ref="dmTable"
 					:data="tableData"
 					width="100%"
 					border

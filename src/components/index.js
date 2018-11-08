@@ -1,10 +1,12 @@
 import IMainContainer from './i-main-container'
 import IDepartmentTree from './i-department-tree'
+import IPositionTree from './i-position-tree'
 import ICommonTree from './i-common-tree'
 
 const components = [
     IMainContainer,
     IDepartmentTree,
+    IPositionTree,
     ICommonTree
 ];
 
@@ -21,6 +23,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
     IMainContainer,
     IDepartmentTree,
+    IPositionTree,
     ICommonTree
 };
 

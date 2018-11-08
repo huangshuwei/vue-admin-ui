@@ -2,7 +2,7 @@
 	<div>
 		<el-tree
 			ref="tree"
-			:data="departmentTree"
+			:data="positionTree"
 			:props="treeCompDefaultProps"
 			:default-expanded-keys="defaultExpandedKeys"
 			:empty-text="emptyText"
@@ -18,14 +18,11 @@
 
 <script>
 
+    import {mapActions, mapState} from 'vuex'
+
     export default {
-        name: 'ICommonTree',
+        name: 'IPositionTree',
         props: {
-            treeData:{
-                type:Array,
-                required:true,
-                default:[]
-            },
             // 是否选中第一个节点（选中后将触发选中事件）
             isFirstNodeCheck: {
                 type: Boolean,
@@ -48,12 +45,17 @@
                 errorTex: '数据加载失败'
             }
         },
+        computed: {
+            ...mapState('position', {
+                'positionTree': 'positionTree'
+            })
+        },
         watch: {
 
             /*
             * 数据修改、新增、删除 重新触发事件
             * */
-            treeData() {
+            positionTree() {
 
                 const currentSelectedKey = this.$refs.tree.getCurrentKey();
 
@@ -66,13 +68,17 @@
         },
         methods: {
 
+            ...mapActions('position', {
+                'getPositionTreeAction': 'getPositionTree'
+            }),
+
             /*
             * 设置要展开的层级
             * 默认只展开第一层级
             * */
             setDefaultExpandedKeys() {
 
-                const ids = this.departmentTree.map(item => {
+                const ids = this.positionTree.map(item => {
 
                     return item.id
                 })
@@ -129,6 +135,28 @@
 
                 console.log("remove key::", this.$refs.tree.remove(key))
             }
+        },
+        created() {
+
+            if (!(Array.isArray(this.positionTree) && this.positionTree.length > 0)) {
+
+                this.getPositionTreeAction().then(() => {
+
+                    this.setDefaultExpandedKeys()
+
+                }).catch(() => {
+
+                    this.emptyText = this.errorTex
+                })
+
+            } else {
+
+                this.setDefaultExpandedKeys()
+            }
+        },
+        mounted() {
+
+            //console.log(this.getCurrentNode())
         }
 
     }

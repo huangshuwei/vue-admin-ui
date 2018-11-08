@@ -1,19 +1,19 @@
 <template>
-    <div>
-        <el-tree
-                ref="tree"
-                :data="departmentTree"
-                :props="treeCompDefaultProps"
-                :default-expanded-keys="defaultExpandedKeys"
-                :empty-text="emptyText"
-                highlight-current
-                node-key="id"
-                @current-change="currentNodeChange"
-                @node-click="nodeClick"
-                @node-expand="nodeExpand"
-                @node-collapse="nodeCollapse"
-        />
-    </div>
+	<div>
+		<el-tree
+			ref="tree"
+			:data="departmentTree"
+			:props="treeCompDefaultProps"
+			:default-expanded-keys="defaultExpandedKeys"
+			:empty-text="emptyText"
+			highlight-current
+			node-key="id"
+			@current-change="currentNodeChange"
+			@node-click="nodeClick"
+			@node-expand="nodeExpand"
+			@node-collapse="nodeCollapse"
+		/>
+	</div>
 </template>
 
 <script>
