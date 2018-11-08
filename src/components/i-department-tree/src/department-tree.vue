@@ -120,13 +120,14 @@
             nodeExpand(node) { // params : node
 
                 this.defaultExpandedKeys.push(node.id)
+                this.setCurrentKey(node.id)
             },
 
             // 节点关闭
             nodeCollapse(node) { // params : node
-// IDepartmentTree
 
                 this.defaultExpandedKeys.splice(this.defaultExpandedKeys.indexOf(node.id), 1)
+                this.setCurrentKey(node.id)
             },
 
             // 通过key移除node节点
