@@ -8,7 +8,18 @@
 			</el-aside>
 			<el-main style="padding: 0 !important;">
 				<el-row>
-					<el-col :span="22">
+					<el-col :span="1">
+						<div 
+							:style="topBarExpandStyle" 
+							class="top-bar-expand">
+							<span
+								class="top-bar-expand-span"
+								@click.stop="switchLeftBar()"><i
+									:class="['top-bar-expand-i','iconfont','icon-caidan',topBarExpandIClasses]"/>
+							</span>
+						</div>
+					</el-col>
+					<el-col :span="21">
 						<el-menu
 							:default-active="defaultActive"
 							router
@@ -29,8 +40,8 @@
 					</el-col>
 					<el-col
 						:span="2">
-						<div 
-							:style="topBarStyle" 
+						<div
+							:style="topBarStyle"
 							class="top-bar-account">
 							<el-dropdown trigger="click">
 								<span class="el-dropdown-link top-bar-account-link">
@@ -82,6 +93,14 @@
 
                 return {
                     'height': this.rootState.topBarHeight + 'px'
+                }
+            },
+
+            topBarExpandStyle(){
+
+                return {
+                    'height': this.rootState.topBarHeight + 'px',
+                    'line-height': this.rootState.topBarHeight + 'px'
                 }
             },
 
@@ -151,6 +170,28 @@
 </script>
 
 <style>
+
+    .top-bar-expand {
+        padding: 0 15px;
+        background-color: #fff;
+        min-width: 100px;
+    }
+    .top-bar-expand-span {
+        cursor: pointer;
+    }
+    .top-bar-expand i {
+        font-size: 24px;
+    }
+
+    .top-bar-expand-i {
+        display: inline-block;
+        transform: rotate(0deg);
+        transition: .38s;
+        transform-origin: 50% 50%;
+    }
+    .top-bar-expand-i.active {
+        transform: rotate(-90deg);
+    }
 
     .el-menu-top-bar .el-menu-item {
         font-size: 16px !important;

@@ -9,10 +9,11 @@ import './css/index.css'
 
 import {getApis} from './service/api/api-start'
 
-if (process.env.NODE_ENV === 'development'){
+/*if (process.env.NODE_ENV === 'development'){
 
     require('@/mock/index')
-}
+}*/
+require('@/mock/index')
 
 // 权限验证
 import '@/permission/router-auth.js'

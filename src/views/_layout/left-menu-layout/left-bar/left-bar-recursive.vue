@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div 
-			v-for="item in menuTree" 
+		<div
+			v-for="item in menuTree"
 			:key="item.id">
 			<template v-if="item.children.length > 0">
 				<el-submenu :index="getCurrentUrl(item)">
 					<template slot="title">
-						<!--<i class="el-icon-setting"/>-->
+						<i v-if="item.iconClass" :class="item.iconClass"/>
 						<span>{{ item.name }}</span>
 					</template>
 
@@ -18,7 +18,10 @@
 				</el-submenu>
 			</template>
 			<template v-else>
-				<el-menu-item :index="getCurrentUrl(item)">{{ item.name }}</el-menu-item>
+				<el-menu-item :index="getCurrentUrl(item)">
+                    <i v-if="item.iconClass" :class="item.iconClass"/>
+                    <span>{{ item.name }}</span>
+                </el-menu-item>
 			</template>
 		</div>
 	</div>

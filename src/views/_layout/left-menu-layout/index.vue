@@ -38,10 +38,10 @@
 
     export default {
         name: 'LeftBar',
-        mixins:[viewportHeightMixin],
         components: {
             leftBar, breadcrumb, historyTabs
         },
+        mixins:[viewportHeightMixin],
         computed: {
 
             ...mapState({

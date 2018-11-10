@@ -92,4 +92,11 @@
 	.el-menu-left-bar .el-submenu__title{
 		font-weight: bold;
 	}
+	.el-menu--collapse .el-submenu__title span {
+		height: 0;
+		width: 0;
+		overflow: hidden;
+		visibility: hidden;
+		display: inline-block;
+	}
 </style>

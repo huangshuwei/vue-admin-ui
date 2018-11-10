@@ -4,10 +4,11 @@ import store from './store'
 
 import './css/login.css'
 
-if (process.env.NODE_ENV === 'development'){
+/*if (process.env.NODE_ENV === 'development'){
 
     require('@/mock/index')
-}
+}*/
+require('@/mock/index')
 
 import {
     Pagination,
