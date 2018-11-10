@@ -7,7 +7,7 @@ import config from '../../../config/api.config'
 export function getMenuInfo() {
 
     return axiosRequest({
-        url: `${config.getApiUrl().common}/system/common/GetModule`,
+        url: `${config.getApiUrl().common}/system/common/GetMenuInfo`,
         method: 'get'
     })
 }

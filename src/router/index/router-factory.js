@@ -22,10 +22,16 @@ const ROUTES = {
     // 角色设置
     role: r => require.ensure([], () => r(require('../../views/system-management/system-setting/role/index.vue')), 'role'),
 
+    // 02 员工设置 employee-setting
+    // 添加用户
+    addUser: r => require.ensure([], () => r(require('../../views/system-management/employee/user/index.vue')), 'addUser'),
+
     /*
-    * 员工管理
-    * */
-    addUser: r => require.ensure([], () => r(require('../../views/employee/user/index.vue')), 'addUser')
+    * 组件示例
+    */
+    // 01 table 组件
+    tableBaseComp: r => require.ensure([], () => r(require('../../views/comps-examples/tables/table-base-comp')), 'tableBaseComp'),
+
 }
 
 

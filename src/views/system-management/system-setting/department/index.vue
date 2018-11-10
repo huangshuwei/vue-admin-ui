@@ -11,7 +11,6 @@
 		</el-col>
 		<el-col :span="19">
 			<i-main-container 
-				:padding-all="10" 
 				allow-scroll-y>
 				<!--按钮操作区-->
 				<el-row class="operation-btns">
@@ -262,6 +261,6 @@
 <style scoped>
 
     .operation-btns {
-        margin: 10px 0 20px 0;
+        margin: 0 0 20px 0;
     }
 </style>

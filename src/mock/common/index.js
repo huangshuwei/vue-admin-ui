@@ -86,8 +86,8 @@ const menuInfo = {
     }, {
         "id": 7,
         "deptId": 0,
-        "name": "员工管理",
-        "parentId": 0,
+        "name": "员工设置",
+        "parentId": 1,
         "order": 99,
         "status": 1,
         "url": "employee",
@@ -99,21 +99,8 @@ const menuInfo = {
     }, {
         "id": 8,
         "deptId": 0,
-        "name": "员工设置",
-        "parentId": 7,
-        "order": 99,
-        "status": 1,
-        "url": "employeeSetting",
-        "permissionTag": "",
-        "creator": "0",
-        "createTime": "2018-10-29 19:21",
-        "updater": "0",
-        "updateTime": "2018-10-29 19:21"
-    }, {
-        "id": 9,
-        "deptId": 0,
         "name": "员工录入",
-        "parentId": 8,
+        "parentId": 7,
         "order": 99,
         "status": 1,
         "url": "addUser",
@@ -122,7 +109,49 @@ const menuInfo = {
         "createTime": "2018-10-29 19:21",
         "updater": "0",
         "updateTime": "2018-10-29 19:21"
-    }
+    }, {
+        "id": 9,
+        "deptId": 0,
+        "name": "组件示例",
+        "parentId": 0,
+        "order": 99,
+        "status": 1,
+        "url": "components",
+        "permissionTag": "",
+        "creator": "0",
+        "createTime": "2018-10-29 19:21",
+        "updater": "0",
+        "updateTime": "2018-10-29 19:21"
+    },
+        {
+            "id": 10,
+            "deptId": 0,
+            "name": "table 组件",
+            "parentId": 9,
+            "order": 99,
+            "status": 1,
+            "url": "tableComps",
+            "permissionTag": "",
+            "creator": "0",
+            "createTime": "2018-10-29 19:21",
+            "updater": "0",
+            "updateTime": "2018-10-29 19:21"
+        }
+        ,
+        {
+            "id": 11,
+            "deptId": 0,
+            "name": "基础 Table",
+            "parentId": 10,
+            "order": 99,
+            "status": 1,
+            "url": "tableBaseComp",
+            "permissionTag": "",
+            "creator": "0",
+            "createTime": "2018-10-29 19:21",
+            "updater": "0",
+            "updateTime": "2018-10-29 19:21"
+        }
     ]
 }
 

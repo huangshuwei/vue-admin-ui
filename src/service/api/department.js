@@ -8,7 +8,7 @@ import axiosRequest from "../../plugins/axios";
 export function getDepartmentTree() {
 
     return axiosRequest({
-        url: `${config.getApiUrl().common}/system/common/GetDept`,
+        url: `${config.getApiUrl().common}/system/common/GetDepartmentTree`,
         method: 'get'
     })
 }

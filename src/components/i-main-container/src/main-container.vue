@@ -23,7 +23,7 @@
             },
             paddingAll: {
                 type: Number,
-                default: 0
+                default: 10
             },
             // 纵向滚动条
             allowScrollY: {
