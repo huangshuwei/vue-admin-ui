@@ -2,7 +2,7 @@
 	<i-main-container>
 		<el-table
 			:data="tableData"
-			style="width: 100%">
+			style="width: 95%">
 			<el-table-column
 				prop="date"
 				label="日期"
