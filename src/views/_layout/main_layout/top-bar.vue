@@ -170,6 +170,10 @@
 </script>
 
 <style>
+	.top-bar {
+		border-bottom: 1px solid #e6e6e6;
+		overflow: hidden;
+	}
 
     .top-bar-expand {
         padding: 0 15px;
@@ -209,7 +213,5 @@
         cursor: pointer;
     }
 
-    .top-bar {
-        border-bottom: 1px solid #e6e6e6;
-    }
+
 </style>
