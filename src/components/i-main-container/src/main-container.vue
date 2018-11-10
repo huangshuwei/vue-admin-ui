@@ -1,14 +1,15 @@
 <template>
-	<div
-		:style="mainStyle"
-		:class="(allowScrollY||allowScrollX) ? 'scroll' :''">
-		<slot/>
-	</div>
+    <div
+            :style="mainStyle"
+            :class="(allowScrollY||allowScrollX) ? 'scroll' :''">
+        <slot/>
+    </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
     import vh from '@/utils/dom/viewport-height'
+    import bindEvents from '@/utils/dom/bind-events'
 
     export default {
         name: 'IMainContainer',
@@ -33,6 +34,15 @@
             allowScrollX: {
                 type: Boolean,
                 default: false
+            },
+            minHeight:{
+                type:Number,
+                default:600
+            }
+        },
+        data() {
+            return {
+                viewportHeight: 0
             }
         },
         computed: {
@@ -43,7 +53,7 @@
 
             mainStyle() {
 
-                const height = this.height > 0 ? this.height : (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - this.paddingAll * 2 - 1) + 'px';
+                const height = this.height > 0 ? this.height : (this.viewportHeight - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - this.paddingAll * 2 - 1) + 'px';
 
                 let style = {
                     'background': this.background,
@@ -65,6 +75,27 @@
 
                 return style
             }
+        },
+
+        methods:{
+
+            // 重置 vh
+            resetViewportHeight(){
+
+                let viewportHeight = vh();
+
+                this.viewportHeight = viewportHeight < this.minHeight ? this.minHeight : viewportHeight;
+            }
+        },
+
+        mounted() {
+
+            this.resetViewportHeight();
+            bindEvents.bind(window, 'resize', this.resetViewportHeight);
+        },
+        beforeDestroy(){
+
+            bindEvents.unbind(window, 'resize', this.resetViewportHeight);
         }
     }
 </script>

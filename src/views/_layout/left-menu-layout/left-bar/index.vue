@@ -23,12 +23,12 @@
 
     import {mapState} from 'vuex'
     import leftBarRecursive from './left-bar-recursive'
-
-    import vh from '@/utils/dom/viewport-height'
+    import viewportHeightMixin from '../../../_mixins/viewport-height'
 
     export default {
         name: 'LeftBar',
         components: {leftBarRecursive},
+        mixins:[viewportHeightMixin],
         data() {
             return {
                 collapse: false,
@@ -46,7 +46,7 @@
 			leftBarStyle(){
 
                 return {
-                    'height': (vh() - this.rootState.topBarHeight) + 'px'
+                    'height': (this.viewportHeight_Mixin - this.rootState.topBarHeight) + 'px'
                 }
 			}
         },

@@ -32,12 +32,13 @@
     import {mapState} from 'vuex'
     import leftBar from './left-bar/index'
     import breadcrumb from './breadcrumb'
-    import historyTabs from './history-tabs'
+    import viewportHeightMixin from '../../_mixins/viewport-height'
 
-    import vh from '@/utils/dom/viewport-height'
+    import historyTabs from './history-tabs'
 
     export default {
         name: 'LeftBar',
+        mixins:[viewportHeightMixin],
         components: {
             leftBar, breadcrumb, historyTabs
         },
@@ -62,8 +63,7 @@
             mainContainerStyle() {
 
                 return {
-                    //'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - 1) + 'px',
-                    'height': (vh() - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - 10) + 'px',
+                    'height': (this.viewportHeight_Mixin - this.rootState.topBarHeight - this.rootState.headerOperationHeight - this.rootState.contentPadding * 2 - 10) + 'px',
                     'padding': this.rootState.contentPadding+'px !important'
                 }
             }
