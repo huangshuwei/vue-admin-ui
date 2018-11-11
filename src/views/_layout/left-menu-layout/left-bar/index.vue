@@ -7,6 +7,7 @@
 			:collapse-transition="false"
 			:default-active="defaultActive"
 			:collapse="!rootState.isExpand"
+			background-color="#fff"
 			class="el-menu-left-bar"
 			router
 			@open="handleOpen"
