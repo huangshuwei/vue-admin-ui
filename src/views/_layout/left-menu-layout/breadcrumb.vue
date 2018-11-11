@@ -1,5 +1,5 @@
 <template>
-	<el-breadcrumb separator="/">
+	<el-breadcrumb separator-class="el-icon-arrow-right">
 		<el-breadcrumb-item
 			v-if="rootState.showHomeBreadcrumb"
 			:to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -68,3 +68,10 @@
         },
     }
 </script>
+
+<style>
+	.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
+
+		font-weight: normal;
+	}
+</style>
