@@ -107,7 +107,7 @@
     }
 
     .header-operation-history-tabs {
-        vertical-align: middle;
+        /*vertical-align: middle;*/
         display: inline-block;
     }
 

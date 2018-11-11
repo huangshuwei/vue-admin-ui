@@ -71,7 +71,7 @@
 
 <style>
 	.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
-
+		font-size: 13px;
 		font-weight: normal;
 	}
 </style>
