@@ -1,90 +1,92 @@
 <template>
-	<div class="top-bar">
-		<el-container>
-			<el-aside
-				:style="logoStyle"
-				class="top-bar-logo">
-				logo
-			</el-aside>
-			<el-main style="padding: 0 !important;">
-				<el-row>
-					<el-col :span="1">
-						<div
-							:style="topBarStyle2"
-							class="top-bar-expand">
+    <div class="top-bar">
+        <el-container>
+            <el-aside
+                    :style="logoStyle"
+                    class="top-bar-logo">
+                logo
+            </el-aside>
+            <el-main style="padding: 0 !important;">
+                <el-row>
+                    <el-col :span="1">
+                        <div
+                                :style="topBarStyle2"
+                                class="top-bar-expand">
 							<span
-								class="top-bar-expand-span"
-								@click.stop="switchLeftBar()"><i
-									:class="['top-bar-expand-i','iconfont','icon-caidan',topBarExpandIClasses]"/>
+                                    class="top-bar-expand-span"
+                                    @click.stop="switchLeftBar()"><i
+                                    :class="['top-bar-expand-i','iconfont','icon-caidan',topBarExpandIClasses]"/>
 							</span>
-						</div>
-					</el-col>
-					<el-col :span="19">
-						<el-menu
-							:default-active="defaultActive"
-							router
-							class="el-menu-top-bar"
-							mode="horizontal"
-							background-color="#fff"
-							text-color="#666"
-							active-text-color="#000"
-							@select="handleSelect">
-							<el-menu-item
-								v-for="item in rootState.menuInfo"
-								:key="item.id"
-								:index="'/'+item.url">
-								{{ item.name }}
-							</el-menu-item>
-							&nbsp;
-						</el-menu>
-					</el-col>
-					<el-col :span="2">
-						<div 
-							:style="topBarStyle2" 
-							class="top-bar-icons">
-							<el-tooltip 
-								content="全屏展示" 
-								placement="bottom" 
-								effect="light">
-								<span class="top-bar-icon-item iconfont icon-quanping"/>
-							</el-tooltip>
-							<el-tooltip 
-								content="刷新页面" 
-								placement="bottom" 
-								effect="light">
+                        </div>
+                    </el-col>
+                    <el-col :span="19">
+                        <el-menu
+                                :default-active="defaultActive"
+                                router
+                                class="el-menu-top-bar"
+                                mode="horizontal"
+                                background-color="#fff"
+                                text-color="#666"
+                                active-text-color="#000"
+                                @select="handleSelect">
+                            <el-menu-item
+                                    v-for="item in rootState.menuInfo"
+                                    :key="item.id"
+                                    :index="'/'+item.url">
+                                {{ item.name }}
+                            </el-menu-item>
+                            &nbsp;
+                        </el-menu>
+                    </el-col>
+                    <el-col :span="2">
+                        <div
+                                :style="topBarStyle2"
+                                class="top-bar-icons">
+                            <el-tooltip
+                                    content="刷新页面"
+                                    placement="bottom"
+                                    effect="light">
 								<span
-									class="top-bar-icon-item iconfont icon-shuaxin"
-									@click="reloadPage"/>
-							</el-tooltip>
-						</div>
-					</el-col>
-					<el-col
-						:span="2">
-						<div
-							:style="topBarStyle"
-							class="top-bar-account">
-							<el-dropdown trigger="click">
+                                        class="top-bar-icon-item iconfont icon-shuaxin"
+                                        @click="reloadPage"/>
+                            </el-tooltip>
+                            <el-tooltip
+                                    content="全屏展示"
+                                    placement="bottom"
+                                    effect="light">
+								<span class="top-bar-icon-item iconfont icon-quanping"
+                                      @click="fullScreen"/>
+                            </el-tooltip>
+                        </div>
+                    </el-col>
+                    <el-col
+                            :span="2">
+                        <div
+                                :style="topBarStyle"
+                                class="top-bar-account">
+                            <el-dropdown trigger="click">
 								<span class="el-dropdown-link top-bar-account-link">
 									设置<i class="el-icon-arrow-down el-icon--right"/>
 								</span>
-								<el-dropdown-menu slot="dropdown">
-									<!--<el-dropdown-item>test</el-dropdown-item>
+                                <el-dropdown-menu slot="dropdown">
+                                    <!--<el-dropdown-item>test</el-dropdown-item>
                                     <el-dropdown-item>test</el-dropdown-item>-->
-									<el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
-								</el-dropdown-menu>
-							</el-dropdown>
-						</div>
-					</el-col>
-				</el-row>
-			</el-main>
-		</el-container>
-	</div>
+                                    <el-dropdown-item @click.native="loginOut()">登出</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </el-dropdown>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-main>
+        </el-container>
+    </div>
 </template>
 
 <script>
 
     import {mapActions, mapState} from 'vuex'
     import * as identitys from "@/config/identity.config.js"
+    import screenfull from 'screenfull'
 
     export default {
         data() {
@@ -120,7 +122,7 @@
 
                 return {
                     'height': this.rootState.topBarHeight + 'px',
-                    'line-height': this.rootState.topBarHeight + 'px'
+                    'line-height': this.rootState.topBarHeight + 'px',
                 }
             },
 
@@ -186,8 +188,18 @@
                 }
             },
 
+            // 全屏展示
+            fullScreen() {
+
+                if (screenfull.enabled) {
+                    screenfull.request();
+                } else {
+                    // Ignore or do something else
+                }
+            },
+
             // 刷新页面
-            reloadPage(){
+            reloadPage() {
 
                 window.location.reload()
             }
@@ -243,11 +255,12 @@
         cursor: pointer;
     }
 
-    .top-bar-icons .top-bar-icon-item{
+    .top-bar-icons .top-bar-icon-item {
         display: inline-block;
-        width:50px;
-		text-align: center;
-		cursor: pointer;
+        width: 50px;
+        height: 90%;
+        text-align: center;
+        cursor: pointer;
 
     }
 
