@@ -19,6 +19,7 @@
     "jsonp": "^0.2.1",
     "nprogress": "^0.2.0",
     "register-service-worker": "^1.0.0",
+    "screenfull": "^3.3.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

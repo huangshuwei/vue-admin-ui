@@ -9,8 +9,8 @@
 			<el-main style="padding: 0 !important;">
 				<el-row>
 					<el-col :span="1">
-						<div 
-							:style="topBarExpandStyle" 
+						<div
+							:style="topBarStyle2"
 							class="top-bar-expand">
 							<span
 								class="top-bar-expand-span"
@@ -19,7 +19,7 @@
 							</span>
 						</div>
 					</el-col>
-					<el-col :span="21">
+					<el-col :span="19">
 						<el-menu
 							:default-active="defaultActive"
 							router
@@ -37,6 +37,26 @@
 							</el-menu-item>
 							&nbsp;
 						</el-menu>
+					</el-col>
+					<el-col :span="2">
+						<div 
+							:style="topBarStyle2" 
+							class="top-bar-icons">
+							<el-tooltip 
+								content="全屏展示" 
+								placement="bottom" 
+								effect="light">
+								<span class="top-bar-icon-item iconfont icon-quanping"/>
+							</el-tooltip>
+							<el-tooltip 
+								content="刷新页面" 
+								placement="bottom" 
+								effect="light">
+								<span
+									class="top-bar-icon-item iconfont icon-shuaxin"
+									@click="reloadPage"/>
+							</el-tooltip>
+						</div>
 					</el-col>
 					<el-col
 						:span="2">
@@ -96,7 +116,7 @@
                 }
             },
 
-            topBarExpandStyle(){
+            topBarStyle2() {
 
                 return {
                     'height': this.rootState.topBarHeight + 'px',
@@ -164,27 +184,35 @@
 
                     this.defaultActive = defaultMenuKey.path;
                 }
+            },
+
+            // 刷新页面
+            reloadPage(){
+
+                window.location.reload()
             }
         }
     }
 </script>
 
 <style>
-	.top-bar {
-		border-bottom: 1px solid #e6e6e6;
-		overflow: hidden;
-	}
+    .top-bar {
+        border-bottom: 1px solid #e6e6e6;
+        overflow: hidden;
+    }
 
     .top-bar-expand {
         padding: 0 15px;
         background-color: #fff;
         min-width: 100px;
     }
+
     .top-bar-expand-span {
         cursor: pointer;
     }
+
     .top-bar-expand i {
-		color:#666;
+        color: #666;
         font-size: 20px;
     }
 
@@ -194,6 +222,7 @@
         transition: .38s;
         transform-origin: 50% 50%;
     }
+
     .top-bar-expand-i.active {
         transform: rotate(-90deg);
     }
@@ -214,5 +243,12 @@
         cursor: pointer;
     }
 
+    .top-bar-icons .top-bar-icon-item{
+        display: inline-block;
+        width:50px;
+		text-align: center;
+		cursor: pointer;
+
+    }
 
 </style>
