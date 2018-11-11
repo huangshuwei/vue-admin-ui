@@ -99,4 +99,14 @@
 		visibility: hidden;
 		display: inline-block;
 	}
+
+	.left-bar-container .el-menu-item.is-active:before{
+		content: " ";
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 3px;
+		background: #409eff;
+		position: absolute;
+	}
 </style>

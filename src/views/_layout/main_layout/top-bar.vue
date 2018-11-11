@@ -184,7 +184,8 @@
         cursor: pointer;
     }
     .top-bar-expand i {
-        font-size: 24px;
+		color:#666;
+        font-size: 20px;
     }
 
     .top-bar-expand-i {
