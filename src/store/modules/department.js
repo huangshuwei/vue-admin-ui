@@ -1,4 +1,3 @@
-import Vue from "vue";
 import {getDepartmentTree, addDepartment, updateDepartment, deleteDepartment} from '@/service/api/department'
 import listToTree from '../../utils/array/listToTree'
 

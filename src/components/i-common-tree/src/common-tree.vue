@@ -24,7 +24,9 @@
             treeData:{
                 type:Array,
                 required:true,
-                default:[]
+                default:function () {
+					return []
+                }
             },
             // 是否选中第一个节点（选中后将触发选中事件）
             isFirstNodeCheck: {
