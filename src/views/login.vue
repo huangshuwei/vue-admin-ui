@@ -82,7 +82,7 @@
                             if (data.status === 1){
 
                                 this.$message({type:'success',message:'登录成功',duration:1200});
-                                window.location.href = "/"
+                                window.location.href = "./"
 
                             }else{
 
