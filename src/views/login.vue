@@ -39,6 +39,7 @@
 <script>
 
     import {mapActions} from 'vuex'
+    import * as identitys from "@/config/identity.config.js"
 
     export default {
         data() {
@@ -82,7 +83,7 @@
                             if (data.status === 1){
 
                                 this.$message({type:'success',message:'登录成功',duration:1200});
-                                window.location.href = "./"
+                                window.location.href = identitys.HOME_PATH;
 
                             }else{
 
